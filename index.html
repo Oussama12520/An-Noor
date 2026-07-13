@@ -137,42 +137,6 @@
 
       <!-- VIEW: Dashboard -->
       <section id="view-dashboard" class="content-view visible active">
-        <!-- Solar Arc Tracker Widget -->
-        <div class="glass-card solar-tracker-card p-6 spotlight">
-          <div class="solar-tracker-header">
-            <span class="card-subtitle">Solar Path Tracker</span>
-            <h3 id="solar-tracker-status" class="solar-tracker-title gold-text-gradient">Fajr · Dawn Ascent</h3>
-          </div>
-          <div class="solar-arc-container">
-            <svg class="solar-arc-svg" viewBox="0 0 400 200">
-              <defs>
-                <linearGradient id="arcGoldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stop-color="#f59e0b" />
-                  <stop offset="50%" stop-color="#fbbf24" />
-                  <stop offset="100%" stop-color="#ef4444" />
-                </linearGradient>
-              </defs>
-              <!-- Base arc path -->
-              <path d="M 40,180 A 160,160 0 0,1 360,180" fill="none" stroke="rgba(253, 230, 138, 0.12)" stroke-width="2" stroke-dasharray="6,4" />
-              <!-- Horizontal base line -->
-              <line x1="20" y1="180" x2="380" y2="180" stroke="rgba(255,255,255,0.06)" stroke-width="1" />
-              <!-- Arc highlight tracker path -->
-              <path id="solar-arc-highlight" d="M 40,180 A 160,160 0 0,1 360,180" fill="none" stroke="url(#arcGoldGrad)" stroke-width="2.5" stroke-dasharray="502" stroke-dashoffset="502" class="arc-highlight-path" />
-              <!-- Orb group -->
-              <g id="solar-orb-group" transform="translate(40, 180)" class="solar-orb-group">
-                <circle cx="0" cy="0" r="20" fill="rgba(251, 191, 36, 0.25)" class="solar-glow" id="solar-orb-glow" />
-                <circle cx="0" cy="0" r="7" fill="#fff" id="solar-orb-core" />
-              </g>
-            </svg>
-            <div class="solar-arc-labels">
-              <span>Fajr</span>
-              <span>Dhuhr</span>
-              <span>Asr</span>
-              <span>Maghrib</span>
-            </div>
-          </div>
-        </div>
-
         <div class="dashboard-grid">
           <!-- Ayah of the Day -->
           <div class="glass-card col-span-2 p-6 spotlight" id="ayah-card">

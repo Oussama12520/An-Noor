@@ -1068,55 +1068,7 @@ function renderNatureBackdrop() {
   }
 }
 
-const SOLAR_POSITIONS = {
-  fajr: { angle: 172, label: "Fajr · Dawn Ascent", color: "#fbbf24", glow: "rgba(251, 191, 36, 0.45)", isMoon: false },
-  dhuhr: { angle: 90, label: "Dhuhr · Midday Zenith", color: "#f59e0b", glow: "rgba(245, 158, 11, 0.45)", isMoon: false },
-  asr: { angle: 55, label: "Asr · Afternoon Descent", color: "#d97706", glow: "rgba(217, 119, 6, 0.45)", isMoon: false },
-  maghrib: { angle: 8, label: "Maghrib · Sunset Horizon", color: "#ef4444", glow: "rgba(239, 68, 68, 0.45)", isMoon: false },
-  isha: { angle: 90, label: "Isha · Cosmic Night", color: "#a78bfa", glow: "rgba(167, 139, 250, 0.45)", isMoon: true }
-};
-
-function updateSolarArcTracker() {
-  const orb = document.getElementById("solar-orb-group");
-  const glow = document.getElementById("solar-orb-glow");
-  const core = document.getElementById("solar-orb-core");
-  const status = document.getElementById("solar-tracker-status");
-  const highlight = document.getElementById("solar-arc-highlight");
-  
-  if (!orb || !status || !highlight) return;
-  
-  const pos = SOLAR_POSITIONS[currentPhase] || SOLAR_POSITIONS.fajr;
-  status.textContent = pos.label;
-  
-  // Calculate X and Y coordinates along the arc path
-  const rad = (pos.angle * Math.PI) / 180;
-  const x = 200 + 160 * Math.cos(rad);
-  const y = 180 - 160 * Math.sin(rad);
-  
-  // Translate the orb group
-  orb.setAttribute("transform", `translate(${x}, ${y})`);
-  
-  // Set glow fill, sizing, and core stylings depending on if it's the Sun or Moon
-  glow.setAttribute("fill", pos.glow);
-  if (pos.isMoon) {
-    glow.setAttribute("r", "14");
-    core.setAttribute("fill", "#eef2f6");
-    core.style.filter = "drop-shadow(0 0 10px #a78bfa)";
-  } else {
-    glow.setAttribute("r", "20");
-    core.setAttribute("fill", "#fff");
-    core.style.filter = `drop-shadow(0 0 12px ${pos.color})`;
-  }
-  
-  // Animate the highlight path stroke-dashoffset
-  // Arc length is approximately 502 units (Math.PI * 160)
-  const pct = (180 - pos.angle) / 180;
-  const dashOffset = 502 - (502 * pct);
-  highlight.style.strokeDashoffset = dashOffset;
-}
-
 function renderDashboard() {
-  updateSolarArcTracker();
   const cfg = PHASES[currentPhase];
 
   document.getElementById("ayah-arabic").textContent = "وَبَشِّرِ الصَّابِرِينَ الَّذِينَ إِذَا أَصَابَتْهُم مُّصِيبَةٌ قَالُوا إِنَّا لِلَّهِ وَإِنَّا إِلَيْهِ رَاجِعُونَ";
