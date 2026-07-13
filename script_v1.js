@@ -308,19 +308,7 @@ const OCEAN_SVG = `
 
 const MINARETS_SVG = `
   <svg viewBox="0 0 1200 400" preserveAspectRatio="none" class="nature-svg minaret-scene">
-    <path d="M0 340 L1200 340 L1200 400 L0 400 Z" fill="#07061a"/>
-    <g transform="translate(100, 160)" fill="#07061a">
-      <path d="M50 180 A50 50 0 0 1 150 180 Z" />
-      <path d="M90 130 C90 100 110 100 110 130 Z" />
-      <rect x="0" y="40" width="30" height="140" />
-      <polygon points="-10,40 15,-10 40,40" />
-      <circle cx="15" cy="90" r="5" fill="#fde68a" class="lantern-bulb" />
-    </g>
-    <g transform="translate(950, 160)" fill="#07061a">
-      <rect x="20" y="40" width="30" height="140" />
-      <polygon points="10,40 35,-10 60,40" />
-      <circle cx="35" cy="90" r="5" fill="#fde68a" class="lantern-bulb" />
-    </g>
+    <path d="M0 350 Q400 320 800 360 T1200 340 L1200 400 L0 400 Z" fill="#07061a"/>
   </svg>
 `;
 
