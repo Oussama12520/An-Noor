@@ -221,6 +221,9 @@ let mouse = { x: 0, y: 0 };
 let currentParallax = { x: 0, y: 0 };
 let rafId = null;
 let phaseParticles = [];
+let fajrBirds = [];
+let dhuhrEagles = [];
+let asrClouds = [];
 
 const SKY_COLORS = {
   fajr: {
@@ -1658,6 +1661,104 @@ function drawMaghribHorizonSunset(ctx, w, h, frameCount) {
   ctx.restore();
 }
 
+function drawBird(ctx, x, y, size, angle, flap) {
+  ctx.save();
+  ctx.translate(x, y);
+  ctx.rotate(angle);
+  ctx.beginPath();
+  const wingSpan = size * 1.2;
+  const wingHeight = Math.sin(flap) * size * 0.8;
+  // Left wing
+  ctx.moveTo(0, 0);
+  ctx.quadraticCurveTo(-wingSpan / 2, -wingHeight - size * 0.2, -wingSpan, -wingHeight);
+  ctx.quadraticCurveTo(-wingSpan / 2, -wingHeight * 0.3, 0, 0);
+  // Right wing
+  ctx.moveTo(0, 0);
+  ctx.quadraticCurveTo(wingSpan / 2, -wingHeight - size * 0.2, wingSpan, -wingHeight);
+  ctx.quadraticCurveTo(wingSpan / 2, -wingHeight * 0.3, 0, 0);
+  ctx.fillStyle = "rgba(19, 11, 33, 0.55)";
+  ctx.fill();
+  ctx.restore();
+}
+
+function drawGlider(ctx, x, y, size, angle) {
+  ctx.save();
+  ctx.translate(x, y);
+  ctx.rotate(angle);
+  ctx.beginPath();
+  const wingSpan = size * 1.5;
+  ctx.moveTo(0, 0);
+  ctx.quadraticCurveTo(-wingSpan / 2, -size * 0.1, -wingSpan, -size * 0.2);
+  ctx.quadraticCurveTo(-wingSpan / 2, 0, 0, 0);
+  ctx.quadraticCurveTo(wingSpan / 2, -size * 0.2, wingSpan, -size * 0.2);
+  ctx.quadraticCurveTo(wingSpan / 2, 0, 0, 0);
+  ctx.fillStyle = "rgba(12, 22, 38, 0.4)";
+  ctx.fill();
+  ctx.restore();
+}
+
+function drawCloud(ctx, x, y, size, opacity) {
+  ctx.save();
+  ctx.fillStyle = `rgba(255, 255, 255, ${opacity})`;
+  ctx.beginPath();
+  ctx.arc(x, y, size * 0.4, 0, Math.PI * 2);
+  ctx.arc(x + size * 0.3, y - size * 0.1, size * 0.5, 0, Math.PI * 2);
+  ctx.arc(x + size * 0.6, y, size * 0.4, 0, Math.PI * 2);
+  ctx.rect(x, y - size * 0.1, size * 0.6, size * 0.4);
+  ctx.closePath();
+  ctx.fill();
+  ctx.restore();
+}
+
+function drawSunsetReflection(ctx, w, h, frameCount) {
+  ctx.save();
+  ctx.globalCompositeOperation = "screen";
+  const startY = h * 0.72;
+  const count = 6;
+  for (let i = 0; i < count; i++) {
+    const rowY = startY + i * 20;
+    const rowW = (1 - (i / count)) * 140 + 40;
+    const shiftX = Math.sin(frameCount * 0.03 + i) * 15;
+    const grad = ctx.createLinearGradient(w / 2 + shiftX - rowW / 2, rowY, w / 2 + shiftX + rowW / 2, rowY);
+    const alpha = (0.25 - (i / count) * 0.2) * (0.6 + Math.sin(frameCount * 0.02 + i) * 0.4);
+    grad.addColorStop(0, "rgba(255,138,92,0)");
+    grad.addColorStop(0.5, `rgba(255, 138, 92, ${alpha})`);
+    grad.addColorStop(1, "rgba(255,138,92,0)");
+    ctx.fillStyle = grad;
+    ctx.fillRect(w / 2 + shiftX - rowW / 2, rowY, rowW, 3 + i * 0.5);
+  }
+  ctx.restore();
+}
+
+function drawConstellation(ctx, w, h, frameCount) {
+  ctx.save();
+  const pulse = 0.04 + Math.sin(frameCount * 0.005) * 0.03;
+  ctx.strokeStyle = `rgba(253, 230, 138, ${pulse})`;
+  ctx.lineWidth = 0.5;
+  
+  const pts = [
+    { x: w * 0.7, y: h * 0.15 },
+    { x: w * 0.74, y: h * 0.18 },
+    { x: w * 0.78, y: h * 0.17 },
+    { x: w * 0.81, y: h * 0.21 }
+  ];
+  
+  ctx.beginPath();
+  ctx.moveTo(pts[0].x, pts[0].y);
+  for (let i = 1; i < pts.length; i++) {
+    ctx.lineTo(pts[i].x, pts[i].y);
+  }
+  ctx.stroke();
+  
+  ctx.fillStyle = `rgba(255, 255, 255, ${0.4 + Math.sin(frameCount * 0.01) * 0.3})`;
+  pts.forEach(pt => {
+    ctx.beginPath();
+    ctx.arc(pt.x, pt.y, 1.5, 0, Math.PI * 2);
+    ctx.fill();
+  });
+  ctx.restore();
+}
+
 /* ---------------------------------- Celestial Background Animation ---------------------------------- */
 
 function initCelestialBackground() {
@@ -1665,6 +1766,17 @@ function initCelestialBackground() {
   if (!canvas) return;
   const ctx = canvas.getContext("2d");
   if (!ctx) return;
+
+  // Initialize eagles and clouds arrays
+  dhuhrEagles = [
+    { angle: 0, radius: 120, speed: 0.003, size: 8, cx: 0.3, cy: 0.25 },
+    { angle: Math.PI, radius: 180, speed: -0.002, size: 11, cx: 0.75, cy: 0.2 }
+  ];
+  asrClouds = [
+    { x: 100, y: 220, vx: 0.08, size: 100, opacity: 0.12 },
+    { x: 600, y: 170, vx: 0.12, size: 140, opacity: 0.16 },
+    { x: 1000, y: 245, vx: 0.06, size: 110, opacity: 0.09 }
+  ];
 
   function resize() {
     canvas.width = window.innerWidth * window.devicePixelRatio;
@@ -1745,6 +1857,59 @@ function initCelestialBackground() {
     const celestialBody = document.getElementById("celestial-body");
     if (celestialBody) {
       celestialBody.style.transform = `translate(-50%, -50%) translate(${currentParallax.x * 24}px, ${currentParallax.y * 16}px)`;
+    }
+
+    // Fajr: Flapping flying birds silhouette
+    if (currentPhase === "fajr") {
+      if (fajrBirds.length < 4 && Math.random() < 0.007) {
+        fajrBirds.push({
+          x: -50,
+          y: h * 0.12 + Math.random() * (h * 0.25),
+          vx: 1.1 + Math.random() * 0.8,
+          vy: (Math.random() - 0.5) * 0.2,
+          size: 6 + Math.random() * 6,
+          flapSpeed: 0.14 + Math.random() * 0.06,
+          flapPhase: Math.random() * Math.PI * 2
+        });
+      }
+      fajrBirds = fajrBirds.filter(b => b.x < w + 50);
+      fajrBirds.forEach(b => {
+        b.x += b.vx;
+        b.y += b.vy;
+        b.flapPhase += b.flapSpeed;
+        drawBird(ctx, b.x, b.y, b.size, Math.atan2(b.vy, b.vx), b.flapPhase);
+      });
+    }
+
+    // Dhuhr: Soaring desert eagles gliding in slow circles
+    if (currentPhase === "dhuhr") {
+      dhuhrEagles.forEach(e => {
+        e.angle += e.speed;
+        const cx = w * e.cx;
+        const cy = h * e.cy;
+        const x = cx + e.radius * Math.cos(e.angle);
+        const y = cy + e.radius * 0.4 * Math.sin(e.angle);
+        drawGlider(ctx, x, y, e.size, e.angle + Math.PI / 2);
+      });
+    }
+
+    // Asr: Drifting valley fog clouds
+    if (currentPhase === "asr") {
+      asrClouds.forEach(c => {
+        c.x += c.vx;
+        if (c.x > w + c.size) c.x = -c.size;
+        drawCloud(ctx, c.x, c.y, c.size, c.opacity);
+      });
+    }
+
+    // Maghrib: Sun water reflection ripples
+    if (currentPhase === "maghrib") {
+      drawSunsetReflection(ctx, w, h, frameCount);
+    }
+
+    // Isha: Constellation lines connect-the-dots
+    if (currentPhase === "isha") {
+      drawConstellation(ctx, w, h, frameCount);
     }
 
     if ((currentPhase === "isha" || currentPhase === "maghrib") && Math.random() < 0.006) {
