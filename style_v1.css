@@ -2343,3 +2343,49 @@ body {
   to { transform: scaleY(1.0); }
 }
 
+/* Solar path tracker widget styling */
+.solar-tracker-card {
+  margin-bottom: 24px;
+}
+.solar-tracker-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+.solar-tracker-title {
+  font-size: 0.92rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.solar-arc-container {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+}
+.solar-arc-svg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+.arc-highlight-path {
+  transition: stroke-dashoffset 1.8s cubic-bezier(0.19, 1, 0.22, 1);
+}
+.solar-orb-group {
+  transition: transform 1.8s cubic-bezier(0.19, 1, 0.22, 1);
+}
+.solar-glow {
+  transition: fill 1.4s ease, r 1.4s ease;
+}
+.solar-arc-labels {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 32px 0;
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  font-family: var(--font-sans);
+}
+
