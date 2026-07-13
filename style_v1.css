@@ -2232,6 +2232,103 @@ body {
 }
 
 /* COMING SOON MODULE VIEW - REMOVED (Replaced by Active Sections) */
+/* ============================================================================
+   NATURE BACKDROP SCENES & Swaying/Wave Animations
+   ============================================================================ */
+
+.nature-backdrop {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 42vh;
+  z-index: -4;
+  pointer-events: none;
+  overflow: hidden;
+  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nature-svg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  bottom: -2px; /* slight offset to prevent rendering seams */
+  left: 0;
+}
+
+/* Swaying animations for Oasis palms */
+@keyframes sway {
+  0%, 100% { transform: translate(180px, 240px) scale(0.65) rotate(0deg); }
+  50% { transform: translate(180px, 240px) scale(0.65) rotate(1.8deg); }
+}
+.swaying-palm {
+  animation: sway 6s infinite ease-in-out;
+  transform-origin: bottom center;
+}
+
+@keyframes sway-rev {
+  0%, 100% { transform: translate(980px, 230px) scale(0.75) scale(-1, 1) rotate(0deg); }
+  50% { transform: translate(980px, 230px) scale(0.75) scale(-1, 1) rotate(-1.8deg); }
+}
+.swaying-palm-reverse {
+  animation: sway-rev 7s infinite ease-in-out;
+  transform-origin: bottom center;
+}
+
+/* Ripple animations for Maghrib tides */
+@keyframes wave-back {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  50% { transform: translateY(3px) translateX(-18px); }
+}
+@keyframes wave-mid {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  50% { transform: translateY(-2px) translateX(22px); }
+}
+@keyframes wave-front {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  50% { transform: translateY(1.5px) translateX(-12px); }
+}
+.ocean-wave-back { animation: wave-back 5.5s infinite ease-in-out; }
+.ocean-wave-mid { animation: wave-mid 6.5s infinite ease-in-out; }
+.ocean-wave-front { animation: wave-front 4.5s infinite ease-in-out; }
+
+/* Fog movements for Fajr and Asr valleys */
+@keyframes fog-move {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+.fog-drift {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 200%;
+  height: 140px;
+  background: linear-gradient(to top, rgba(232, 166, 201, 0.09), transparent);
+  animation: fog-move 35s infinite linear;
+  pointer-events: none;
+  opacity: 0.8;
+}
+.valley-fog {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 200%;
+  height: 100px;
+  background: linear-gradient(to top, rgba(133, 96, 165, 0.07), transparent);
+  animation: fog-move 45s infinite linear;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+/* Lantern shimmers for Minarets (Isha) */
+@keyframes lantern-glow {
+  0%, 100% { opacity: 0.45; filter: drop-shadow(0 0 2px #fde68a); }
+  50% { opacity: 1.0; filter: drop-shadow(0 0 10px #fbbf24) drop-shadow(0 0 3px #fde68a); }
+}
+.lantern-bulb {
+  animation: lantern-glow 3s infinite ease-in-out;
+  transform-origin: center;
+}
 
 /* Helper hidden states */
 .hidden {

@@ -256,6 +256,132 @@ let skyLerpColors = {
   top: [3, 3, 9]
 };
 
+const FOREST_SVG = `
+  <svg viewBox="0 0 1200 400" preserveAspectRatio="none" class="nature-svg forest-scene">
+    <path d="M0 330 Q400 300 800 350 L1200 320 L1200 400 L0 400 Z" fill="#201533" opacity="0.6"/>
+    <path d="M0 350 Q300 330 650 360 T1200 340 L1200 400 L0 400 Z" fill="#130b21"/>
+    <polygon points="120,340 140,240 160,340" fill="#130b21" opacity="0.85"/>
+    <polygon points="145,350 170,220 195,350" fill="#0c0717"/>
+    <polygon points="80,360 105,210 130,360" fill="#0c0717"/>
+    <polygon points="980,350 1005,230 1030,350" fill="#130b21" opacity="0.85"/>
+    <polygon points="1010,360 1035,200 1060,360" fill="#0c0717"/>
+  </svg>
+  <div class="fog-drift"></div>
+`;
+
+const OASIS_SVG = `
+  <svg viewBox="0 0 1200 400" preserveAspectRatio="none" class="nature-svg oasis-scene">
+    <path d="M0 320 Q200 280 450 320 T950 340 T1200 300 L1200 400 L0 400 Z" fill="#14213a" opacity="0.65"/>
+    <path d="M0 340 Q350 310 700 350 T1200 330 L1200 400 L0 400 Z" fill="#0c1626"/>
+    <g class="swaying-palm">
+      <path d="M10 160 Q-20 80 -5 0" stroke="#0a0f1b" stroke-width="12" fill="none"/>
+      <path d="M-5 0 Q-60 -40 -120 -20 Q-60 -5 -5 0" fill="#080c16"/>
+      <path d="M-5 0 Q-80 -80 -10 -110 Q-10 -40 -5 0" fill="#080c16"/>
+      <path d="M-5 0 Q60 -80 120 -50 Q50 -10 -5 0" fill="#080c16"/>
+      <path d="M-5 0 Q90 -30 140 10 Q60 10 -5 0" fill="#080c16"/>
+    </g>
+    <g class="swaying-palm-reverse">
+      <path d="M10 160 Q-15 90 -5 0" stroke="#0a0f1b" stroke-width="14" fill="none"/>
+      <path d="M-5 0 Q-60 -40 -120 -20 Q-60 -5 -5 0" fill="#080c16"/>
+      <path d="M-5 0 Q-80 -80 -10 -110 Q-10 -40 -5 0" fill="#080c16"/>
+      <path d="M-5 0 Q60 -80 120 -50 Q50 -10 -5 0" fill="#080c16"/>
+      <path d="M-5 0 Q90 -30 140 10 Q60 10 -5 0" fill="#080c16"/>
+    </g>
+  </svg>
+`;
+
+const MOUNTAINS_SVG = `
+  <svg viewBox="0 0 1200 400" preserveAspectRatio="none" class="nature-svg mountain-scene">
+    <polygon points="0,320 250,140 500,350 780,180 1050,340 1200,280 1200,400 0,400" fill="#2a1f45" opacity="0.5"/>
+    <polygon points="0,350 380,210 750,370 950,230 1200,360 1200,400 0,400" fill="#17122b"/>
+  </svg>
+  <div class="valley-fog"></div>
+`;
+
+const OCEAN_SVG = `
+  <svg viewBox="0 0 1200 400" preserveAspectRatio="none" class="nature-svg ocean-scene">
+    <path d="M0 320 Q300 290 600 320 T1200 320 L1200 400 L0 400 Z" fill="#7a2f4a" class="ocean-wave-back" opacity="0.5"/>
+    <path d="M0 340 Q300 320 600 340 T1200 340 L1200 400 L0 400 Z" fill="#3d1f4a" class="ocean-wave-mid" opacity="0.75"/>
+    <path d="M0 360 Q300 350 600 360 T1200 360 L1200 400 L0 400 Z" fill="#1a1236" class="ocean-wave-front"/>
+  </svg>
+`;
+
+const MINARETS_SVG = `
+  <svg viewBox="0 0 1200 400" preserveAspectRatio="none" class="nature-svg minaret-scene">
+    <path d="M0 340 L1200 340 L1200 400 L0 400 Z" fill="#07061a"/>
+    <g transform="translate(100, 160)" fill="#07061a">
+      <path d="M50 180 A50 50 0 0 1 150 180 Z" />
+      <path d="M90 130 C90 100 110 100 110 130 Z" />
+      <rect x="0" y="40" width="30" height="140" />
+      <polygon points="-10,40 15,-10 40,40" />
+      <circle cx="15" cy="90" r="5" fill="#fde68a" class="lantern-bulb" />
+    </g>
+    <g transform="translate(950, 160)" fill="#07061a">
+      <rect x="20" y="40" width="30" height="140" />
+      <polygon points="10,40 35,-10 60,40" />
+      <circle cx="35" cy="90" r="5" fill="#fde68a" class="lantern-bulb" />
+    </g>
+  </svg>
+`;
+
+/* ---------------------------------- Geolocation & Qibla Calculations ---------------------------------- */
+
+function calculateQibla(latitude, longitude) {
+  const phiK = 21.4225 * Math.PI / 180;
+  const lambdaK = 39.8262 * Math.PI / 180;
+  const phi = latitude * Math.PI / 180;
+  const lambda = longitude * Math.PI / 180;
+  const y = Math.sin(lambdaK - lambda);
+  const x = Math.cos(phi) * Math.tan(phiK) - Math.sin(phi) * Math.cos(lambdaK - lambda);
+  let qiblaDirection = Math.atan2(y, x) * 180 / Math.PI;
+  if (qiblaDirection < 0) qiblaDirection += 360;
+  return qiblaDirection;
+}
+
+function syncLocation() {
+  if ("geolocation" in navigator) {
+    navigator.geolocation.getCurrentPosition(async (position) => {
+      const lat = position.coords.latitude;
+      const lng = position.coords.longitude;
+      
+      const qiblaAngle = calculateQibla(lat, lng);
+      const needle = document.querySelector(".compass-needle");
+      if (needle) {
+        needle.style.transform = `rotate(${qiblaAngle}deg)`;
+      }
+      const compassFooter = document.querySelector(".compass-footer");
+      if (compassFooter) {
+        compassFooter.textContent = `Mecca is exactly ${Math.round(qiblaAngle)}° from north (synchronized with your location: ${lat.toFixed(2)}°, ${lng.toFixed(2)}°).`;
+      }
+
+      try {
+        const timestamp = Math.floor(Date.now() / 1000);
+        const response = await fetch(`https://api.aladhan.com/v1/timings/${timestamp}?latitude=${lat}&longitude=${lng}&method=2`);
+        const json = await response.json();
+        
+        if (json.code === 200 && json.data && json.data.timings) {
+          const timings = json.data.timings;
+          PRAYERS[0].time = timings.Fajr;
+          PRAYERS[1].time = timings.Sunrise;
+          PRAYERS[2].time = timings.Dhuhr;
+          PRAYERS[3].time = timings.Asr;
+          PRAYERS[4].time = timings.Maghrib;
+          PRAYERS[5].time = timings.Isha;
+
+          renderSalahHub();
+          renderDashboard();
+          syncPhaseWithRealTime();
+          console.log("Salah times synchronized live with user location successfully!");
+        }
+      } catch (err) {
+        console.error("Failed to load local prayer times from AlAdhan API", err);
+      }
+    }, (error) => {
+      console.warn("Geolocation request denied or failed, falling back to default times.", error);
+    });
+  }
+}
+
 /* ---------------------------------- Init & Setup ---------------------------------- */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -270,6 +396,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initQuiz();
   initChat();
   renderAll();
+  syncLocation();
 
   setInterval(() => {
     if (autoMode) {
@@ -862,6 +989,7 @@ function renderAll() {
   updateLiveSyncUI();
   renderHeader();
   renderCelestialBody();
+  renderNatureBackdrop();
   renderDashboard();
   renderQuran();
   renderSalahHub();
@@ -902,7 +1030,6 @@ function renderHeader() {
 
 function renderCelestialBody() {
   const bodyContainer = document.getElementById("celestial-body");
-  const horizonSil = document.getElementById("horizon-silhouette");
   const color = PHASES[currentPhase].bodyColor;
 
   if (currentPhase === "isha") {
@@ -919,7 +1046,6 @@ function renderCelestialBody() {
       </svg>
     `;
     bodyContainer.style.top = "16%";
-    horizonSil.classList.add("hidden");
   } else {
     const pulseDuration = currentPhase === "fajr" ? "3s" : "6s";
     bodyContainer.innerHTML = `
@@ -931,11 +1057,26 @@ function renderCelestialBody() {
 
     if (currentPhase === "maghrib") {
       bodyContainer.style.top = "62%";
-      horizonSil.classList.remove("hidden");
     } else {
       bodyContainer.style.top = "14%";
-      horizonSil.classList.add("hidden");
     }
+  }
+}
+
+function renderNatureBackdrop() {
+  const container = document.getElementById("nature-backdrop");
+  if (!container) return;
+
+  if (currentPhase === "fajr") {
+    container.innerHTML = FOREST_SVG;
+  } else if (currentPhase === "dhuhr") {
+    container.innerHTML = OASIS_SVG;
+  } else if (currentPhase === "asr") {
+    container.innerHTML = MOUNTAINS_SVG;
+  } else if (currentPhase === "maghrib") {
+    container.innerHTML = OCEAN_SVG;
+  } else {
+    container.innerHTML = MINARETS_SVG;
   }
 }
 
