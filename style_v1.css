@@ -2345,11 +2345,30 @@ body {
 
 /* Next Prayer Countdown Widget */
 .next-prayer-widget {
-  margin-bottom: 24px;
+  margin-top: 18px; /* push down slightly to give breathing room */
+  margin-bottom: 28px;
   position: relative;
   overflow: hidden;
+  border: 1px solid rgba(253, 230, 138, 0.1);
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cpath d='M30 0 L40 10 L30 20 L20 10 Z M0 30 L10 40 L20 30 L10 20 Z M30 40 L40 50 L30 60 L20 50 Z M40 30 L50 40 L60 30 L50 20 Z' fill='%23fde68a' fill-opacity='0.015'/%3E%3C/svg%3E");
+  animation: mashrabiya-pan 36s infinite linear;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.35), 
+              0 0 20px 2px rgba(253, 230, 138, 0.03);
 }
+
+.next-prayer-widget:hover {
+  transform: translateY(-3px);
+  border-color: rgba(253, 230, 138, 0.28);
+  box-shadow: 0 14px 44px 0 rgba(0, 0, 0, 0.45), 
+              0 0 30px 4px rgba(253, 230, 138, 0.07);
+}
+
+@keyframes mashrabiya-pan {
+  0% { background-position: 0px 0px; }
+  100% { background-position: 60px 60px; }
+}
+
 .next-prayer-widget::after {
   content: "۞";
   position: absolute;
@@ -2358,6 +2377,7 @@ body {
   font-size: 0.85rem;
   color: rgba(253, 230, 138, 0.2);
   text-shadow: 0 0 5px rgba(253,230,138,0.15);
+  transition: transform 1.6s cubic-bezier(0.19, 1, 0.22, 1), color 0.5s ease;
 }
 .next-prayer-widget::before {
   content: "۞";
@@ -2367,6 +2387,16 @@ body {
   font-size: 0.85rem;
   color: rgba(253, 230, 138, 0.2);
   text-shadow: 0 0 5px rgba(253,230,138,0.15);
+  transition: transform 1.6s cubic-bezier(0.19, 1, 0.22, 1), color 0.5s ease;
+}
+
+.next-prayer-widget:hover::after {
+  transform: rotate(180deg);
+  color: rgba(253, 230, 138, 0.5);
+}
+.next-prayer-widget:hover::before {
+  transform: rotate(-180deg);
+  color: rgba(253, 230, 138, 0.5);
 }
 .next-prayer-grid {
   display: grid;
