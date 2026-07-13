@@ -149,42 +149,41 @@
 
       <!-- VIEW: Dashboard -->
       <section id="view-dashboard" class="content-view visible active">
-        <!-- Next Prayer Countdown Widget -->
-        <div class="glass-card col-span-2 p-6 spotlight next-prayer-widget" id="next-prayer-card">
-          <div class="next-prayer-grid">
-            <div class="countdown-section">
-              <span class="card-subtitle" id="countdown-label">Time to next prayer</span>
-              <div class="next-prayer-title-row">
-                <h2 id="next-prayer-name" class="next-prayer-title">Next: Fajr</h2>
-                <span id="next-prayer-arabic" class="next-prayer-arabic-calligraphy font-arabic">الفجر</span>
+        <div class="dashboard-grid">
+          <!-- Next Prayer Countdown Widget -->
+          <div class="glass-card p-6 spotlight next-prayer-widget" id="next-prayer-card" style="grid-column: 1 / -1;">
+            <div class="next-prayer-grid">
+              <div class="countdown-section">
+                <span class="card-subtitle" id="countdown-label">Time to next prayer</span>
+                <div class="next-prayer-title-row">
+                  <h2 id="next-prayer-name" class="next-prayer-title">Next: Fajr</h2>
+                  <span id="next-prayer-arabic" class="next-prayer-arabic-calligraphy font-arabic">الفجر</span>
+                </div>
+                <div class="countdown-display">
+                  <div class="countdown-unit">
+                    <span id="countdown-hours" class="countdown-val">00</span>
+                    <span class="countdown-unit-label">hrs</span>
+                  </div>
+                  <div class="countdown-divider">:</div>
+                  <div class="countdown-unit">
+                    <span id="countdown-minutes" class="countdown-val">00</span>
+                    <span class="countdown-unit-label">mins</span>
+                  </div>
+                  <div class="countdown-divider">:</div>
+                  <div class="countdown-unit">
+                    <span id="countdown-seconds" class="countdown-val">00</span>
+                    <span class="countdown-unit-label">secs</span>
+                  </div>
+                </div>
               </div>
-              <div class="countdown-display">
-                <div class="countdown-unit">
-                  <span id="countdown-hours" class="countdown-val">00</span>
-                  <span class="countdown-unit-label">hrs</span>
+              <div class="prayer-times-strip">
+                <span class="card-subtitle">Daily prayer times</span>
+                <div class="strip-grid" id="dashboard-prayers-strip">
+                  <!-- Rendered dynamically in JS -->
                 </div>
-                <div class="countdown-divider">:</div>
-                <div class="countdown-unit">
-                  <span id="countdown-minutes" class="countdown-val">00</span>
-                  <span class="countdown-unit-label">mins</span>
-                </div>
-                <div class="countdown-divider">:</div>
-                <div class="countdown-unit">
-                  <span id="countdown-seconds" class="countdown-val">00</span>
-                  <span class="countdown-unit-label">secs</span>
-                </div>
-              </div>
-            </div>
-            <div class="prayer-times-strip">
-              <span class="card-subtitle">Daily prayer times</span>
-              <div class="strip-grid" id="dashboard-prayers-strip">
-                <!-- Rendered dynamically in JS -->
               </div>
             </div>
           </div>
-        </div>
-
-        <div class="dashboard-grid">
           <!-- Ayah of the Day -->
           <div class="glass-card col-span-2 p-6 spotlight" id="ayah-card">
             <div class="card-header">
