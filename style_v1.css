@@ -2343,25 +2343,30 @@ body {
   to { transform: scaleY(1.0); }
 }
 
-/* Next Prayer Countdown Widget */
+/* Next Prayer Countdown Widget Redesign */
 .next-prayer-widget {
-  margin-top: 18px; /* push down slightly to give breathing room */
-  margin-bottom: 28px;
+  margin-top: 24px;
+  margin-bottom: 32px;
   position: relative;
   overflow: hidden;
-  border: 1px solid rgba(253, 230, 138, 0.1);
+  border-radius: 24px;
+  background: rgba(10, 8, 20, 0.55);
+  border: 1px solid rgba(253, 230, 138, 0.12);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  padding: 32px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45), 
+              inset 0 1px 0 rgba(255, 255, 255, 0.08);
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cpath d='M30 0 L40 10 L30 20 L20 10 Z M0 30 L10 40 L20 30 L10 20 Z M30 40 L40 50 L30 60 L20 50 Z M40 30 L50 40 L60 30 L50 20 Z' fill='%23fde68a' fill-opacity='0.015'/%3E%3C/svg%3E");
   animation: mashrabiya-pan 36s infinite linear;
   transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.35), 
-              0 0 20px 2px rgba(253, 230, 138, 0.03);
 }
 
 .next-prayer-widget:hover {
   transform: translateY(-3px);
-  border-color: rgba(253, 230, 138, 0.28);
-  box-shadow: 0 14px 44px 0 rgba(0, 0, 0, 0.45), 
-              0 0 30px 4px rgba(253, 230, 138, 0.07);
+  border-color: rgba(253, 230, 138, 0.32);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55), 
+              0 0 30px 4px rgba(253, 230, 138, 0.08);
 }
 
 @keyframes mashrabiya-pan {
@@ -2372,9 +2377,9 @@ body {
 .next-prayer-widget::after {
   content: "۞";
   position: absolute;
-  top: 10px;
-  right: 12px;
-  font-size: 0.85rem;
+  top: 14px;
+  right: 16px;
+  font-size: 0.95rem;
   color: rgba(253, 230, 138, 0.2);
   text-shadow: 0 0 5px rgba(253,230,138,0.15);
   transition: transform 1.6s cubic-bezier(0.19, 1, 0.22, 1), color 0.5s ease;
@@ -2382,9 +2387,9 @@ body {
 .next-prayer-widget::before {
   content: "۞";
   position: absolute;
-  bottom: 10px;
-  left: 12px;
-  font-size: 0.85rem;
+  bottom: 14px;
+  left: 16px;
+  font-size: 0.95rem;
   color: rgba(253, 230, 138, 0.2);
   text-shadow: 0 0 5px rgba(253,230,138,0.15);
   transition: transform 1.6s cubic-bezier(0.19, 1, 0.22, 1), color 0.5s ease;
@@ -2392,110 +2397,204 @@ body {
 
 .next-prayer-widget:hover::after {
   transform: rotate(180deg);
-  color: rgba(253, 230, 138, 0.5);
+  color: rgba(253, 230, 138, 0.55);
 }
 .next-prayer-widget:hover::before {
   transform: rotate(-180deg);
-  color: rgba(253, 230, 138, 0.5);
+  color: rgba(253, 230, 138, 0.55);
 }
+
 .next-prayer-grid {
   display: grid;
-  grid-template-columns: 1fr 2.5fr;
-  gap: 32px;
+  grid-template-columns: 1.1fr 1.9fr;
+  gap: 36px;
   align-items: center;
 }
+
 .countdown-section {
   display: flex;
   flex-direction: column;
   position: relative;
   border-right: 1px solid rgba(253, 230, 138, 0.08);
-  padding-right: 28px;
+  padding-right: 36px;
 }
+
 .next-prayer-title-row {
   display: flex;
-  align-items: baseline;
-  gap: 12px;
-  margin: 6px 0 2px;
+  flex-direction: column;
+  gap: 2px;
+  margin-bottom: 14px;
 }
+
 .next-prayer-title {
-  font-size: 1.45rem;
+  font-family: 'Outfit', 'Inter', sans-serif;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: rgba(255, 255, 255, 0.45);
+  font-weight: 600;
   margin: 0;
-  font-weight: 700;
-  letter-spacing: -0.02em;
 }
+
 .next-prayer-arabic-calligraphy {
-  font-size: 1.5rem;
+  font-family: 'Amiri', 'Cormorant Garamond', serif;
+  font-size: 2.2rem;
   font-weight: 700;
-  opacity: 0.85;
-  text-shadow: 0 0 10px rgba(253, 230, 138, 0.15);
+  line-height: 1.1;
+  background: linear-gradient(135deg, #ffe082 0%, #fbbf24 50%, #f59e0b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 15px rgba(253, 230, 138, 0.2);
 }
-.countdown-digits {
-  font-size: 2.5rem;
+
+/* Attractive countdown layout */
+.countdown-display {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.countdown-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 14px;
+  padding: 8px 12px;
+  min-width: 68px;
+  box-shadow: inset 0 1px 1px rgba(255,255,255,0.04), 0 6px 12px rgba(0,0,0,0.25);
+  transition: all 0.3s ease;
+}
+
+.countdown-val {
+  font-family: 'Cormorant Garamond', 'Outfit', sans-serif;
+  font-size: 2.1rem;
   font-weight: 700;
-  font-feature-settings: "tnum";
-  letter-spacing: 0.04em;
   color: #ffffff;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  font-feature-settings: "tnum";
   animation: breathing-glow 4s infinite ease-in-out;
 }
-@keyframes breathing-glow {
-  0%, 100% { text-shadow: 0 0 12px rgba(253, 230, 138, 0.12), 0 0 3px rgba(253, 230, 138, 0.05); }
-  50% { text-shadow: 0 0 26px rgba(253, 230, 138, 0.35), 0 0 8px rgba(253, 230, 138, 0.18); }
+
+.countdown-unit-label {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(253, 230, 138, 0.65);
+  margin-top: 5px;
+  font-weight: 600;
 }
+
+.countdown-divider {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: rgba(253, 230, 138, 0.35);
+  line-height: 1;
+  margin-bottom: 16px;
+  animation: pulse-colon 1s infinite alternate;
+}
+
+@keyframes pulse-colon {
+  0% { opacity: 0.25; }
+  100% { opacity: 1; }
+}
+
+@keyframes breathing-glow {
+  0%, 100% { text-shadow: 0 0 10px rgba(253, 230, 138, 0.1), 0 0 2px rgba(253, 230, 138, 0.04); }
+  50% { text-shadow: 0 0 24px rgba(253, 230, 138, 0.3), 0 0 6px rgba(253, 230, 138, 0.15); }
+}
+
+/* Daily strip layout styling */
 .prayer-times-strip {
   display: flex;
   flex-direction: column;
 }
+
+.prayer-times-strip .card-subtitle {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: rgba(255, 255, 255, 0.4);
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
 .strip-grid {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  gap: 10px;
-  margin-top: 10px;
+  gap: 12px;
 }
+
 .strip-item {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 10px 4px;
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.01);
+  padding: 16px 6px 12px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.04);
-  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
+
+.strip-item:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
 .strip-item.active {
-  background: rgba(253, 230, 138, 0.04);
-  border-color: rgba(253, 230, 138, 0.3);
-  box-shadow: inset 0 0 10px rgba(253, 230, 138, 0.03), 0 0 15px rgba(253, 230, 138, 0.05);
-  transform: translateY(-2px);
+  background: radial-gradient(circle at center, rgba(253, 230, 138, 0.08) 0%, rgba(253, 230, 138, 0.02) 100%);
+  border-color: rgba(253, 230, 138, 0.35);
+  box-shadow: 0 10px 25px rgba(253, 230, 138, 0.06), 
+              inset 0 1px 0 rgba(253, 230, 138, 0.15);
+  transform: translateY(-4px);
 }
+
+.strip-item.active::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, transparent, #fde68a, transparent);
+}
+
 .strip-name {
-  font-size: 0.72rem;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.4);
-  margin-bottom: 2px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.45);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 6px;
 }
+
 .strip-item.active .strip-name {
   color: #fbbf24;
 }
+
 .strip-time {
-  font-size: 0.9rem;
+  font-family: 'Outfit', 'Inter', sans-serif;
+  font-size: 0.95rem;
   font-weight: 600;
   color: #ffffff;
 }
+
 .strip-item.active .strip-time {
   color: #fde68a;
-  text-shadow: 0 0 8px rgba(253,230,138,0.25);
+  text-shadow: 0 0 10px rgba(253, 230, 138, 0.3);
 }
 
 @media (max-width: 900px) {
   .next-prayer-grid {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 24px;
   }
   .countdown-section {
     border-right: none;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     padding-right: 0;
-    padding-bottom: 16px;
+    padding-bottom: 20px;
     align-items: center;
   }
   .strip-grid {

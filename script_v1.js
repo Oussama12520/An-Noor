@@ -1102,11 +1102,13 @@ function updateCountdown() {
     nextPrayer = fajr;
   }
 
-  const timerEl = document.getElementById("countdown-timer");
   const nameEl = document.getElementById("next-prayer-name");
   const arabicEl = document.getElementById("next-prayer-arabic");
+  const hrsEl = document.getElementById("countdown-hours");
+  const minsEl = document.getElementById("countdown-minutes");
+  const secsEl = document.getElementById("countdown-seconds");
   
-  if (timerEl && nameEl) {
+  if (nameEl) {
     nameEl.textContent = `Next: ${nextPrayer.name}`;
     
     const ARABIC_NAMES = {
@@ -1125,7 +1127,9 @@ function updateCountdown() {
     const seconds = Math.floor((minDiff % 60000) / 1000);
     
     const pad = (n) => String(n).padStart(2, "0");
-    timerEl.textContent = `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
+    if (hrsEl) hrsEl.textContent = pad(hours);
+    if (minsEl) minsEl.textContent = pad(minutes);
+    if (secsEl) secsEl.textContent = pad(seconds);
   }
 }
 
