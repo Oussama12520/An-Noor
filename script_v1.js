@@ -1018,7 +1018,7 @@ function renderHeader() {
 
 function renderCelestialBody() {
   const bodyContainer = document.getElementById("celestial-body");
-  const color = PHASES[currentPhase].bodyColor;
+  const color = PHASES[currentPhase].glow;
 
   if (currentPhase === "isha") {
     bodyContainer.innerHTML = `
