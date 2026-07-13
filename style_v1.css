@@ -72,14 +72,12 @@ body {
   transition: background 0.1s ease;
 }
 
-/* Celestial Background Engine */
 .celestial-container {
   position: fixed;
   inset: 0;
   z-index: -10;
   overflow: hidden;
-  background: var(--sky-gradient);
-  transition: background 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+  background: #030208;
 }
 
 .nebula {

@@ -220,6 +220,41 @@ let shootingStars = [];
 let mouse = { x: 0, y: 0 };
 let currentParallax = { x: 0, y: 0 };
 let rafId = null;
+let phaseParticles = [];
+
+const SKY_COLORS = {
+  fajr: {
+    bottom: [92, 53, 115],
+    mid: [36, 22, 64],
+    top: [10, 8, 24]
+  },
+  dhuhr: {
+    bottom: [28, 58, 94],
+    mid: [20, 41, 74],
+    top: [8, 15, 36]
+  },
+  asr: {
+    bottom: [85, 60, 105],
+    mid: [42, 31, 69],
+    top: [10, 8, 24]
+  },
+  maghrib: {
+    bottom: [169, 67, 47],
+    mid: [61, 31, 74],
+    top: [10, 8, 24]
+  },
+  isha: {
+    bottom: [20, 16, 51],
+    mid: [7, 6, 26],
+    top: [3, 3, 9]
+  }
+};
+
+let skyLerpColors = {
+  bottom: [20, 16, 51],
+  mid: [7, 6, 26],
+  top: [3, 3, 9]
+};
 
 /* ---------------------------------- Init & Setup ---------------------------------- */
 
@@ -1412,6 +1447,88 @@ function getAiReply(query) {
   return "I hear your reflection. Seeking knowledge is a beautiful act of worship in Islam. Feel free to ask about Salah, Quran, Wudu, Hadith, or Duas to help you along your journey.";
 }
 
+/* ---------------------------------- Celestial Background Animation Helpers ---------------------------------- */
+
+function lerpColor(curr, target, rate) {
+  return curr.map((val, i) => val + (target[i] - val) * rate);
+}
+
+function drawFajrMist(ctx, w, h, frameCount) {
+  ctx.save();
+  ctx.globalCompositeOperation = "screen";
+  const heightOsc = Math.sin(frameCount * 0.004) * 15;
+  const grad = ctx.createLinearGradient(0, h, 0, h - 140 - heightOsc);
+  grad.addColorStop(0, "rgba(232, 166, 201, 0.22)");
+  grad.addColorStop(0.4, "rgba(58, 31, 77, 0.12)");
+  grad.addColorStop(1, "rgba(0, 0, 0, 0)");
+  ctx.fillStyle = grad;
+  ctx.fillRect(0, 0, w, h);
+  ctx.restore();
+}
+
+function drawSolarFlare(ctx, w, h, frameCount, parallax) {
+  ctx.save();
+  ctx.globalCompositeOperation = "screen";
+  const sunX = w / 2 + parallax.x * 24;
+  const sunY = h * 0.14 + parallax.y * 16;
+  const flareRadius = 80 + Math.sin(frameCount * 0.03) * 12;
+  const grad = ctx.createRadialGradient(sunX, sunY, 30, sunX, sunY, flareRadius);
+  grad.addColorStop(0, "rgba(253, 230, 138, 0.12)");
+  grad.addColorStop(0.5, "rgba(251, 191, 36, 0.05)");
+  grad.addColorStop(1, "rgba(0, 0, 0, 0)");
+  ctx.fillStyle = grad;
+  ctx.beginPath();
+  ctx.arc(sunX, sunY, flareRadius, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.restore();
+}
+
+function drawVolumetricRays(ctx, w, h, frameCount) {
+  ctx.save();
+  ctx.globalCompositeOperation = "screen";
+  const rays = [
+    { angle: 0.5, width: 0.15, alpha: 0.04, speed: 0.0003 },
+    { angle: 0.65, width: 0.22, alpha: 0.06, speed: -0.0002 },
+    { angle: 0.8, width: 0.18, alpha: 0.03, speed: 0.0004 }
+  ];
+  rays.forEach((ray, i) => {
+    const sweep = Math.sin(frameCount * ray.speed + i) * 0.08;
+    const centerAngle = ray.angle + sweep;
+    const w1 = centerAngle - ray.width / 2;
+    const w2 = centerAngle + ray.width / 2;
+    const x1 = Math.cos(w1) * w * 1.5;
+    const y1 = Math.sin(w1) * h * 1.5;
+    const x2 = Math.cos(w2) * w * 1.5;
+    const y2 = Math.sin(w2) * h * 1.5;
+    const grad = ctx.createLinearGradient(0, 0, (x1 + x2)/2, (y1 + y2)/2);
+    const pulseAlpha = ray.alpha * (0.6 + Math.sin(frameCount * 0.008 + i) * 0.4);
+    grad.addColorStop(0, `rgba(253, 230, 138, ${pulseAlpha})`);
+    grad.addColorStop(0.5, `rgba(251, 191, 36, ${pulseAlpha * 0.4})`);
+    grad.addColorStop(1, "rgba(251, 191, 36, 0)");
+    ctx.fillStyle = grad;
+    ctx.beginPath();
+    ctx.moveTo(0, 0);
+    ctx.lineTo(x1, y1);
+    ctx.lineTo(x2, y2);
+    ctx.closePath();
+    ctx.fill();
+  });
+  ctx.restore();
+}
+
+function drawMaghribHorizonSunset(ctx, w, h, frameCount) {
+  ctx.save();
+  ctx.globalCompositeOperation = "screen";
+  const pulse = Math.sin(frameCount * 0.006) * 10;
+  const grad = ctx.createRadialGradient(w / 2, h * 0.75, 10, w / 2, h * 0.75, 250 + pulse);
+  grad.addColorStop(0, "rgba(255, 138, 92, 0.35)");
+  grad.addColorStop(0.3, "rgba(169, 67, 47, 0.18)");
+  grad.addColorStop(1, "rgba(0, 0, 0, 0)");
+  ctx.fillStyle = grad;
+  ctx.fillRect(0, 0, w, h);
+  ctx.restore();
+}
+
 /* ---------------------------------- Celestial Background Animation ---------------------------------- */
 
 function initCelestialBackground() {
@@ -1450,11 +1567,42 @@ function initCelestialBackground() {
     const h = window.innerHeight;
     ctx.clearRect(0, 0, w, h);
 
+    // Liquid sky gradient interpolation
+    const targetColors = SKY_COLORS[currentPhase];
+    skyLerpColors.bottom = lerpColor(skyLerpColors.bottom, targetColors.bottom, 0.03);
+    skyLerpColors.mid = lerpColor(skyLerpColors.mid, targetColors.mid, 0.03);
+    skyLerpColors.top = lerpColor(skyLerpColors.top, targetColors.top, 0.03);
+
+    const bgGrad = ctx.createLinearGradient(0, h, 0, 0);
+    bgGrad.addColorStop(0, `rgb(${Math.round(skyLerpColors.bottom[0])}, ${Math.round(skyLerpColors.bottom[1])}, ${Math.round(skyLerpColors.bottom[2])})`);
+    bgGrad.addColorStop(0.5, `rgb(${Math.round(skyLerpColors.mid[0])}, ${Math.round(skyLerpColors.mid[1])}, ${Math.round(skyLerpColors.mid[2])})`);
+    bgGrad.addColorStop(1, `rgb(${Math.round(skyLerpColors.top[0])}, ${Math.round(skyLerpColors.top[1])}, ${Math.round(skyLerpColors.top[2])})`);
+
+    ctx.fillStyle = bgGrad;
+    ctx.fillRect(0, 0, w, h);
+
     const cfg = PHASES[currentPhase];
     const starOpacity = cfg.starOpacity;
 
     currentParallax.x += (mouse.x - currentParallax.x) * 0.08;
     currentParallax.y += (mouse.y - currentParallax.y) * 0.08;
+
+    // Draw Fajr mist and twilight glow
+    if (currentPhase === "fajr") {
+      drawFajrMist(ctx, w, h, frameCount);
+    }
+    // Draw Dhuhr solar heat ripples
+    if (currentPhase === "dhuhr") {
+      drawSolarFlare(ctx, w, h, frameCount, currentParallax);
+    }
+    // Draw Asr volumetric sweeps
+    if (currentPhase === "asr") {
+      drawVolumetricRays(ctx, w, h, frameCount);
+    }
+    // Draw Maghrib fiery twilight glow
+    if (currentPhase === "maghrib") {
+      drawMaghribHorizonSunset(ctx, w, h, frameCount);
+    }
 
     const nebulaLeft = document.getElementById("nebula-1");
     const nebulaRight = document.getElementById("nebula-2");
@@ -1508,6 +1656,75 @@ function initCelestialBackground() {
       ctx.lineTo(s.x - s.vx * 6, s.y - s.vy * 6);
       ctx.stroke();
     }
+
+    // Dynamic phase-related drifting particles update and draw loop
+    if (currentPhase === "dhuhr" && Math.random() < 0.15) {
+      phaseParticles.push({
+        x: Math.random() * w,
+        y: h + 10,
+        vx: (Math.random() - 0.5) * 0.4,
+        vy: -(0.6 + Math.random() * 0.8),
+        size: 1 + Math.random() * 1.8,
+        alpha: Math.random() * 0.35 + 0.1,
+        color: "253, 230, 138",
+        life: 0,
+        maxLife: 200 + Math.random() * 150
+      });
+    } else if (currentPhase === "asr" && Math.random() < 0.12) {
+      phaseParticles.push({
+        x: Math.random() * w,
+        y: -10,
+        vx: (0.4 + Math.random() * 0.6),
+        vy: (0.3 + Math.random() * 0.5),
+        size: 1.2 + Math.random() * 1.5,
+        alpha: Math.random() * 0.25 + 0.1,
+        color: "245, 208, 97",
+        life: 0,
+        maxLife: 250 + Math.random() * 150
+      });
+    } else if (currentPhase === "maghrib" && Math.random() < 0.25) {
+      phaseParticles.push({
+        x: Math.random() * w,
+        y: h * 0.72 + (Math.random() * 100),
+        vx: (Math.random() - 0.5) * 0.8,
+        vy: -(0.9 + Math.random() * 1.2),
+        size: 1.5 + Math.random() * 2.2,
+        alpha: 1.0,
+        color: Math.random() < 0.5 ? "255, 138, 92" : "251, 191, 36",
+        life: 0,
+        maxLife: 120 + Math.random() * 80
+      });
+    } else if (currentPhase === "isha" && Math.random() < 0.08) {
+      phaseParticles.push({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        vx: (Math.random() - 0.5) * 0.2,
+        vy: (Math.random() - 0.5) * 0.2,
+        size: 0.8 + Math.random() * 1.2,
+        alpha: Math.random() * 0.4 + 0.1,
+        color: "168, 137, 255",
+        life: 0,
+        maxLife: 300 + Math.random() * 200
+      });
+    }
+
+    phaseParticles = phaseParticles.filter(p => p.life < p.maxLife);
+    phaseParticles.forEach(p => {
+      p.life += 1;
+      p.x += p.vx;
+      p.y += p.vy;
+      
+      let currentAlpha = p.alpha;
+      if (p.life > p.maxLife * 0.7) {
+        const ratio = (p.maxLife - p.life) / (p.maxLife * 0.3);
+        currentAlpha = p.alpha * ratio;
+      }
+
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(${p.color}, ${currentAlpha})`;
+      ctx.fill();
+    });
 
     rafId = requestAnimationFrame(loop);
   }
