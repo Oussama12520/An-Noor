@@ -1140,9 +1140,13 @@ function renderPrayersStrip() {
   strip.innerHTML = PRAYERS.map(p => {
     const isCurrent = p.name.toLowerCase() === currentPhase;
     return `
-      <div class="strip-item ${isCurrent ? 'active' : ''}">
-        <span class="strip-name">${p.name}</span>
-        <span class="strip-time">${p.time}</span>
+      <div class="daily-prayer-row ${isCurrent ? 'active' : ''}">
+        <div class="prayer-info">
+          <span class="dot-indicator"></span>
+          <span class="prayer-name">${p.name}</span>
+          <span class="prayer-arabic">${p.arabic}</span>
+        </div>
+        <span class="prayer-time">${p.time}</span>
       </div>
     `;
   }).join("");
