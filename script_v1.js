@@ -10,50 +10,50 @@ const PHASES = {
     arabic: "الفجر",
     greeting: "Sabah An-Noor",
     greetingArabic: "صباح النور",
-    sky: "radial-gradient(120% 90% at 50% 110%, #3a1f4d 0%, #241640 30%, #150f2e 55%, #0a0818 100%)",
-    glow: "#e8a6c9",
-    starOpacity: 0.55,
-    bodyColor: "#ffd9ec",
+    sky: "radial-gradient(120% 90% at 50% 110%, #fda4af 0%, #a78bfa 40%, #1e1b4b 100%)",
+    glow: "#fda4af",
+    starOpacity: 0.1,
+    bodyColor: "#1e1b4b",
   },
   dhuhr: {
     label: "Dhuhr",
     arabic: "الظهر",
     greeting: "Nahaarak Sa'eed",
     greetingArabic: "نهارك سعيد",
-    sky: "radial-gradient(130% 90% at 50% 100%, #1c3a5e 0%, #14294a 35%, #0d1c37 60%, #080f24 100%)",
-    glow: "#f4c869",
-    starOpacity: 0.2,
-    bodyColor: "#ffe9a8",
+    sky: "radial-gradient(130% 90% at 50% 100%, #add8e6 0%, #1e90ff 45%, #191970 100%)",
+    glow: "#fde68a",
+    starOpacity: 0.0,
+    bodyColor: "#1e293b",
   },
   asr: {
     label: "Asr",
     arabic: "العصر",
     greeting: "Asr Mubarak",
     greetingArabic: "عصر مبارك",
-    sky: "radial-gradient(130% 90% at 50% 105%, #3a2a4e 0%, #2a1f45 35%, #171334 60%, #0a0818 100%)",
-    glow: "#e2a568",
-    starOpacity: 0.35,
-    bodyColor: "#ffcf8a",
+    sky: "radial-gradient(130% 90% at 50% 105%, #fbbf24 0%, #f97316 40%, #4f46e5 100%)",
+    glow: "#fbbf24",
+    starOpacity: 0.0,
+    bodyColor: "#1e1b4b",
   },
   maghrib: {
     label: "Maghrib",
     arabic: "المغرب",
     greeting: "Masa'a An-Noor",
     greetingArabic: "مساء النور",
-    sky: "radial-gradient(130% 100% at 50% 115%, #a9432f 0%, #7a2f4a 25%, #3d1f4a 50%, #1a1236 75%, #0a0818 100%)",
+    sky: "radial-gradient(130% 100% at 50% 115%, #ef4444 0%, #7c2d12 40%, #0f172a 100%)",
     glow: "#ff8a5c",
-    starOpacity: 0.65,
-    bodyColor: "#ffb37a",
+    starOpacity: 0.25,
+    bodyColor: "#0f172a",
   },
   isha: {
     label: "Isha",
     arabic: "العشاء",
     greeting: "Layla Sa'eeda",
     greetingArabic: "ليلة سعيدة",
-    sky: "radial-gradient(140% 100% at 50% 110%, #141033 0%, #0d0c27 35%, #07061a 65%, #030309 100%)",
+    sky: "radial-gradient(140% 100% at 50% 110%, #0f0a24 0%, #070516 45%, #020208 100%)",
     glow: "#c9a15c",
-    starOpacity: 1,
-    bodyColor: "#f3e6c9",
+    starOpacity: 1.0,
+    bodyColor: "#020208",
   },
 };
 
@@ -224,29 +224,29 @@ let phaseParticles = [];
 
 const SKY_COLORS = {
   fajr: {
-    bottom: [92, 53, 115],
-    mid: [36, 22, 64],
-    top: [10, 8, 24]
+    bottom: [253, 164, 175],
+    mid: [167, 139, 250],
+    top: [30, 27, 75]
   },
   dhuhr: {
-    bottom: [28, 58, 94],
-    mid: [20, 41, 74],
-    top: [8, 15, 36]
+    bottom: [173, 216, 230],
+    mid: [30, 144, 255],
+    top: [25, 25, 112]
   },
   asr: {
-    bottom: [85, 60, 105],
-    mid: [42, 31, 69],
-    top: [10, 8, 24]
+    bottom: [251, 191, 36],
+    mid: [249, 115, 22],
+    top: [79, 70, 229]
   },
   maghrib: {
-    bottom: [169, 67, 47],
-    mid: [61, 31, 74],
-    top: [10, 8, 24]
+    bottom: [239, 68, 68],
+    mid: [124, 45, 18],
+    top: [15, 23, 42]
   },
   isha: {
-    bottom: [20, 16, 51],
-    mid: [7, 6, 26],
-    top: [3, 3, 9]
+    bottom: [15, 10, 36],
+    mid: [7, 5, 22],
+    top: [2, 2, 8]
   }
 };
 
