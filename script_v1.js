@@ -1104,9 +1104,21 @@ function updateCountdown() {
 
   const timerEl = document.getElementById("countdown-timer");
   const nameEl = document.getElementById("next-prayer-name");
+  const arabicEl = document.getElementById("next-prayer-arabic");
   
   if (timerEl && nameEl) {
     nameEl.textContent = `Next: ${nextPrayer.name}`;
+    
+    const ARABIC_NAMES = {
+      Fajr: "الفجر",
+      Dhuhr: "الظهر",
+      Asr: "العصر",
+      Maghrib: "المغرب",
+      Isha: "العشاء"
+    };
+    if (arabicEl) {
+      arabicEl.textContent = ARABIC_NAMES[nextPrayer.name] || "";
+    }
     
     const hours = Math.floor(minDiff / 3600000);
     const minutes = Math.floor((minDiff % 3600000) / 60000);

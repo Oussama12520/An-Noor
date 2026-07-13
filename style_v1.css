@@ -2346,6 +2346,27 @@ body {
 /* Next Prayer Countdown Widget */
 .next-prayer-widget {
   margin-bottom: 24px;
+  position: relative;
+  overflow: hidden;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cpath d='M30 0 L40 10 L30 20 L20 10 Z M0 30 L10 40 L20 30 L10 20 Z M30 40 L40 50 L30 60 L20 50 Z M40 30 L50 40 L60 30 L50 20 Z' fill='%23fde68a' fill-opacity='0.015'/%3E%3C/svg%3E");
+}
+.next-prayer-widget::after {
+  content: "۞";
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  font-size: 0.85rem;
+  color: rgba(253, 230, 138, 0.2);
+  text-shadow: 0 0 5px rgba(253,230,138,0.15);
+}
+.next-prayer-widget::before {
+  content: "۞";
+  position: absolute;
+  bottom: 10px;
+  left: 12px;
+  font-size: 0.85rem;
+  color: rgba(253, 230, 138, 0.2);
+  text-shadow: 0 0 5px rgba(253,230,138,0.15);
 }
 .next-prayer-grid {
   display: grid;
@@ -2356,22 +2377,39 @@ body {
 .countdown-section {
   display: flex;
   flex-direction: column;
-  border-right: 1px solid rgba(255, 255, 255, 0.08);
-  padding-right: 24px;
+  position: relative;
+  border-right: 1px solid rgba(253, 230, 138, 0.08);
+  padding-right: 28px;
+}
+.next-prayer-title-row {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin: 6px 0 2px;
 }
 .next-prayer-title {
-  font-size: 1.5rem;
-  margin: 6px 0 2px;
+  font-size: 1.45rem;
+  margin: 0;
   font-weight: 700;
   letter-spacing: -0.02em;
 }
-.countdown-digits {
-  font-size: 2.4rem;
+.next-prayer-arabic-calligraphy {
+  font-size: 1.5rem;
   font-weight: 700;
-  font-feature-settings: "tnum"; /* Tabular numbers for stable layouts */
-  letter-spacing: 0.03em;
+  opacity: 0.85;
+  text-shadow: 0 0 10px rgba(253, 230, 138, 0.15);
+}
+.countdown-digits {
+  font-size: 2.5rem;
+  font-weight: 700;
+  font-feature-settings: "tnum";
+  letter-spacing: 0.04em;
   color: #ffffff;
-  text-shadow: 0 0 20px rgba(255,255,255,0.15);
+  animation: breathing-glow 4s infinite ease-in-out;
+}
+@keyframes breathing-glow {
+  0%, 100% { text-shadow: 0 0 12px rgba(253, 230, 138, 0.12), 0 0 3px rgba(253, 230, 138, 0.05); }
+  50% { text-shadow: 0 0 26px rgba(253, 230, 138, 0.35), 0 0 8px rgba(253, 230, 138, 0.18); }
 }
 .prayer-times-strip {
   display: flex;
@@ -2397,6 +2435,7 @@ body {
   background: rgba(253, 230, 138, 0.04);
   border-color: rgba(253, 230, 138, 0.3);
   box-shadow: inset 0 0 10px rgba(253, 230, 138, 0.03), 0 0 15px rgba(253, 230, 138, 0.05);
+  transform: translateY(-2px);
 }
 .strip-name {
   font-size: 0.72rem;
