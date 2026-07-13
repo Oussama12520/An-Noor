@@ -334,7 +334,7 @@ function syncLocation() {
     navigator.geolocation.getCurrentPosition(async (position) => {
       const lat = position.coords.latitude;
       const lng = position.coords.longitude;
-      
+
       const qiblaAngle = calculateQibla(lat, lng);
       const needle = document.querySelector(".compass-needle");
       if (needle) {
@@ -349,7 +349,7 @@ function syncLocation() {
         const timestamp = Math.floor(Date.now() / 1000);
         const response = await fetch(`https://api.aladhan.com/v1/timings/${timestamp}?latitude=${lat}&longitude=${lng}&method=2`);
         const json = await response.json();
-        
+
         if (json.code === 200 && json.data && json.data.timings) {
           const timings = json.data.timings;
           PRAYERS[0].time = timings.Fajr;
@@ -1107,10 +1107,10 @@ function updateCountdown() {
   const hrsEl = document.getElementById("countdown-hours");
   const minsEl = document.getElementById("countdown-minutes");
   const secsEl = document.getElementById("countdown-seconds");
-  
+
   if (nameEl) {
     nameEl.textContent = `Next: ${nextPrayer.name}`;
-    
+
     const ARABIC_NAMES = {
       Fajr: "الفجر",
       Dhuhr: "الظهر",
@@ -1121,11 +1121,11 @@ function updateCountdown() {
     if (arabicEl) {
       arabicEl.textContent = ARABIC_NAMES[nextPrayer.name] || "";
     }
-    
+
     const hours = Math.floor(minDiff / 3600000);
     const minutes = Math.floor((minDiff % 3600000) / 60000);
     const seconds = Math.floor((minDiff % 60000) / 1000);
-    
+
     const pad = (n) => String(n).padStart(2, "0");
     if (hrsEl) hrsEl.textContent = pad(hours);
     if (minsEl) minsEl.textContent = pad(minutes);
@@ -1136,17 +1136,15 @@ function updateCountdown() {
 function renderPrayersStrip() {
   const strip = document.getElementById("dashboard-prayers-strip");
   if (!strip) return;
-  
+
   strip.innerHTML = PRAYERS.map(p => {
     const isCurrent = p.name.toLowerCase() === currentPhase;
     return `
-      <div class="daily-prayer-row ${isCurrent ? 'active' : ''}">
-        <div class="prayer-info">
-          <span class="dot-indicator"></span>
-          <span class="prayer-name">${p.name}</span>
-          <span class="prayer-arabic">${p.arabic}</span>
-        </div>
-        <span class="prayer-time">${p.time}</span>
+      <div class="strip-item ${isCurrent ? 'active' : ''}">
+        <span class="strip-arabic-tag font-arabic">${p.arabic}</span>
+        <div class="strip-indicator"></div>
+        <span class="strip-name">${p.name}</span>
+        <span class="strip-time">${p.time}</span>
       </div>
     `;
   }).join("");
@@ -1715,7 +1713,7 @@ function drawVolumetricRays(ctx, w, h, frameCount) {
     const y1 = Math.sin(w1) * h * 1.5;
     const x2 = Math.cos(w2) * w * 1.5;
     const y2 = Math.sin(w2) * h * 1.5;
-    const grad = ctx.createLinearGradient(0, 0, (x1 + x2)/2, (y1 + y2)/2);
+    const grad = ctx.createLinearGradient(0, 0, (x1 + x2) / 2, (y1 + y2) / 2);
     const pulseAlpha = ray.alpha * (0.6 + Math.sin(frameCount * 0.008 + i) * 0.4);
     grad.addColorStop(0, `rgba(253, 230, 138, ${pulseAlpha})`);
     grad.addColorStop(0.5, `rgba(251, 191, 36, ${pulseAlpha * 0.4})`);
@@ -1818,21 +1816,21 @@ function drawConstellation(ctx, w, h, frameCount) {
   const pulse = 0.04 + Math.sin(frameCount * 0.005) * 0.03;
   ctx.strokeStyle = `rgba(253, 230, 138, ${pulse})`;
   ctx.lineWidth = 0.5;
-  
+
   const pts = [
     { x: w * 0.7, y: h * 0.15 },
     { x: w * 0.74, y: h * 0.18 },
     { x: w * 0.78, y: h * 0.17 },
     { x: w * 0.81, y: h * 0.21 }
   ];
-  
+
   ctx.beginPath();
   ctx.moveTo(pts[0].x, pts[0].y);
   for (let i = 1; i < pts.length; i++) {
     ctx.lineTo(pts[i].x, pts[i].y);
   }
   ctx.stroke();
-  
+
   ctx.fillStyle = `rgba(255, 255, 255, ${0.4 + Math.sin(frameCount * 0.01) * 0.3})`;
   pts.forEach(pt => {
     ctx.beginPath();
@@ -2090,7 +2088,7 @@ function initCelestialBackground() {
       p.life += 1;
       p.x += p.vx;
       p.y += p.vy;
-      
+
       let currentAlpha = p.alpha;
       if (p.life > p.maxLife * 0.7) {
         const ratio = (p.maxLife - p.life) / (p.maxLife * 0.3);

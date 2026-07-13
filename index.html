@@ -1,19 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>An-Noor — The Light</title>
   <!-- SEO Meta Tags -->
-  <meta name="description" content="An-Noor - A premium, cinematic Islamic web experience including a celestial engine, dashboard reminders, a Quran companion, and a Salah & Qibla tracking hub.">
+  <meta name="description"
+    content="An-Noor - A premium, cinematic Islamic web experience including a celestial engine, dashboard reminders, a Quran companion, and a Salah & Qibla tracking hub.">
   <meta name="keywords" content="Quran, Salah, Qibla, Hijri, Islam, Prayer Times, Adhkar, Islamic Web App">
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
   <!-- Stylesheets -->
   <link rel="stylesheet" href="style_v1.css">
 </head>
+
 <body>
 
   <!-- Premium mouse spotlight backdrop tracker -->
@@ -24,7 +29,7 @@
     <div id="nebula-1" class="nebula nebula-left"></div>
     <div id="nebula-2" class="nebula nebula-right"></div>
     <canvas id="celestial-canvas"></canvas>
-    
+
     <!-- Celestial Body -->
     <div id="celestial-body" class="celestial-body">
       <!-- Dynamic SVG generated in JS depending on phase (Sun or crescent moon) -->
@@ -32,13 +37,13 @@
 
     <!-- Nature backdrop container -->
     <div id="nature-backdrop" class="nature-backdrop"></div>
-    
+
     <div class="bottom-vignette"></div>
   </div>
 
   <!-- Main Application Wrapper -->
   <div class="app-layout">
-    
+
     <!-- Sidebar Navigation -->
     <aside class="sidebar" id="sidebar-nav">
       <div class="brand">
@@ -49,7 +54,8 @@
         <button id="nav-dashboard" class="nav-btn active" data-view="dashboard">
           <span class="nav-icon">
             <svg class="nav-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 18v-2.25ZM13.5 6a2.25 2.25 0 0 1 2.25-2.25H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25a2.25 2.25 0 0 1-2.25-2.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-2.25A2.25 2.25 0 0 1 13.5 18v-2.25Z" />
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 18v-2.25ZM13.5 6a2.25 2.25 0 0 1 2.25-2.25H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25a2.25 2.25 0 0 1-2.25-2.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-2.25A2.25 2.25 0 0 1 13.5 18v-2.25Z" />
             </svg>
           </span>
           <span class="nav-text">Dashboard</span>
@@ -57,7 +63,8 @@
         <button id="nav-quran" class="nav-btn" data-view="quran">
           <span class="nav-icon">
             <svg class="nav-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
             </svg>
           </span>
           <span class="nav-text">Quran</span>
@@ -65,7 +72,8 @@
         <button id="nav-salah" class="nav-btn" data-view="salah">
           <span class="nav-icon">
             <svg class="nav-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M15.042 21.672 13.684 16.6m0 0-2.51 2.225.569-9.47 5.227 7.917-3.286-.672ZM12 2.25V4.5m0 15v2.25m6.75-11.25h-2.25m-9 0H2.25m15.91-5.91-1.59 1.59M5.27 18.73l-1.59 1.59m0-15.91 1.59 1.59m12.23 12.23 1.59 1.59" />
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M15.042 21.672 13.684 16.6m0 0-2.51 2.225.569-9.47 5.227 7.917-3.286-.672ZM12 2.25V4.5m0 15v2.25m6.75-11.25h-2.25m-9 0H2.25m15.91-5.91-1.59 1.59M5.27 18.73l-1.59 1.59m0-15.91 1.59 1.59m12.23 12.23 1.59 1.59" />
             </svg>
           </span>
           <span class="nav-text">Salah & Qibla</span>
@@ -73,7 +81,8 @@
         <button id="nav-sunnah" class="nav-btn" data-view="sunnah">
           <span class="nav-icon">
             <svg class="nav-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499c.172-.363.69-.363.863 0l2.3 4.851a.5.5 0 0 0 .385.29l5.059.734c.389.056.545.556.262.84l-3.66 3.562a.5.5 0 0 0-.138.44l.864 5.038c.066.386-.328.694-.668.512l-4.524-2.381a.5.5 0 0 0-.448 0l-4.524 2.38c-.34.18-.734-.128-.668-.511l.864-5.038a.5.5 0 0 0-.138-.44L2.023 11.22c-.283-.284-.127-.784.262-.84l5.059-.734a.5.5 0 0 0 .385-.29l2.3-4.852Z" />
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M11.48 3.499c.172-.363.69-.363.863 0l2.3 4.851a.5.5 0 0 0 .385.29l5.059.734c.389.056.545.556.262.84l-3.66 3.562a.5.5 0 0 0-.138.44l.864 5.038c.066.386-.328.694-.668.512l-4.524-2.381a.5.5 0 0 0-.448 0l-4.524 2.38c-.34.18-.734-.128-.668-.511l.864-5.038a.5.5 0 0 0-.138-.44L2.023 11.22c-.283-.284-.127-.784.262-.84l5.059-.734a.5.5 0 0 0 .385-.29l2.3-4.852Z" />
             </svg>
           </span>
           <span class="nav-text">Sunnah Directory</span>
@@ -81,7 +90,8 @@
         <button id="nav-adhkar" class="nav-btn" data-view="adhkar">
           <span class="nav-icon">
             <svg class="nav-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
             </svg>
           </span>
           <span class="nav-text">Adhkar Sanctuary</span>
@@ -89,7 +99,8 @@
         <button id="nav-learning" class="nav-btn" data-view="learning">
           <span class="nav-icon">
             <svg class="nav-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.57 50.57 0 0 0-2.658-.813A5.906 5.906 0 0 1 12 3.493a5.905 5.905 0 0 1 6.74 5.84c-.896.223-1.783.494-2.658.814m-11.822 0a48.474 48.474 0 0 1 11.822-1.765 48.474 48.474 0 0 1 11.822 1.765M18 10.147a60.436 60.436 0 0 0 .5-6.347m0 0a5.99 5.99 0 0 1 2.25 4.5" />
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.57 50.57 0 0 0-2.658-.813A5.906 5.906 0 0 1 12 3.493a5.905 5.905 0 0 1 6.74 5.84c-.896.223-1.783.494-2.658.814m-11.822 0a48.474 48.474 0 0 1 11.822-1.765 48.474 48.474 0 0 1 11.822 1.765M18 10.147a60.436 60.436 0 0 0 .5-6.347m0 0a5.99 5.99 0 0 1 2.25 4.5" />
             </svg>
           </span>
           <span class="nav-text">Learning Journey</span>
@@ -97,7 +108,8 @@
         <button id="nav-assistant" class="nav-btn" data-view="assistant">
           <span class="nav-icon">
             <svg class="nav-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 21m3.813-5.096L15 21m-5.187-5.096h4.375M12 3v1.25m6.364.386-1.091 1.091M21 12h-1.25m-.386 6.364-1.091-1.091M12 18.75V20m-4.773-4.227-1.091 1.091M5.25 12H4m4.227-4.773L7.136 6.136M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M9.813 15.904L9 21m3.813-5.096L15 21m-5.187-5.096h4.375M12 3v1.25m6.364.386-1.091 1.091M21 12h-1.25m-.386 6.364-1.091-1.091M12 18.75V20m-4.773-4.227-1.091 1.091M5.25 12H4m4.227-4.773L7.136 6.136M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
             </svg>
           </span>
           <span class="nav-text">Murshid AI</span>
@@ -107,7 +119,7 @@
 
     <!-- Main Content Area -->
     <main class="content-wrapper">
-      
+
       <!-- Top dynamic header area -->
       <header class="app-header">
         <div class="header-greeting">
@@ -138,41 +150,41 @@
       <!-- VIEW: Dashboard -->
       <section id="view-dashboard" class="content-view visible active">
         <!-- Next Prayer Countdown Widget -->
-        <div class="glass-card next-prayer-widget" id="next-prayer-card">
-          <div class="countdown-section centered-countdown">
-            <span class="card-subtitle" id="countdown-label">Time to next prayer</span>
-            <div class="next-prayer-title-row">
-              <h2 id="next-prayer-name" class="next-prayer-title">Next: Fajr</h2>
-              <span id="next-prayer-arabic" class="next-prayer-arabic-calligraphy font-arabic">الفجر</span>
+        <div class="glass-card col-span-2 p-6 spotlight next-prayer-widget" id="next-prayer-card">
+          <div class="next-prayer-grid">
+            <div class="countdown-section">
+              <span class="card-subtitle" id="countdown-label">Time to next prayer</span>
+              <div class="next-prayer-title-row">
+                <h2 id="next-prayer-name" class="next-prayer-title">Next: Fajr</h2>
+                <span id="next-prayer-arabic" class="next-prayer-arabic-calligraphy font-arabic">الفجر</span>
+              </div>
+              <div class="countdown-display">
+                <div class="countdown-unit">
+                  <span id="countdown-hours" class="countdown-val">00</span>
+                  <span class="countdown-unit-label">hrs</span>
+                </div>
+                <div class="countdown-divider">:</div>
+                <div class="countdown-unit">
+                  <span id="countdown-minutes" class="countdown-val">00</span>
+                  <span class="countdown-unit-label">mins</span>
+                </div>
+                <div class="countdown-divider">:</div>
+                <div class="countdown-unit">
+                  <span id="countdown-seconds" class="countdown-val">00</span>
+                  <span class="countdown-unit-label">secs</span>
+                </div>
+              </div>
             </div>
-            <div class="countdown-display">
-              <div class="countdown-unit">
-                <span id="countdown-hours" class="countdown-val">00</span>
-                <span class="countdown-unit-label">hrs</span>
-              </div>
-              <div class="countdown-divider">:</div>
-              <div class="countdown-unit">
-                <span id="countdown-minutes" class="countdown-val">00</span>
-                <span class="countdown-unit-label">mins</span>
-              </div>
-              <div class="countdown-divider">:</div>
-              <div class="countdown-unit">
-                <span id="countdown-seconds" class="countdown-val">00</span>
-                <span class="countdown-unit-label">secs</span>
+            <div class="prayer-times-strip">
+              <span class="card-subtitle">Daily prayer times</span>
+              <div class="strip-grid" id="dashboard-prayers-strip">
+                <!-- Rendered dynamically in JS -->
               </div>
             </div>
           </div>
         </div>
 
         <div class="dashboard-grid">
-          <!-- Daily Prayer Times Widget -->
-          <div class="glass-card p-6 spotlight" id="daily-prayers-card">
-            <span class="card-subtitle">Daily prayer times</span>
-            <div class="daily-prayers-list" id="dashboard-prayers-strip">
-              <!-- Rendered dynamically in JS -->
-            </div>
-          </div>
-
           <!-- Ayah of the Day -->
           <div class="glass-card col-span-2 p-6 spotlight" id="ayah-card">
             <div class="card-header">
@@ -216,7 +228,8 @@
           <div class="glass-card p-6 spotlight animated-float">
             <span class="card-subtitle">Spiritual reminder</span>
             <p class="spiritual-text">
-              "Whoever relies upon Allah — then He is sufficient for him." Let today's small acts of remembrance carry you gently forward.
+              "Whoever relies upon Allah — then He is sufficient for him." Let today's small acts of remembrance carry
+              you gently forward.
             </p>
           </div>
 
@@ -242,15 +255,17 @@
         <div class="quran-header">
           <h1 class="view-title gold-text-gradient">Quran Companion</h1>
           <p class="view-desc">Search, read, and reflect upon all 114 Surahs of the Holy Quran.</p>
-          
+
           <!-- Premium Search Bar -->
           <div class="search-bar-wrapper">
             <span class="search-icon-inside">
               <svg class="search-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.637 10.637Z" />
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.637 10.637Z" />
               </svg>
             </span>
-            <input type="text" id="quran-search" placeholder="Search Surahs (e.g. Al-Fatiha, Ya-Sin)..." class="quran-search-input">
+            <input type="text" id="quran-search" placeholder="Search Surahs (e.g. Al-Fatiha, Ya-Sin)..."
+              class="quran-search-input">
           </div>
         </div>
         <div id="surah-list" class="surah-grid">
@@ -262,7 +277,7 @@
       <section id="view-salah" class="content-view">
         <h1 class="view-title gold-text-gradient">Salah & Qibla</h1>
         <p class="view-desc">Prayer times, direction, and daily tracking.</p>
-        
+
         <!-- Prayer Times Grid -->
         <div id="prayer-times-grid" class="prayer-grid">
           <!-- Generated dynamically in Javascript -->
@@ -274,16 +289,19 @@
             <span class="card-subtitle">Qibla compass</span>
             <div class="compass-viewport">
               <div id="compass-body" class="compass-dial astrolabe">
-                
+
                 <!-- Ornate structural lines -->
                 <div class="astrolabe-grid">
                   <svg viewBox="0 0 200 200" class="astrolabe-svg">
-                    <circle cx="100" cy="100" r="92" fill="none" stroke="url(#goldGrad)" stroke-width="1" opacity="0.3" />
-                    <circle cx="100" cy="100" r="82" fill="none" stroke="url(#goldGrad)" stroke-width="0.7" stroke-dasharray="2 3" opacity="0.4" />
-                    <circle cx="100" cy="100" r="45" fill="none" stroke="url(#goldGrad)" stroke-width="0.5" opacity="0.25" />
+                    <circle cx="100" cy="100" r="92" fill="none" stroke="url(#goldGrad)" stroke-width="1"
+                      opacity="0.3" />
+                    <circle cx="100" cy="100" r="82" fill="none" stroke="url(#goldGrad)" stroke-width="0.7"
+                      stroke-dasharray="2 3" opacity="0.4" />
+                    <circle cx="100" cy="100" r="45" fill="none" stroke="url(#goldGrad)" stroke-width="0.5"
+                      opacity="0.25" />
                     <line x1="100" y1="8" x2="100" y2="192" stroke="url(#goldGrad)" stroke-width="0.5" opacity="0.2" />
                     <line x1="8" y1="100" x2="192" y2="100" stroke="url(#goldGrad)" stroke-width="0.5" opacity="0.2" />
-                    
+
                     <!-- Decorative Gold Gradient Definitions -->
                     <defs>
                       <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -303,9 +321,12 @@
                 <!-- Astrolabe Reticle -->
                 <div class="astrolabe-reticle">
                   <svg viewBox="0 0 200 200" class="astrolabe-svg">
-                    <circle cx="140" cy="100" r="24" fill="none" stroke="url(#goldGrad)" stroke-width="0.6" opacity="0.25" />
-                    <circle cx="60" cy="100" r="24" fill="none" stroke="url(#goldGrad)" stroke-width="0.6" opacity="0.25" />
-                    <path d="M 100 18 A 82 82 0 0 1 182 100 L 100 100 Z" fill="none" stroke="url(#goldGrad)" stroke-width="0.5" opacity="0.15" />
+                    <circle cx="140" cy="100" r="24" fill="none" stroke="url(#goldGrad)" stroke-width="0.6"
+                      opacity="0.25" />
+                    <circle cx="60" cy="100" r="24" fill="none" stroke="url(#goldGrad)" stroke-width="0.6"
+                      opacity="0.25" />
+                    <path d="M 100 18 A 82 82 0 0 1 182 100 L 100 100 Z" fill="none" stroke="url(#goldGrad)"
+                      stroke-width="0.5" opacity="0.15" />
                   </svg>
                 </div>
 
@@ -320,7 +341,8 @@
                 <div class="compass-center">⌂</div>
               </div>
             </div>
-            <p class="compass-footer">Mecca is approximately 38° from north — move your cursor to explore the compass in 3D.</p>
+            <p class="compass-footer">Mecca is approximately 38° from north — move your cursor to explore the compass in
+              3D.</p>
           </div>
 
           <!-- Salah Checklist Card -->
@@ -344,10 +366,12 @@
           <div class="search-bar-wrapper">
             <span class="search-icon-inside">
               <svg class="search-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.637 10.637Z" />
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.637 10.637Z" />
               </svg>
             </span>
-            <input type="text" id="hadith-search" placeholder="Search Hadiths (e.g. intention, character)..." class="quran-search-input">
+            <input type="text" id="hadith-search" placeholder="Search Hadiths (e.g. intention, character)..."
+              class="quran-search-input">
           </div>
           <div class="checklist-tabs sunnah-tabs">
             <button id="tab-bukhari" class="tab-btn active" data-book="bukhari">Sahih al-Bukhari</button>
@@ -387,7 +411,7 @@
                 <div id="quiz-progress-bar" class="quiz-progress-bar-fill" style="width: 20%;"></div>
               </div>
             </div>
-            
+
             <div class="quiz-question-deck">
               <div id="quiz-question-card" class="quiz-question-card">
                 <h3 id="quiz-question-text" class="quiz-question font-serif"></h3>
@@ -397,10 +421,12 @@
                 <div id="quiz-explanation" class="quiz-explanation hidden"></div>
               </div>
             </div>
-            
+
             <div class="quiz-footer">
               <div class="quiz-score-indicator">Score: <span id="quiz-score">0</span></div>
-              <button id="quiz-next-btn" class="counter-button gold-glow hidden" style="width: auto; height: auto; padding: 10px 24px; border-radius: 9999px; font-size: 14px; margin: 0;">Next Question</button>
+              <button id="quiz-next-btn" class="counter-button gold-glow hidden"
+                style="width: auto; height: auto; padding: 10px 24px; border-radius: 9999px; font-size: 14px; margin: 0;">Next
+                Question</button>
             </div>
           </div>
         </div>
@@ -416,7 +442,7 @@
             <div id="chat-messages" class="chat-messages">
               <!-- Populated dynamically in script.js -->
             </div>
-            
+
             <!-- Quick Action Prompt Chips -->
             <div class="chat-prompt-chips">
               <button class="prompt-chip" data-prompt="How to perform Wudu?">How to perform Wudu?</button>
@@ -424,13 +450,14 @@
               <button class="prompt-chip" data-prompt="Hadith on character">Hadith on character</button>
               <button class="prompt-chip" data-prompt="Concept of Ihsan">Concept of Ihsan</button>
             </div>
-            
+
             <!-- Chat Input Bar -->
             <div class="chat-input-bar">
               <input type="text" id="chat-input" placeholder="Ask Murshid..." autocomplete="off">
               <button id="chat-send-btn" class="chat-send-btn">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
                 </svg>
               </button>
             </div>
@@ -445,7 +472,7 @@
   <div id="surah-modal" class="modal-overlay">
     <div class="modal-content glass-card">
       <button id="modal-close-btn" class="modal-close">✕</button>
-      
+
       <div class="modal-header">
         <div class="surah-details">
           <h2 id="modal-surah-name" class="modal-title gold-text-gradient"></h2>
@@ -483,4 +510,5 @@
   <!-- JavaScript Modules -->
   <script src="script_v1.js"></script>
 </body>
+
 </html>

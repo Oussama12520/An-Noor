@@ -51,13 +51,16 @@ body {
 ::-webkit-scrollbar {
   width: 6px;
 }
+
 ::-webkit-scrollbar-track {
   background: transparent;
 }
+
 ::-webkit-scrollbar-thumb {
   background: rgba(253, 230, 138, 0.15);
   border-radius: 4px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(253, 230, 138, 0.3);
 }
@@ -286,20 +289,20 @@ body {
     align-items: stretch;
     padding: 32px 16px;
   }
-  
+
   .brand {
     padding: 0 8px;
     justify-content: flex-start;
   }
-  
+
   .brand-text {
     display: inline;
   }
-  
+
   .nav-links {
     align-items: stretch;
   }
-  
+
   .nav-btn {
     width: 100%;
     height: auto;
@@ -308,14 +311,14 @@ body {
     gap: 14px;
     border: 1px solid transparent;
   }
-  
+
   .nav-text {
     display: inline;
     font-size: 14px;
     font-weight: 500;
     letter-spacing: 0.03em;
   }
-  
+
   .nav-badge {
     display: inline;
     font-size: 9px;
@@ -531,7 +534,7 @@ body {
 }
 
 /* Make sure child elements render on top of spotlight pseudo-layers */
-.glass-card > * {
+.glass-card>* {
   position: relative;
   z-index: 1;
 }
@@ -542,8 +545,15 @@ body {
 
 /* Views switcher states with premium animations */
 @keyframes entry-fade {
-  from { opacity: 0; transform: translateY(12px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .content-view {
@@ -576,7 +586,7 @@ body {
   .dashboard-grid {
     grid-template-columns: repeat(3, 1fr);
   }
-  
+
   .col-span-2 {
     grid-column: span 2;
   }
@@ -826,20 +836,43 @@ body {
 
 /* Animations */
 @keyframes nebula-drift-left {
-  0% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(3%, 2%) scale(1.04); }
-  100% { transform: translate(0, 0) scale(1); }
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate(3%, 2%) scale(1.04);
+  }
+
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
 }
 
 @keyframes nebula-drift-right {
-  0% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(-2%, -1.5%) scale(1.06); }
-  100% { transform: translate(0, 0) scale(1); }
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate(-2%, -1.5%) scale(1.06);
+  }
+
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
 }
 
 @keyframes float-animation {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
 }
 
 .animated-float {
@@ -847,18 +880,41 @@ body {
 }
 
 @keyframes pulse-sun {
-  0%, 100% { transform: scale(1); opacity: 0.5; }
-  50% { transform: scale(1.25); opacity: 0.85; }
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+
+  50% {
+    transform: scale(1.25);
+    opacity: 0.85;
+  }
 }
 
 @keyframes pulse-sun-core {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.05); }
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.05);
+  }
 }
 
 @keyframes scale-moon {
-  0%, 100% { transform: scale(1) rotate(0deg); }
-  50% { transform: scale(1.03) rotate(1.5deg); }
+
+  0%,
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+
+  50% {
+    transform: scale(1.03) rotate(1.5deg);
+  }
 }
 
 /* SVG Moon & Sun */
@@ -1102,8 +1158,15 @@ body {
 }
 
 @keyframes pulse-opacity-animation {
-  0%, 100% { opacity: 0.4; }
-  50% { opacity: 1; }
+
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+
+  50% {
+    opacity: 1;
+  }
 }
 
 .salah-tools-grid {
@@ -1150,7 +1213,8 @@ body {
 }
 
 /* Astrolabe layers styling */
-.astrolabe-grid, .astrolabe-reticle {
+.astrolabe-grid,
+.astrolabe-reticle {
   position: absolute;
   inset: 4px;
   border-radius: 50%;
@@ -1170,10 +1234,30 @@ body {
   text-shadow: 0 0 4px rgba(253, 230, 138, 0.2);
 }
 
-.dir-n { top: 7%; left: 50%; transform: translateX(-50%); color: #fbbf24; }
-.dir-e { top: 50%; right: 7%; transform: translateY(-50%); }
-.dir-s { bottom: 7%; left: 50%; transform: translateX(-50%); }
-.dir-w { top: 50%; left: 7%; transform: translateY(-50%); }
+.dir-n {
+  top: 7%;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fbbf24;
+}
+
+.dir-e {
+  top: 50%;
+  right: 7%;
+  transform: translateY(-50%);
+}
+
+.dir-s {
+  bottom: 7%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.dir-w {
+  top: 50%;
+  left: 7%;
+  transform: translateY(-50%);
+}
 
 /* Luxury Pointer Needle with Moon */
 .astrolabe-pointer {
@@ -1387,6 +1471,7 @@ body {
     align-items: center;
     justify-content: space-between;
   }
+
   .sunnah-controls .search-bar-wrapper {
     margin-top: 0;
   }
@@ -1834,8 +1919,13 @@ body {
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .loader-text {
@@ -1888,8 +1978,15 @@ body {
 }
 
 @keyframes modal-enter {
-  from { transform: scale(0.95) translateY(15px); opacity: 0; }
-  to { transform: scale(1) translateY(0); opacity: 1; }
+  from {
+    transform: scale(0.95) translateY(15px);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
 }
 
 /* Modal Close Button */
@@ -2229,8 +2326,15 @@ body {
 }
 
 @keyframes burst-move {
-  0% { transform: translate(0, 0) scale(1); opacity: 1; }
-  100% { transform: translate(var(--dx), var(--dy)) scale(0); opacity: 0; }
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(var(--dx), var(--dy)) scale(0);
+    opacity: 0;
+  }
 }
 
 /* COMING SOON MODULE VIEW - REMOVED (Replaced by Active Sections) */
@@ -2254,24 +2358,41 @@ body {
   width: 100%;
   height: 100%;
   position: absolute;
-  bottom: -2px; /* slight offset to prevent rendering seams */
+  bottom: -2px;
+  /* slight offset to prevent rendering seams */
   left: 0;
 }
 
 /* Swaying animations for Oasis palms */
 @keyframes sway {
-  0%, 100% { transform: translate(180px, 240px) scale(0.65) rotate(0deg); }
-  50% { transform: translate(180px, 240px) scale(0.65) rotate(1.8deg); }
+
+  0%,
+  100% {
+    transform: translate(180px, 240px) scale(0.65) rotate(0deg);
+  }
+
+  50% {
+    transform: translate(180px, 240px) scale(0.65) rotate(1.8deg);
+  }
 }
+
 .swaying-palm {
   animation: sway 6s infinite ease-in-out;
   transform-origin: bottom center;
 }
 
 @keyframes sway-rev {
-  0%, 100% { transform: translate(980px, 230px) scale(0.75) scale(-1, 1) rotate(0deg); }
-  50% { transform: translate(980px, 230px) scale(0.75) scale(-1, 1) rotate(-1.8deg); }
+
+  0%,
+  100% {
+    transform: translate(980px, 230px) scale(0.75) scale(-1, 1) rotate(0deg);
+  }
+
+  50% {
+    transform: translate(980px, 230px) scale(0.75) scale(-1, 1) rotate(-1.8deg);
+  }
 }
+
 .swaying-palm-reverse {
   animation: sway-rev 7s infinite ease-in-out;
   transform-origin: bottom center;
@@ -2279,26 +2400,64 @@ body {
 
 /* Ripple animations for Maghrib tides */
 @keyframes wave-back {
-  0%, 100% { transform: translateY(0) translateX(0); }
-  50% { transform: translateY(3px) translateX(-18px); }
+
+  0%,
+  100% {
+    transform: translateY(0) translateX(0);
+  }
+
+  50% {
+    transform: translateY(3px) translateX(-18px);
+  }
 }
+
 @keyframes wave-mid {
-  0%, 100% { transform: translateY(0) translateX(0); }
-  50% { transform: translateY(-2px) translateX(22px); }
+
+  0%,
+  100% {
+    transform: translateY(0) translateX(0);
+  }
+
+  50% {
+    transform: translateY(-2px) translateX(22px);
+  }
 }
+
 @keyframes wave-front {
-  0%, 100% { transform: translateY(0) translateX(0); }
-  50% { transform: translateY(1.5px) translateX(-12px); }
+
+  0%,
+  100% {
+    transform: translateY(0) translateX(0);
+  }
+
+  50% {
+    transform: translateY(1.5px) translateX(-12px);
+  }
 }
-.ocean-wave-back { animation: wave-back 5.5s infinite ease-in-out; }
-.ocean-wave-mid { animation: wave-mid 6.5s infinite ease-in-out; }
-.ocean-wave-front { animation: wave-front 4.5s infinite ease-in-out; }
+
+.ocean-wave-back {
+  animation: wave-back 5.5s infinite ease-in-out;
+}
+
+.ocean-wave-mid {
+  animation: wave-mid 6.5s infinite ease-in-out;
+}
+
+.ocean-wave-front {
+  animation: wave-front 4.5s infinite ease-in-out;
+}
 
 /* Fog movements for Fajr and Asr valleys */
 @keyframes fog-move {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
 }
+
 .fog-drift {
   position: absolute;
   bottom: 0;
@@ -2310,6 +2469,7 @@ body {
   pointer-events: none;
   opacity: 0.8;
 }
+
 .valley-fog {
   position: absolute;
   bottom: 0;
@@ -2324,9 +2484,19 @@ body {
 
 /* Lantern shimmers for Minarets (Isha) */
 @keyframes lantern-glow {
-  0%, 100% { opacity: 0.45; filter: drop-shadow(0 0 2px #fde68a); }
-  50% { opacity: 1.0; filter: drop-shadow(0 0 10px #fbbf24) drop-shadow(0 0 3px #fde68a); }
+
+  0%,
+  100% {
+    opacity: 0.45;
+    filter: drop-shadow(0 0 2px #fde68a);
+  }
+
+  50% {
+    opacity: 1.0;
+    filter: drop-shadow(0 0 10px #fbbf24) drop-shadow(0 0 3px #fde68a);
+  }
 }
+
 .lantern-bulb {
   animation: lantern-glow 3s infinite ease-in-out;
   transform-origin: center;
@@ -2339,14 +2509,19 @@ body {
 
 /* Keyframe animations */
 @keyframes wave-pulse {
-  from { transform: scaleY(0.2); }
-  to { transform: scaleY(1.0); }
+  from {
+    transform: scaleY(0.2);
+  }
+
+  to {
+    transform: scaleY(1.0);
+  }
 }
 
 /* Next Prayer Countdown Widget Redesign */
 .next-prayer-widget {
-  margin: 24px auto 32px;
-  max-width: 600px;
+  margin-top: 24px;
+  margin-bottom: 32px;
   position: relative;
   overflow: hidden;
   border-radius: 24px;
@@ -2354,9 +2529,9 @@ body {
   border: 1px solid rgba(253, 230, 138, 0.12);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  padding: 28px 32px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45), 
-              inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  padding: 32px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cpath d='M30 0 L40 10 L30 20 L20 10 Z M0 30 L10 40 L20 30 L10 20 Z M30 40 L40 50 L30 60 L20 50 Z M40 30 L50 40 L60 30 L50 20 Z' fill='%23fde68a' fill-opacity='0.015'/%3E%3C/svg%3E");
   animation: mashrabiya-pan 36s infinite linear;
   transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
@@ -2365,13 +2540,18 @@ body {
 .next-prayer-widget:hover {
   transform: translateY(-3px);
   border-color: rgba(253, 230, 138, 0.32);
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55), 
-              0 0 30px 4px rgba(253, 230, 138, 0.08);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55),
+    0 0 30px 4px rgba(253, 230, 138, 0.08);
 }
 
 @keyframes mashrabiya-pan {
-  0% { background-position: 0px 0px; }
-  100% { background-position: 60px 60px; }
+  0% {
+    background-position: 0px 0px;
+  }
+
+  100% {
+    background-position: 60px 60px;
+  }
 }
 
 .next-prayer-widget::after {
@@ -2381,9 +2561,10 @@ body {
   right: 16px;
   font-size: 0.95rem;
   color: rgba(253, 230, 138, 0.2);
-  text-shadow: 0 0 5px rgba(253,230,138,0.15);
+  text-shadow: 0 0 5px rgba(253, 230, 138, 0.15);
   transition: transform 1.6s cubic-bezier(0.19, 1, 0.22, 1), color 0.5s ease;
 }
+
 .next-prayer-widget::before {
   content: "۞";
   position: absolute;
@@ -2391,7 +2572,7 @@ body {
   left: 16px;
   font-size: 0.95rem;
   color: rgba(253, 230, 138, 0.2);
-  text-shadow: 0 0 5px rgba(253,230,138,0.15);
+  text-shadow: 0 0 5px rgba(253, 230, 138, 0.15);
   transition: transform 1.6s cubic-bezier(0.19, 1, 0.22, 1), color 0.5s ease;
 }
 
@@ -2399,23 +2580,30 @@ body {
   transform: rotate(180deg);
   color: rgba(253, 230, 138, 0.55);
 }
+
 .next-prayer-widget:hover::before {
   transform: rotate(-180deg);
   color: rgba(253, 230, 138, 0.55);
 }
 
-.centered-countdown {
+.next-prayer-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1.9fr;
+  gap: 36px;
+  align-items: center;
+}
+
+.countdown-section {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+  position: relative;
+  border-right: 1px solid rgba(253, 230, 138, 0.08);
+  padding-right: 36px;
 }
 
 .next-prayer-title-row {
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 2px;
   margin-bottom: 14px;
 }
@@ -2457,7 +2645,7 @@ body {
   border-radius: 14px;
   padding: 8px 12px;
   min-width: 68px;
-  box-shadow: inset 0 1px 1px rgba(255,255,255,0.04), 0 6px 12px rgba(0,0,0,0.25);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.04), 0 6px 12px rgba(0, 0, 0, 0.25);
   transition: all 0.3s ease;
 }
 
@@ -2491,112 +2679,165 @@ body {
 }
 
 @keyframes pulse-colon {
-  0% { opacity: 0.25; }
-  100% { opacity: 1; }
+  0% {
+    opacity: 0.25;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
 
 @keyframes breathing-glow {
-  0%, 100% { text-shadow: 0 0 10px rgba(253, 230, 138, 0.1), 0 0 2px rgba(253, 230, 138, 0.04); }
-  50% { text-shadow: 0 0 24px rgba(253, 230, 138, 0.3), 0 0 6px rgba(253, 230, 138, 0.15); }
+
+  0%,
+  100% {
+    text-shadow: 0 0 10px rgba(253, 230, 138, 0.1), 0 0 2px rgba(253, 230, 138, 0.04);
+  }
+
+  50% {
+    text-shadow: 0 0 24px rgba(253, 230, 138, 0.3), 0 0 6px rgba(253, 230, 138, 0.15);
+  }
 }
 
-/* Daily Prayer list layout styling inside grid */
-.daily-prayers-list {
+/* Daily strip layout styling */
+.prayer-times-strip {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  margin-top: 14px;
 }
 
-.daily-prayer-row {
+.prayer-times-strip .card-subtitle {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: rgba(255, 255, 255, 0.4);
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+
+.strip-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 14px;
+}
+
+.strip-item {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
-  padding: 12px 16px;
-  border-radius: 14px;
+  justify-content: space-between;
+  padding: 18px 6px 14px;
+  /* POINTED ISLAMIC MIHRAB ARCH SHAPE */
+  border-radius: 120px 120px 16px 16px;
   background: rgba(255, 255, 255, 0.015);
   border: 1px solid rgba(255, 255, 255, 0.03);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.02);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+  height: 120px; /* Fixed height for beautiful arch alignment */
 }
 
-.daily-prayer-row:hover {
+.strip-item:hover {
+  transform: translateY(-4px) scale(1.02);
+  border-color: rgba(253, 230, 138, 0.22);
   background: rgba(255, 255, 255, 0.03);
-  border-color: rgba(255, 255, 255, 0.06);
-  transform: translateX(2px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.3);
 }
 
-.daily-prayer-row.active {
-  background: radial-gradient(circle at left, rgba(253, 230, 138, 0.08) 0%, rgba(253, 230, 138, 0.02) 100%);
-  border-color: rgba(253, 230, 138, 0.3);
-  box-shadow: inset 0 1px 0 rgba(253, 230, 138, 0.1), 0 4px 12px rgba(0, 0, 0, 0.15);
+.strip-item.active {
+  background: linear-gradient(to bottom, rgba(253, 230, 138, 0.1) 0%, rgba(253, 230, 138, 0.02) 100%);
+  border-color: rgba(253, 230, 138, 0.45);
+  box-shadow: 0 12px 30px rgba(253, 230, 138, 0.08), 
+              inset 0 0 12px rgba(253, 230, 138, 0.05),
+              0 -4px 15px rgba(253, 230, 138, 0.03);
+  transform: translateY(-5px);
 }
 
-.prayer-info {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+.strip-item.active::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, transparent, #fde68a, transparent);
 }
 
-.dot-indicator {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.2);
+.strip-arabic-tag {
+  font-family: 'Amiri', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: rgba(253, 230, 138, 0.4);
+  line-height: 1;
   transition: all 0.3s ease;
 }
 
-.daily-prayer-row.active .dot-indicator {
+.strip-item.active .strip-arabic-tag {
+  color: #fde68a;
+  text-shadow: 0 0 12px rgba(253, 230, 138, 0.35);
+}
+
+.strip-indicator {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  margin: 6px 0;
+  transition: all 0.3s ease;
+}
+
+.strip-item.active .strip-indicator {
   background: #fbbf24;
   box-shadow: 0 0 8px #fbbf24;
+  transform: scale(1.4);
 }
 
-.prayer-name {
+.strip-name {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.45);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 2px;
+}
+
+.strip-item.active .strip-name {
+  color: #fbbf24;
+  text-shadow: 0 0 4px rgba(251,191,36,0.15);
+}
+
+.strip-time {
+  font-family: 'Outfit', 'Inter', sans-serif;
   font-size: 0.85rem;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.6);
-  letter-spacing: 0.02em;
-}
-
-.daily-prayer-row.active .prayer-name {
-  color: #ffffff;
   font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
 }
 
-.prayer-arabic {
-  font-family: 'Amiri', serif;
-  font-size: 1.05rem;
-  color: rgba(255, 255, 255, 0.25);
-  margin-left: 6px;
-  line-height: 1;
-}
-
-.daily-prayer-row.active .prayer-arabic {
-  color: rgba(253, 230, 138, 0.75);
-}
-
-.prayer-time {
-  font-family: 'Outfit', sans-serif;
-  font-size: 0.95rem;
-  font-weight: 600;
+.strip-item.active .strip-time {
   color: #ffffff;
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.25);
+  font-weight: 700;
 }
 
-.daily-prayer-row.active .prayer-time {
-  color: #fde68a;
-  text-shadow: 0 0 8px rgba(253, 230, 138, 0.25);
-}
+@media (max-width: 900px) {
+  .next-prayer-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
 
-@media (max-width: 600px) {
-  .next-prayer-widget {
-    margin: 16px 12px 24px;
-    padding: 20px 16px;
+  .countdown-section {
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding-right: 0;
+    padding-bottom: 20px;
+    align-items: center;
   }
-  .countdown-unit {
-    min-width: 58px;
-    padding: 6px 10px;
+
+  .strip-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
   }
-  .countdown-val {
-    font-size: 1.8rem;
+  
+  .strip-item {
+    height: 110px;
+    padding: 14px 4px 10px;
   }
 }
-
