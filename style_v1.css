@@ -2343,3 +2343,95 @@ body {
   to { transform: scaleY(1.0); }
 }
 
+/* Next Prayer Countdown Widget */
+.next-prayer-widget {
+  margin-bottom: 24px;
+}
+.next-prayer-grid {
+  display: grid;
+  grid-template-columns: 1fr 2.5fr;
+  gap: 32px;
+  align-items: center;
+}
+.countdown-section {
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  padding-right: 24px;
+}
+.next-prayer-title {
+  font-size: 1.5rem;
+  margin: 6px 0 2px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.countdown-digits {
+  font-size: 2.4rem;
+  font-weight: 700;
+  font-feature-settings: "tnum"; /* Tabular numbers for stable layouts */
+  letter-spacing: 0.03em;
+  color: #ffffff;
+  text-shadow: 0 0 20px rgba(255,255,255,0.15);
+}
+.prayer-times-strip {
+  display: flex;
+  flex-direction: column;
+}
+.strip-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px;
+  margin-top: 10px;
+}
+.strip-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 4px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.01);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  transition: all 0.3s ease;
+}
+.strip-item.active {
+  background: rgba(253, 230, 138, 0.04);
+  border-color: rgba(253, 230, 138, 0.3);
+  box-shadow: inset 0 0 10px rgba(253, 230, 138, 0.03), 0 0 15px rgba(253, 230, 138, 0.05);
+}
+.strip-name {
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.4);
+  margin-bottom: 2px;
+}
+.strip-item.active .strip-name {
+  color: #fbbf24;
+}
+.strip-time {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+.strip-item.active .strip-time {
+  color: #fde68a;
+  text-shadow: 0 0 8px rgba(253,230,138,0.25);
+}
+
+@media (max-width: 900px) {
+  .next-prayer-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .countdown-section {
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding-right: 0;
+    padding-bottom: 16px;
+    align-items: center;
+  }
+  .strip-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+}
+

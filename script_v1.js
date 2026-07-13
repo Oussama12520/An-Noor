@@ -388,6 +388,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initChat();
   renderAll();
   syncLocation();
+  setInterval(updateCountdown, 1000);
 
   setInterval(() => {
     if (autoMode) {
@@ -1071,7 +1072,69 @@ function renderNatureBackdrop() {
   }
 }
 
+function updateCountdown() {
+  const now = new Date();
+  let nextPrayer = null;
+  let minDiff = Infinity;
+
+  PRAYERS.forEach(p => {
+    if (p.name === "Sunrise") return; // Skip Sunrise for countdown timer
+
+    const [h, m] = p.time.split(":").map(Number);
+    const pDate = new Date(now);
+    pDate.setHours(h, m, 0, 0);
+
+    let diff = pDate.getTime() - now.getTime();
+    if (diff > 0 && diff < minDiff) {
+      minDiff = diff;
+      nextPrayer = p;
+    }
+  });
+
+  // Crossover to tomorrow morning Fajr if all prayers today are passed
+  if (!nextPrayer) {
+    const fajr = PRAYERS.find(p => p.name === "Fajr");
+    const [h, m] = fajr.time.split(":").map(Number);
+    const pDate = new Date(now);
+    pDate.setDate(now.getDate() + 1);
+    pDate.setHours(h, m, 0, 0);
+    minDiff = pDate.getTime() - now.getTime();
+    nextPrayer = fajr;
+  }
+
+  const timerEl = document.getElementById("countdown-timer");
+  const nameEl = document.getElementById("next-prayer-name");
+  
+  if (timerEl && nameEl) {
+    nameEl.textContent = `Next: ${nextPrayer.name}`;
+    
+    const hours = Math.floor(minDiff / 3600000);
+    const minutes = Math.floor((minDiff % 3600000) / 60000);
+    const seconds = Math.floor((minDiff % 60000) / 1000);
+    
+    const pad = (n) => String(n).padStart(2, "0");
+    timerEl.textContent = `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
+  }
+}
+
+function renderPrayersStrip() {
+  const strip = document.getElementById("dashboard-prayers-strip");
+  if (!strip) return;
+  
+  strip.innerHTML = PRAYERS.map(p => {
+    const isCurrent = p.name.toLowerCase() === currentPhase;
+    return `
+      <div class="strip-item ${isCurrent ? 'active' : ''}">
+        <span class="strip-name">${p.name}</span>
+        <span class="strip-time">${p.time}</span>
+      </div>
+    `;
+  }).join("");
+}
+
 function renderDashboard() {
+  updateCountdown();
+  renderPrayersStrip();
   const cfg = PHASES[currentPhase];
 
   document.getElementById("ayah-arabic").textContent = "وَبَشِّرِ الصَّابِرِينَ الَّذِينَ إِذَا أَصَابَتْهُم مُّصِيبَةٌ قَالُوا إِنَّا لِلَّهِ وَإِنَّا إِلَيْهِ رَاجِعُونَ";
