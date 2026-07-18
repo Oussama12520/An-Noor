@@ -63,25 +63,25 @@ const HIJRI_MONTHS = [
 ];
 
 const WUDU_STEPS = [
-  "Intention (Niyyah)",
-  "Wash hands three times",
-  "Rinse mouth and nose",
-  "Wash face three times",
-  "Wash arms to elbows",
-  "Wipe head and ears",
-  "Wash feet to ankles",
+  "النية (نويت الوضوء)",
+  "غسل اليدين ثلاث مرات",
+  "المضمضة والاستنشاق",
+  "غسل الوجه ثلاث مرات",
+  "غسل اليدين إلى المرفقين",
+  "مسح الرأس والأذنين",
+  "غسل القدمين إلى الكعبين",
 ];
 
 const SALAH_STEPS = [
-  "Takbir (Allahu Akbar)",
-  "Qiyam — recite Al-Fatiha",
-  "Ruku — bow",
-  "Stand from Ruku",
-  "Sujud — prostrate",
-  "Sit between prostrations",
-  "Second Sujud",
-  "Tashahhud",
-  "Taslim — end prayer",
+  "التكبير (الله أكبر)",
+  "القيام — قراءة الفاتحة",
+  "الركوع — الانحناء",
+  "الاعتدال من الركوع",
+  "السجود — السجدة الأولى",
+  "الجلوس بين السجدتين",
+  "السجدة الثانية",
+  "التشهد",
+  "التسليم — إنهاء الصلاة",
 ];
 
 const PRAYERS = [
@@ -115,62 +115,342 @@ const HADITHS = {
 /* Adhkar Database */
 const ADHKAR = {
   morning: [
-    { title: "Ayat al-Kursi", ar: "اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ...", translit: "Allahu la ilaha illa Huwal Hayyul Qayyum...", en: "Allah - there is no deity except Him, the Ever-Living, the Sustainer of all existence...", target: 1 },
-    { title: "Surah Al-Ikhlas", ar: "قُلْ هُوَ اللَّهُ أَحَدٌ...", translit: "Qul Huwal Lahu Ahad...", en: "Say, 'He is Allah, [who is] One...", target: 3 },
-    { title: "Morning Protection", ar: "بِسْمِ اللَّهِ الَّذِي لَا يَضُرُّ مَعَ اسْمِهِ شَيْءٌ...", translit: "Bismillahil-lazi la yadurru ma'asmihi shay'un...", en: "In the name of Allah with Whose name nothing can harm...", target: 3 }
+    {
+      title: "Ayat al-Kursi",
+      ar: "اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ لَّهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ مَن ذَا الَّذِي يَشْفَعُ عِندَهُ إِلَّا بِإِذْنِهِ يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ وَلَا يُحِيطُونَ بِشَيْءٍ مِّنْ عِلْمِهِ إِلَّا بِمَا شَاءَ وَسِعَ كُرْسِيُّهُ السَّمَاوَاتِ وَالْأَرْضَ وَلَا يَئُودُهُ حِفْظُهُمَا وَهُوَ الْعَلِيُّ الْعَظِيمُ",
+      translit: "Allahu la ilaha illa Huwal Hayyul Qayyum, la ta'khuzuhu sinatun wa la nawm, lahu ma fis-samawati wa ma fil-ard, man zhal-lazi yashfa'u 'indahu illa bi-izhnihi, ya'lamu ma bayna aydihim wa ma khalfahum, wa la yuhituna bishay'im-min 'ilmihi illa bima sha'a, wasi'a kursiyyuhus-samawati wal-ard, wa la ya'uduhu hifzhuhuma wa Huwal 'Aliyyul 'Azhim.",
+      translation: "Allah - there is no deity except Him, the Ever-Living, the Sustainer of all existence. Neither drowsiness overtakes Him nor sleep. To Him belongs whatever is in the heavens and whatever is on the earth. Who is it that can intercede with Him except by His permission? He knows what is before them and what will be after them, and they encompass not a thing of His knowledge except for what He wills. His Kursi extends over the heavens and the earth, and their preservation tires Him not. And He is the Most High, the Most Great.",
+      target: 1
+    },
+    {
+      title: "Surah Al-Ikhlas",
+      ar: "قُلْ هُوَ اللَّهُ أَحَدٌ ۞ اللَّهُ الصَّمَدُ ۞ لَمْ يَلِدْ وَلَمْ يُولَدْ ۞ وَلَمْ يَكُن لَّهُ كُفُوًا أَحَدٌ",
+      translit: "Qul Huwal-lahu Ahad. Allahus-Samad. Lam yalid wa lam yulad. Wa lam yakul-lahu kufuwan ahad.",
+      translation: "Say, 'He is Allah, [who is] One. Allah, the Eternal Refuge. He neither begets nor is born, nor is there to Him any equivalent.'",
+      target: 3
+    },
+    {
+      title: "Morning Protection",
+      ar: "بِسْمِ اللَّهِ الَّذِي لَا يَضُرُّ مَعَ اسْمِهِ شَيْءٌ فِي الْأَرْضِ وَلَا فِي السَّمَاءِ وَهُوَ السَّمِيعُ الْعَلِيمُ",
+      translit: "Bismillahil-lazi la yadurru ma'asmihi shay'un fil-ardi wa la fis-sama'i wa Huwas-Sami'ul-'Alim.",
+      translation: "In the name of Allah with Whose name nothing can harm on earth or in the heaven, and He is the All-Hearing, the All-Knowing.",
+      target: 3
+    },
+    {
+      title: "Sayyidul Istighfar",
+      ar: "اللَّهُمَّ أَنْتَ رَبِّي لَا إِلَهَ إِلَّا أَنْتَ خَلَقْتَنِي وَأَنَا عَبْدُكَ وَأَنَا عَلَى عَهْدِكَ وَوَعْدِكَ مَا اسْتَطَعْتُ أَعُوذُ بِكَ مِنْ شَرِّ مَا صَنَعْتُ أَبُوءُ لَكَ بِنِعْمَتِكَ عَلَيَّ وَأَبُوءُ لَكَ بِذَنْبِي فَاغْفِرْ لِي فَإِنَّهُ لَا يَغْفِرُ الذُّنُوبَ إِلَّا أَنْتَ",
+      translit: "Allahumma Anta Rabbi la ilaha illa Anta, khalaqtani wa ana 'abduka, wa ana 'ala 'ahdika wa wa'dika mas-tata'tu, a'uzhu bika min sharri ma sana'tu, abu'u laka bini'matika 'alayya, wa abu'u laka bizhanbi faghfir li fa-innahu la yaghfiruz-zhunuba illa Anta.",
+      translation: "O Allah, You are my Lord, there is no deity worthy of worship except You. You created me and I am Your servant, and I am faithful to my covenant and my promise as much as I am able. I seek refuge in You from the evil of what I have done. I acknowledge to You Your favor upon me, and I acknowledge my sin, so forgive me; for indeed, none can forgive sins except You.",
+      target: 1
+    },
+    {
+      title: "Praise & Pleasure",
+      ar: "رَضِيتُ بِاللَّهِ رَبَّا وَبِالْإِسْلَامِ دِينًا وَبِمُحَمَّدٍ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ نَبِيَّا",
+      translit: "Radhitu billahi Rabba, wa bil-Islami dina, wa bi-Muhammadin sallallahu 'alayhi wa sallama Nabiyya.",
+      translation: "I am pleased with Allah as my Lord, with Islam as my religion, and with Muhammad ﷺ as my Prophet.",
+      target: 3
+    }
   ],
   evening: [
-    { title: "Ayat al-Kursi", ar: "اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ...", translit: "Allahu la ilaha illa Huwal Hayyul Qayyum...", en: "Allah - there is no deity except Him, the Ever-Living, the Sustainer of all existence...", target: 1 },
-    { title: "Evening Prayer", ar: "أَمْسَيْنَا وَأَمْسَى الْمُلْكُ لِلَّهِ...", translit: "Amsayna wa amsal-mulku lillah...", en: "We have entered the evening and to Allah belongs all sovereignty...", target: 1 },
-    { title: "Surah Al-Falaq", ar: "قُلْ أَعُوذُ بِرَبِّ الْفَلَقِ...", translit: "Qul a'uzhu bi rabbil falaq...", en: "Say, 'I seek refuge in the Lord of daybreak...", target: 3 }
+    {
+      title: "Ayat al-Kursi",
+      ar: "اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ لَّهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ مَن ذَا الَّذِي يَشْفَعُ عِندَهُ إِلَّا بِإِذْنِهِ يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ وَلَا يُحِيطُونَ بِشَيْءٍ مِّنْ عِلْمِهِ إِلَّا بِمَا شَاءَ وَسِعَ كُرْسِيُّهُ السَّمَاوَاتِ وَالْأَرْضَ وَلَا يَئُودُهُ حِفْظُهُمَا وَهُوَ الْعَلِيُّ الْعَظِيمُ",
+      translit: "Allahu la ilaha illa Huwal Hayyul Qayyum, la ta'khuzuhu sinatun wa la nawm, lahu ma fis-samawati wa ma fil-ard, man zhal-lazi yashfa'u 'indahu illa bi-izhnihi, ya'lamu ma bayna aydihim wa ma khalfahum, wa la yuhituna bishay'im-min 'ilmihi illa bima sha'a, wasi'a kursiyyuhus-samawati wal-ard, wa la ya'uduhu hifzhuhuma wa Huwal 'Aliyyul 'Azhim.",
+      translation: "Allah - there is no deity except Him, the Ever-Living, the Sustainer of all existence. Neither drowsiness overtakes Him nor sleep. To Him belongs whatever is in the heavens and whatever is on the earth. Who is it that can intercede with Him except by His permission? He knows what is before them and what will be after them, and they encompass not a thing of His knowledge except for what He wills. His Kursi extends over the heavens and the earth, and their preservation tires Him not. And He is the Most High, the Most Great.",
+      target: 1
+    },
+    {
+      title: "Surah Al-Falaq",
+      ar: "قُلْ أَعُوذُ بِرَبِّ الْفَلَقِ ۞ مِن شَرِّ مَا خَلَقَ ۞ وَمِن شَرِّ غَاسِقٍ إِذَا وَقَبَ ۞ وَمِن شَرِّ النَّفَّاثَاتِ فِي الْعُقَدِ ۞ وَمِن شَرِّ حَاسِدٍ إِذَا حَسَدَ",
+      translit: "Qul a'uzhu bi-rabbil-falaq. Min sharri ma khalaq. Wa min sharri ghasiqin iza waqab. Wa min sharrin-naffasati fil-'uqad. Wa min sharri hasidin iza hasad.",
+      translation: "Say, 'I seek refuge in the Lord of daybreak. From the evil of that which He created. And from the evil of darkness when it settles. And from the evil of the blowers in knots. And from the evil of an envier when he envies.'",
+      target: 3
+    },
+    {
+      title: "Evening Shelter",
+      ar: "أَعُوذُ بِكَلِمَاتِ اللَّهِ التَّامَّاتِ مِنْ شَرِّ مَا خَلَقَ",
+      translit: "A'uzhu bi-kalimatil-lahit-tammati min sharri ma khalaq.",
+      translation: "I seek refuge in the perfect words of Allah from the evil of what He has created.",
+      target: 3
+    },
+    {
+      title: "Evening Praise & Faith",
+      ar: "أَمْسَيْنَا وَأَمْسَى الْمُلْكُ لِلَّهِ وَالْحَمْدُ لِلَّهِ لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ",
+      translit: "Amsayna wa amsal-mulku lillahi walhamdu lillahi, la ilaha illallahu wahdahu la sharika lahu, lahul-mulku wa lahul-hamdu, wa Huwa 'ala kulli shay'in Qadir.",
+      translation: "We have entered the evening and to Allah belongs all sovereignty, and all praise is for Allah. There is no deity worthy of worship except Allah alone, without partner. To Him belongs all sovereignty and praise, and He is over all things powerful.",
+      target: 1
+    }
+  ],
+  opening: [
+    {
+      title: "Du'a al-Istiftah (Glorification)",
+      ar: "سُبْحَانَكَ اللَّهُمَّ وَبِحَمْدِكَ وَتَبَارَكَ اسْمُكَ وَتَعَالَى جَدُّكَ وَلَا إِلَهَ غَيْرُكَ",
+      translit: "Subhanaka Allahumma wa bihamdika, wa tabarakas-muka, wa ta'ala jadduka, wa la ilaha ghayruka.",
+      translation: "Exalted are You, O Allah, and all praise is Yours; blessed is Your name, exalted is Your majesty, and there is no deity worthy of worship besides You.",
+      target: 1
+    },
+    {
+      title: "Istiftah (Sins Distance)",
+      ar: "اللَّهُمَّ بَاعِدْ بَيْنِي وَبَيْنَ خَطَايَايَ كَمَا بَاعَدْتَ بَيْنَ الْمَشْرِقِ وَالْمَغْرِبِ اللَّهُمَّ نَقِّنِي مِنْ خَطَايَايَ كَمَا يُنَقَّى الثَّوْبُ الْأَبْيَضُ مِنَ الدَّنَسِ اللَّهُمَّ اغْسِلْنِي مِنْ خَطَايَايَ بِالثَّلْجِ وَالْمَاءِ وَالْبَرَدِ",
+      translit: "Allahumma ba'id bayni wa bayna khatayaya kama ba'adta baynal-mashriqi wal-maghrib. Allahumma naqqini min khatayaya kama yunaqqath-thawbul-abyadu minad-danas. Allahumma-ghsilni min khatayaya bith-thalji wal-ma'i wal-barad.",
+      translation: "O Allah, distance me from my sins as You have distanced the East from the West. O Allah, purify me from my sins as a white garment is purified from dirt. O Allah, wash away my sins with snow, water, and hail.",
+      target: 1
+    }
   ],
   salah: [
-    { title: "Tasbih", ar: "سُبْحَانَ اللَّهِ", translit: "SubhanAllah", en: "Glory be to Allah", target: 33 },
-    { title: "Tahmid", ar: "الْحَمْدُ لِلَّهِ", translit: "Alhamdulillah", en: "Praise be to Allah", target: 33 },
-    { title: "Takbir", ar: "اللَّهُ أَكْبَرُ", translit: "Allahu Akbar", en: "Allah is Greatest", target: 34 }
+    {
+      title: "Seek Forgiveness",
+      ar: "أَسْتَغْفِرُ اللَّهَ",
+      translit: "Astaghfirullah",
+      translation: "I seek the forgiveness of Allah.",
+      target: 3
+    },
+    {
+      title: "Peace Supplication",
+      ar: "اللَّهُمَّ أَنْتَ السَّلَامُ وَمِنْكَ السَّلَامُ تَبَارَكْتَ يَا ذَا الْجَلَالِ وَالْإِكْرَامِ",
+      translit: "Allahumma Antas-Salamu wa minkas-salamu, tabarakta ya Dhal-Jalali wal-Ikram.",
+      translation: "O Allah, You are Peace and from You comes peace. Blessed are You, O Owner of majesty and honor.",
+      target: 1
+    },
+    {
+      title: "SubhanAllah",
+      ar: "سُبْحَانَ اللَّهِ",
+      translit: "SubhanAllah",
+      translation: "Glory be to Allah.",
+      target: 33
+    },
+    {
+      title: "Alhamdulillah",
+      ar: "الْحَمْدُ لِلَّهِ",
+      translit: "Alhamdulillah",
+      translation: "Praise be to Allah.",
+      target: 33
+    },
+    {
+      title: "Allahu Akbar",
+      ar: "اللَّهُ أَكْبَرُ",
+      translit: "Allahu Akbar",
+      translation: "Allah is the Greatest.",
+      target: 34
+    },
+    {
+      title: "Declaration of Monotheism",
+      ar: "لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ",
+      translit: "La ilaha illallahu wahdahu la sharika lahu, lahul-mulku wa lahul-hamdu, wa Huwa 'ala kulli shay'in Qadir.",
+      translation: "There is no deity worthy of worship except Allah alone, without partner. To Him belongs all sovereignty and praise, and He is over all things powerful.",
+      target: 1
+    }
+  ],
+  wudu: [
+    {
+      title: "Before Wudu (Bismillah)",
+      ar: "بِسْمِ اللَّهِ",
+      translit: "Bismillah",
+      translation: "In the name of Allah.",
+      target: 1
+    },
+    {
+      title: "Declaration of Faith after Wudu",
+      ar: "أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ",
+      translit: "Ashhadu an la ilaha illallahu wahdahu la sharika lahu, wa ashhadu anna Muhammadan 'abduhu wa Rasuluh.",
+      translation: "I bear witness that there is no deity worthy of worship except Allah alone, without partner, and I bear witness that Muhammad ﷺ is His servant and Messenger.",
+      target: 1
+    },
+    {
+      title: "Purification Supplication",
+      ar: "اللَّهُمَّ اجْعَلْنِي مِنَ التَّوَّابِينَ وَاجْعَلْنِي مِنَ الْمُتَطَهِّرِينَ",
+      translit: "Allahumma-j'alni minat-tawwabina wa-j'alni minal-mutatahhirin.",
+      translation: "O Allah, make me of those who constantly repent and make me of those who purify themselves.",
+      target: 1
+    }
   ],
   sleep: [
-    { title: "Ayat al-Kursi", ar: "اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ...", translit: "Allahu la ilaha illa Huwal Hayyul Qayyum...", en: "Allah - there is no deity except Him, the Ever-Living, the Sustainer of all existence...", target: 1 },
-    { title: "Dua for Sleep", ar: "بِاسْمِكَ اللَّهُمَّ أَمُوتُ وَأَحْيَا", translit: "Bismika Allahumma amutu wa ahya", en: "In Your name, O Allah, I die and I live.", target: 1 }
+    {
+      title: "Ayat al-Kursi",
+      ar: "اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ لَّهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ مَن ذَا الَّذِي يَشْفَعُ عِندَهُ إِلَّا بِإِذْنِهِ يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ وَلَا يُحِيطُونَ بِشَيْءٍ مِّنْ عِلْمِهِ إِلَّا بِمَا شَاءَ وَسِعَ كُرْسِيُّهُ السَّمَاوَاتِ وَالْأَرْضَ وَلَا يَئُودُهُ حِفْظُهُمَا وَهُوَ الْعَلِيُّ الْعَظِيمُ",
+      translit: "Allahu la ilaha illa Huwal Hayyul Qayyum, la ta'khuzuhu sinatun wa la nawm, lahu ma fis-samawati wa ma fil-ard, man zhal-lazi yashfa'u 'indahu illa bi-izhnihi...",
+      translation: "Allah - there is no deity except Him, the Ever-Living, the Sustainer of all existence. Neither drowsiness overtakes Him nor sleep...",
+      target: 1
+    },
+    {
+      title: "Dua for Sleep",
+      ar: "بِاسْمِكَ اللَّهُمَّ أَمُوتُ وَأَحْيَا",
+      translit: "Bismika Allahumma amutu wa ahya",
+      translation: "In Your name, O Allah, I die and I live.",
+      target: 1
+    },
+    {
+      title: "Refuge in Allah's Shelter",
+      ar: "بِاسْمِكَ رَبِّي وَضَعْتُ جَنْبِي وَبِكَ أَرْفَعُهُ فَإِنْ أَمْسَكْتَ نَفْسِي فَارْحَمْهَا وَإِنْ أَرْسَلْتَهَا فَاحْفِظْهَا بِمَا تَحْفَظُ بِهِ عِبَادَكَ الصَّالِحِينَ",
+      translit: "Bismika Rabbi wadha'tu janbi wa bika arfa'uh. Fa-in amsakta nafsi farhamha, wa-in arsaltaha fahfazhha bima tahfazhu bihi 'ibadakas-salihin.",
+      translation: "In Your name, my Lord, I lay down my side, and by You I raise it. If You take my soul, then have mercy upon it, and if You release it, then protect it as You protect Your righteous servants.",
+      target: 1
+    }
   ]
 };
 
 /* Quiz Questions */
 const QUIZ_QUESTIONS = [
   {
-    q: "What is the holy book revealed to Prophet Muhammad ﷺ?",
-    choices: ["Torah", "Gospel", "Psalms", "Quran"],
+    q: "ما هو الكتاب المقدس المنزل على النبي محمد ﷺ؟",
+    choices: ["التوراة", "الإنجيل", "الزبور", "القرآن الكريم"],
     answer: 3,
-    exp: "The Holy Quran was revealed to Prophet Muhammad ﷺ in stages over a period of approximately 23 years."
+    exp: "نزل القرآن الكريم على النبي محمد ﷺ على مراحل خلال فترة تقارب ٢٣ عامًا."
   },
   {
-    q: "How many pillars of Islam are there?",
-    choices: ["3 Pillars", "5 Pillars", "6 Pillars", "7 Pillars"],
+    q: "كم عدد أركان الإسلام؟",
+    choices: ["٣ أركان", "٥ أركان", "٦ أركان", "٧ أركان"],
     answer: 1,
-    exp: "Islam is built upon five pillars: Shahadah (Faith), Salah (Prayer), Zakat (Almsgiving), Sawm (Fasting), and Hajj (Pilgrimage)."
+    exp: "بُني الإسلام على خمسة أركان: الشهادتان، الصلاة، الزكاة، الصيام، والحج."
   },
   {
-    q: "In which month is the Holy Quran revealed?",
-    choices: ["Muharram", "Rajab", "Ramadan", "Dhu al-Hijjah"],
+    q: "في أي شهر أُنزل القرآن الكريم؟",
+    choices: ["المحرّم", "رجب", "رمضان", "ذو الحجة"],
     answer: 2,
-    exp: "The Quran was first sent down during the night of Laylat al-Qadr in the holy month of Ramadan."
+    exp: "أُنزل القرآن الكريم في ليلة القدر من شهر رمضان المبارك."
   },
   {
-    q: "Who is the first caliph of Islam?",
-    choices: ["Umar ibn al-Khattab", "Ali ibn Abi Talib", "Uthman ibn Affan", "Abu Bakr as-Siddiq"],
+    q: "من هو أول خليفة في الإسلام؟",
+    choices: ["عمر بن الخطاب", "علي بن أبي طالب", "عثمان بن عفان", "أبو بكر الصديق"],
     answer: 3,
-    exp: "Abu Bakr as-Siddiq (RA) was chosen as the first Caliph of Islam immediately after the passing of Prophet Muhammad ﷺ."
+    exp: "اختير أبو بكر الصديق رضي الله عنه كأول خليفة بعد وفاة النبي محمد ﷺ."
   },
   {
-    q: "What is the literal meaning of the word 'Ihsan'?",
-    choices: ["Patience", "Excellence / Beautification", "Sincerity", "Trust in Allah"],
+    q: "ما هو المعنى الحرفي لكلمة 'الإحسان'؟",
+    choices: ["الصبر", "الإتقان والإحسان", "الإخلاص", "التوكل على الله"],
     answer: 1,
-    exp: "Ihsan literally means beauty, excellence, or perfection. In a spiritual sense, it is to worship Allah as if you see Him."
+    exp: "الإحسان لغةً يعني الجمال والإتقان. وروحيًا، هو أن تعبد الله كأنك تراه."
   }
 ];
 
-const RECITERS = ["Mishary Al-Afasy", "Saud Al-Shuraim", "Saad Al-Ghamdi", "Abdul Basit"];
-const TRANSLATIONS = ["English", "Français", "Türkçe", "اردو"];
+const RECITERS = ["Mishary Al-Afasy", "Abdul Basit", "Ali Jaber"];
+
+const RECITER_MAP = {
+  "Mishary Al-Afasy": "ar.alafasy",
+  "Abdul Basit": "ar.abdulbasitmurattal",
+  "Ali Jaber": "everyayah"
+};
+
+const TRANSLATIONS = ["العربية"];
+
+/* Daily Rotating Datasets */
+const DAILY_AYAHS = [
+  {
+    ar: "وَبَشِّرِ الصَّابِرِينَ الَّذِينَ إِذَا أَصَابَتْهُم مُّصِيبَةٌ قَالُوا إِنَّا لِلَّهِ وَإِنَّا إِلَيْهِ رَاجِعُونَ",
+    en: "",
+    tafseer: "تعلمنا هذه الآية أن الصبر على المصائب مع تذكر أننا راجعون إلى الله هو بحد ذاته عبادة تستحق البشرى. — البقرة ١٥٥-١٥٦"
+  },
+  {
+    ar: "لا يُكَلِّفُ اللَّهُ نَفْسًا إِلاَّ وُسْعَهَا",
+    en: "",
+    tafseer: "طمأنينة ربانية بأن كل ابتلاء تواجهه هو في حدود طاقتك وقدرتك على تجاوزه بالإيمان والدعاء. — البقرة ٢٨٦"
+  },
+  {
+    ar: "فَإِنَّ مَعَ الْعُسْرِ يُسْرًا إِنَّ مَعَ الْعُسْرِ يُسْرًا",
+    en: "",
+    tafseer: "يعد الله أن اليسر ليس فقط بعد العسر، بل يرافقه، فهو مصدر دائم للراحة والقوة. — الشرح ٥-٦"
+  },
+  {
+    ar: "وَمَن يَتَوَكَّلْ عَلَى اللَّهِ فَهُوَ حَسْبُهُ",
+    en: "",
+    tafseer: "التوكل على الله يمنح سكينة عميقة، مع العلم أن النتائج النهائية بيد الحكيم العليم. — الطلاق ٣"
+  },
+  {
+    ar: "لَئِن شَكَرْتُمْ لَأَزِيدَنَّكُمْ",
+    en: "",
+    tafseer: "الشكر يضاعف النعم. الاعتراف بفضل الله يجلب المزيد من الخير والسكينة والبركة. — إبراهيم ٧"
+  },
+  {
+    ar: "فَاذْكُرُونِي أَذْكُرْكُمْ وَاشْكُرُوا لِي وَلَا تَكْفُرُونِ",
+    en: "",
+    tafseer: "يذكرنا الله أن العلاقة بيننا وبينه متبادلة. عندما نتذكره، يذكرنا ويكرمنا في الملأ الأعلى. — البقرة ١٥٢"
+  },
+  {
+    ar: "وَإِذَا سَأَلَكَ عِبَادِي عَنِّي فَإِنِّي قَرِيبٌ أُجِيبُ دَعْوَةَ الدَّاعِ إِذَا دَعَانِ",
+    en: "",
+    tafseer: "تبرز هذه الآية العلاقة المباشرة والحميمة بين المؤمن وربه، دون حاجة لوسيط في الدعاء. — البقرة ١٨٦"
+  }
+];
+
+const DAILY_DUAS = [
+  {
+    ar: "رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ",
+    en: ""
+  },
+  {
+    ar: "رَبَّنَا لا تُزِغْ قُلُوبَنَا بَعْدَ إِذْ هَدَيْتَنَا وَهَبْ لَنَا مِنْ لَدُنْكَ رَحْمَةً إِنَّكَ أَنْتَ الْوَهَّابُ",
+    en: ""
+  },
+  {
+    ar: "يَا مُقَلِّبَ الْقُلُوبِ ثَبِّتْ قَلْبِي عَلَى دِينِكَ",
+    en: ""
+  },
+  {
+    ar: "اللَّهُمَّ إِنِّي أَسْأَلُكَ عِلْمًا نَافِعًا وَرِزْقًا طَيِّبًا وَعَمَلًا مُتَقَبَّلًا",
+    en: ""
+  },
+  {
+    ar: "رَبِّ اشْرَحْ لِي صَدْرِي وَيَسِّرْ لِي أَمْرِي وَاحْلُلْ عُقْدَةً مِّن لِّسَانِي يَفْهَمُوا قَوْلِي",
+    en: ""
+  },
+  {
+    ar: "لَّا إِلَٰهَ إِلَّا أَنتَ سُبْحَانَكَ إِنِّي كُنتُ مِنَ الظَّالِمِينَ",
+    en: ""
+  },
+  {
+    ar: "اللَّهُمَّ أَعِنِّي عَلَى ذِكْرِكَ وَشُكْرِكَ وَحُسْنِ عِبَادَتِكَ",
+    en: ""
+  }
+];
+
+const DAILY_HADITHS = [
+  {
+    text: `قال النبي ﷺ: "إنما الأعمال بالنيات، وإنما لكل امرئ ما نوى."`,
+    ref: "صحيح البخاري ١"
+  },
+  {
+    text: `قال النبي ﷺ: "لا يؤمن أحدكم حتى يحب لأخيه ما يحب لنفسه."`,
+    ref: "صحيح البخاري ١٣"
+  },
+  {
+    text: `قال النبي ﷺ: "من كان يؤمن بالله واليوم الآخر فليقل خيرًا أو ليصمت."`,
+    ref: "صحيح البخاري ٦٠١٨"
+  },
+  {
+    text: `قال النبي ﷺ: "خياركم أحاسنكم أخلاقًا."`,
+    ref: "صحيح البخاري ٦٠٣٥"
+  },
+  {
+    text: `قال النبي ﷺ: "يسّروا ولا تعسّروا، وبشّروا ولا تنفّروا."`,
+    ref: "صحيح البخاري ٦١٢٥"
+  },
+  {
+    text: `قال النبي ﷺ: "يصبح على كل سُلامى من أحدكم صدقة، فكل تسبيحة صدقة... وكل كلمة طيبة صدقة."`,
+    ref: "صحيح البخاري ٢٩٨٩"
+  },
+  {
+    text: `قال النبي ﷺ: "إن الله لا ينظر إلى صوركم وأموالكم، ولكن ينظر إلى قلوبكم وأعمالكم."`,
+    ref: "صحيح مسلم ٢٥٦٤"
+  }
+];
+
+const DAILY_REMINDERS = [
+  `"وَمَن يَتَوَكَّلْ عَلَى اللَّهِ فَهُوَ حَسْبُهُ." اجعل خطواتك اليوم مباركة بذكر الله والاستغفار.`,
+  `"أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ." خذ نفسًا عميقًا، هدّئ أفكارك، وتواصل مع خالقك اليوم.`,
+  `"لَئِن شَكَرْتُمْ لَأَزِيدَنَّكُمْ." تأمل ثلاث نعم في حياتك اليوم وقل الحمد لله.`,
+  `"قل خيرًا أو اصمت." ليكن كلامك اليوم بناءً يزرع السلام والمودة فيمن حولك.`,
+  `"تبسمك في وجه أخيك صدقة." انشر الدفء والصبر والطيبة مع كل من تقابله اليوم.`,
+  `"ابدأ كل عمل بـ بسم الله." استجلب البركة والتركيز والتوفيق في يومك وأعمالك.`,
+  `"إن الله مع الصابرين." مهما بدت اللحظة صعبة، تمسك بالأمل وثق أن الفرج قريب.`,
+  `"استغفر الله كثيرًا." تطهير القلب من الذنوب والتقصير يجلب سكينة عميقة وراحة بال."`
+];
+
+function getDailySeed(date) {
+  const y = date.getFullYear();
+  const m = date.getMonth();
+  const d = date.getDate();
+  return (y * 367 + m * 31 + d) & 0xffff;
+}
 
 /* ---------------------------------- State Variables ---------------------------------- */
 
@@ -189,30 +469,293 @@ let translation = TRANSLATIONS[0];
 let ayahTab = "translation";
 let playingAyahKey = null;
 let tafseerOpen = false;
+let ayahFontSize = 24;
+
+/* Date Picker and Dynamic Prayers States */
+let selectedDate = new Date();
+let isViewingToday = true;
+let userLatitude = 21.4225; // default Mecca
+let userLongitude = 39.8262; // default Mecca
+let hasUserLocation = false;
 
 /* New features states */
 const FALLBACK_SURAHS = [
-  { id: 1, name: "Al-Fatiha", arabic: "الفاتحة", meaning: "The Opening", ayahCount: 7, revelation: "Meccan" },
-  { id: 2, name: "Al-Baqarah", arabic: "البقرة", meaning: "The Cow", ayahCount: 286, revelation: "Medinan" },
-  { id: 36, name: "Ya-Sin", arabic: "يس", meaning: "Ya Sin", ayahCount: 83, revelation: "Meccan" },
-  { id: 55, name: "Ar-Rahman", arabic: "الرحمن", meaning: "The Most Merciful", ayahCount: 78, revelation: "Medinan" },
-  { id: 112, name: "Al-Ikhlas", arabic: "الإخلاص", meaning: "The Sincerity", ayahCount: 4, revelation: "Meccan" },
-  { id: 113, name: "Al-Falaq", arabic: "الفلق", meaning: "The Daybreak", ayahCount: 5, revelation: "Meccan" }
+  { id: 1, name: "Al-Fatiha", arabic: "الفاتحة", meaning: "الفاتحة", ayahCount: 7, revelation: "مكية" },
+  { id: 2, name: "Al-Baqarah", arabic: "البقرة", meaning: "البقرة", ayahCount: 286, revelation: "مدنية" },
+  { id: 36, name: "Ya-Sin", arabic: "يس", meaning: "يس", ayahCount: 83, revelation: "مكية" },
+  { id: 55, name: "Ar-Rahman", arabic: "الرحمن", meaning: "الرحمن", ayahCount: 78, revelation: "مدنية" },
+  { id: 112, name: "Al-Ikhlas", arabic: "الإخلاص", meaning: "الإخلاص", ayahCount: 4, revelation: "مكية" },
+  { id: 113, name: "Al-Falaq", arabic: "الفلق", meaning: "الفلق", ayahCount: 5, revelation: "مكية" }
 ];
 let allSurahs = [...FALLBACK_SURAHS];
 let activeHadithBook = "bukhari";
 let activeAdhkarCategory = "morning";
 let adhkarSessionCounts = {}; // Key: "morning-0"
+let sessionActiveIndex = 0;
+let sessionCategory = "morning";
+let isSessionActive = false;
 let quizCurrentIndex = 0;
 let quizScore = 0;
 let quizAnswered = false;
 
 let chatMessages = [
-  { sender: "ai", text: "Assalamu Alaikum. I am Murshid, your Islamic companion. How can I help you seek knowledge or find reflection today?" }
+  { sender: "ai", text: "السلام عليكم. أنا مرشد، رفيقك الإسلامي. كيف يمكنني مساعدتك في طلب العلم أو التأمل اليوم؟" }
 ];
 
 /* Audio Recitation */
 let currentAudio = null;
+let playingSurah = null;
+let audioVolume = 0.7;
+let isAudioMuted = false;
+let isSurahReplaying = false;
+let isAutoplayNextActive = false;
+let lastScrolledAyahKey = null;
+
+/* Dedicated Player & Effects States */
+let previousActiveView = "dashboard";
+let currentSpeedRate = 1.0;
+let reverbLevel = 0.0;
+let reverbSpace = 0.3;
+let lastAlertedPrayer = "";
+let alertDismissTimeout = null;
+
+// Web Audio API Nodes
+let audioCtx = null;
+let activeDelayNode = null;
+let activeFeedbackGain = null;
+let activeWetGain = null;
+
+// Monograms for reciters
+const MONOGRAM_MAP = {
+  "Mishary Al-Afasy": "MA",
+  "Abdul Basit": "AB",
+  "Ali Jaber": "AJ"
+};
+
+// Ambient Background Sounds - Config of 100 Nature Sounds
+const SOUNDSCAPES_CONFIG = [
+  // 1. Rain & Storms (12)
+  { id: "light-rain", name: "Light Rain", category: "rain", icon: "rain-light", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/rain/light-rain.mp3" },
+  { id: "heavy-rain", name: "Heavy Rain", category: "rain", icon: "rain-heavy", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/rain/heavy-rain.mp3" },
+  { id: "rain-on-window", name: "Rain on Window", category: "rain", icon: "window", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/rain/rain-on-window.mp3" },
+  { id: "rain-on-leaves", name: "Rain on Leaves", category: "rain", icon: "leaves", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/rain/rain-on-leaves.mp3" },
+  { id: "rain-on-tent", name: "Rain on Tent", category: "rain", icon: "tent", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/rain/rain-on-tent.mp3" },
+  { id: "rain-on-umbrella", name: "Rain on Umbrella", category: "rain", icon: "umbrella", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/rain/rain-on-umbrella.mp3" },
+  { id: "rain-on-car-roof", name: "Rain on Car", category: "rain", icon: "car", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/rain/rain-on-car-roof.mp3" },
+  { id: "thunderstorm", name: "Thunderstorm", category: "rain", icon: "thunder", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/rain/thunder.mp3" },
+  { id: "shower-flow", name: "Bathroom Shower", category: "rain", icon: "shower", url: "https://raw.githubusercontent.com/brarcher/baby-sleep-sounds/master/app/src/main/res/raw/shower.mp3" },
+  { id: "waterfall", name: "Waterfall", category: "rain", icon: "waterfall", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/nature/waterfall.mp3" },
+  { id: "water-droplets", name: "Water Droplets", category: "rain", icon: "droplets", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/nature/droplets.mp3" },
+  { id: "boiling-water", name: "Boiling Water", category: "rain", icon: "boiling", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/things/boiling-water.mp3" },
+
+  // 2. Water & Oceans (10)
+  { id: "water-river", name: "Water River", category: "water", icon: "river", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/nature/river.mp3" },
+  { id: "water-stream", name: "Water Stream", category: "water", icon: "stream", url: "https://raw.githubusercontent.com/brarcher/baby-sleep-sounds/master/app/src/main/res/raw/stream.mp3" },
+  { id: "ocean-waves", name: "Ocean Waves", category: "water", icon: "ocean", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/nature/waves.mp3" },
+  { id: "beach-ambient", name: "Beach Ambiance", category: "water", icon: "beach", url: "https://raw.githubusercontent.com/sara-ls/resonance/master/sounds/beach.ogg" },
+  { id: "underwater", name: "Underwater Deep", category: "water", icon: "underwater", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/places/underwater.mp3" },
+  { id: "bubbles", name: "Water Bubbles", category: "water", icon: "bubbles", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/things/bubbles.mp3" },
+  { id: "rowing-boat", name: "Rowing Boat", category: "water", icon: "rowboat", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/transport/rowing-boat.mp3" },
+  { id: "sailboat", name: "Sailboat", category: "water", icon: "sailboat", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/transport/sailboat.mp3" },
+  { id: "submarine", name: "Submarine", category: "water", icon: "submarine", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/transport/submarine.mp3" },
+  { id: "washing-machine", name: "Washing Machine", category: "water", icon: "washmachine", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/things/washing-machine.mp3" },
+
+  // 3. Forest & Wind (12)
+  { id: "campfire", name: "Campfire", category: "forest", icon: "fire", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/nature/campfire.mp3" },
+  { id: "desert-wind", name: "Desert Wind", category: "forest", icon: "wind", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/nature/wind.mp3" },
+  { id: "wind-in-trees", name: "Wind in Trees", category: "forest", icon: "trees", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/nature/wind-in-trees.mp3" },
+  { id: "howling-wind", name: "Howling Wind", category: "forest", icon: "wind-howl", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/nature/howling-wind.mp3" },
+  { id: "jungle", name: "Jungle Safari", category: "forest", icon: "jungle", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/nature/jungle.mp3" },
+  { id: "rustling-leaves", name: "Rustling Leaves", category: "forest", icon: "leaves-rustle", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/nature/walk-on-leaves.mp3" },
+  { id: "snow-steps", name: "Steps in Snow", category: "forest", icon: "snow", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/nature/walk-in-snow.mp3" },
+  { id: "gravel-steps", name: "Steps on Gravel", category: "forest", icon: "gravel", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/nature/walk-on-gravel.mp3" },
+  { id: "morning-birds", name: "Morning Birds", category: "forest", icon: "morning", url: "https://raw.githubusercontent.com/sara-ls/resonance/master/sounds/morning.mp3" },
+  { id: "forest-birds-deep", name: "Forest Birds Deep", category: "forest", icon: "forest", url: "https://raw.githubusercontent.com/sara-ls/resonance/master/sounds/forest.mp3" },
+  { id: "wind-chimes", name: "Wind Chimes", category: "forest", icon: "chimes", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/things/wind-chimes.mp3" },
+  { id: "windshield-wipers", name: "Windshield Wipers", category: "forest", icon: "wipers", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/things/windshield-wipers.mp3" },
+
+  // 4. Wildlife & Animals (16)
+  { id: "beehive", name: "Beehive Buzz", category: "wildlife", icon: "beehive", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/animals/beehive.mp3" },
+  { id: "birds-chirping", name: "Birds Chirping", category: "wildlife", icon: "birds", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/animals/birds.mp3" },
+  { id: "cat-purring", name: "Cat Purring", category: "wildlife", icon: "cat", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/animals/cat-purring.mp3" },
+  { id: "chickens", name: "Chickens", category: "wildlife", icon: "chickens", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/animals/chickens.mp3" },
+  { id: "cows", name: "Cows Pasture", category: "wildlife", icon: "cows", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/animals/cows.mp3" },
+  { id: "crickets", name: "Night Crickets", category: "wildlife", icon: "crickets", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/animals/crickets.mp3" },
+  { id: "crows", name: "Crows", category: "wildlife", icon: "crows", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/animals/crows.mp3" },
+  { id: "dog-barking", name: "Dog Barking", category: "wildlife", icon: "dog", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/animals/dog-barking.mp3" },
+  { id: "frog-croaking", name: "Frog Pond", category: "wildlife", icon: "frog", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/animals/frog.mp3" },
+  { id: "horse-gallop", name: "Horse Gallop", category: "wildlife", icon: "horse", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/animals/horse-gallop.mp3" },
+  { id: "owl-hooting", name: "Forest Owl", category: "wildlife", icon: "owl", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/animals/owl.mp3" },
+  { id: "seagulls", name: "Seagulls", category: "wildlife", icon: "seagulls", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/animals/seagulls.mp3" },
+  { id: "sheep", name: "Sheep Meadow", category: "wildlife", icon: "sheep", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/animals/sheep.mp3" },
+  { id: "whale-song", name: "Whale Song", category: "wildlife", icon: "whale", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/animals/whale.mp3" },
+  { id: "wolf-howling", name: "Wolf Howling", category: "wildlife", icon: "wolf", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/animals/wolf.mp3" },
+  { id: "woodpecker", name: "Woodpecker", category: "wildlife", icon: "woodpecker", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/animals/woodpecker.mp3" },
+
+  // 5. Cozy Places (16)
+  { id: "airport", name: "Airport Lounge", category: "ambient", icon: "airport", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/places/airport.mp3" },
+  { id: "cafe", name: "Coffee Shop", category: "ambient", icon: "cafe", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/places/cafe.mp3" },
+  { id: "carousel", name: "Carousel Music", category: "ambient", icon: "carousel", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/places/carousel.mp3" },
+  { id: "church-bells", name: "Church Bells", category: "ambient", icon: "church", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/places/church.mp3" },
+  { id: "construction", name: "Construction Site", category: "ambient", icon: "construction", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/places/construction-site.mp3" },
+  { id: "crowded-bar", name: "Crowded Bar", category: "ambient", icon: "bar", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/places/crowded-bar.mp3" },
+  { id: "laboratory", name: "Sci-Fi Lab", category: "ambient", icon: "lab", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/places/laboratory.mp3" },
+  { id: "laundry-room", name: "Laundry Room", category: "ambient", icon: "laundry", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/places/laundry-room.mp3" },
+  { id: "library", name: "Quiet Library", category: "ambient", icon: "library", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/places/library.mp3" },
+  { id: "night-village", name: "Night Village", category: "ambient", icon: "village", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/places/night-village.mp3" },
+  { id: "office-chatter", name: "Office Chatter", category: "ambient", icon: "office", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/places/office.mp3" },
+  { id: "restaurant", name: "Busy Restaurant", category: "ambient", icon: "restaurant", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/places/restaurant.mp3" },
+  { id: "subway-station", name: "Subway Station", category: "ambient", icon: "subway", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/places/subway-station.mp3" },
+  { id: "supermarket", name: "Supermarket", category: "ambient", icon: "supermarket", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/places/supermarket.mp3" },
+  { id: "temple", name: "Quiet Temple", category: "ambient", icon: "temple", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/places/temple.mp3" },
+  { id: "alarm-clock", name: "Retro Alarm", category: "ambient", icon: "alarm", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/alarm.mp3" },
+
+  // 6. Urban & Transport (13)
+  { id: "airplane", name: "Airplane Cabin", category: "transport", icon: "airplane", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/transport/airplane.mp3" },
+  { id: "inside-train", name: "Inside a Train", category: "transport", icon: "insidetrain", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/transport/inside-a-train.mp3" },
+  { id: "train-horn", name: "Train Clatter", category: "transport", icon: "train", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/transport/train.mp3" },
+  { id: "ambulance-siren", name: "Ambulance Siren", category: "transport", icon: "siren", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/urban/ambulance-siren.mp3" },
+  { id: "busy-street", name: "Busy Street", category: "transport", icon: "busystreet", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/urban/busy-street.mp3" },
+  { id: "crowd-cheering", name: "Urban Crowd", category: "transport", icon: "crowd", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/urban/crowd.mp3" },
+  { id: "fireworks", name: "Fireworks", category: "transport", icon: "fireworks", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/urban/fireworks.mp3" },
+  { id: "highway", name: "Highway Traffic", category: "transport", icon: "highway", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/urban/highway.mp3" },
+  { id: "road-traffic", name: "Asphalt Road", category: "transport", icon: "road", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/urban/road.mp3" },
+  { id: "traffic-jam", name: "Traffic Jam", category: "transport", icon: "traffic", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/urban/traffic.mp3" },
+  { id: "refrigerator", name: "Fridge Hum", category: "transport", icon: "fridge", url: "https://raw.githubusercontent.com/brarcher/baby-sleep-sounds/master/app/src/main/res/raw/refrigerator.mp3" },
+  { id: "vacuum-cleaner", name: "Vacuum Cleaner", category: "transport", icon: "vacuum", url: "https://raw.githubusercontent.com/brarcher/baby-sleep-sounds/master/app/src/main/res/raw/vacuum.mp3" },
+  { id: "clothes-dryer", name: "Clothes Dryer", category: "transport", icon: "dryer-raw", url: "https://raw.githubusercontent.com/brarcher/baby-sleep-sounds/master/app/src/main/res/raw/dryer.mp3" },
+
+  // 7. Things & Objects (13)
+  { id: "ceiling-fan", name: "Ceiling Fan", category: "things", icon: "fan", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/things/ceiling-fan.mp3" },
+  { id: "fan-loop", name: "Electric Fan", category: "things", icon: "fan-raw", url: "https://raw.githubusercontent.com/brarcher/baby-sleep-sounds/master/app/src/main/res/raw/fan.mp3" },
+  { id: "wall-clock", name: "Wall Clock", category: "things", icon: "clock", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/things/clock.mp3" },
+  { id: "dryer-machine", name: "Tumble Dryer", category: "things", icon: "dryer", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/things/dryer.mp3" },
+  { id: "keyboard-typing", name: "Mechanical Keyboard", category: "things", icon: "keyboard", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/things/keyboard.mp3" },
+  { id: "morse-code", name: "Morse Code", category: "things", icon: "morse", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/things/morse-code.mp3" },
+  { id: "paper-rustle", name: "Paper Rustle", category: "things", icon: "paper", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/things/paper.mp3" },
+  { id: "singing-bowl", name: "Tibetan Bowl", category: "things", icon: "singingbowl", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/things/singing-bowl.mp3" },
+  { id: "slide-projector", name: "Slide Projector", category: "things", icon: "projector", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/things/slide-projector.mp3" },
+  { id: "tuning-radio", name: "Tuning Radio", category: "things", icon: "radio", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/things/tuning-radio.mp3" },
+  { id: "typewriter", name: "Vintage Typewriter", category: "things", icon: "typewriter", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/things/typewriter.mp3" },
+  { id: "vinyl-crackle", name: "Vinyl Crackle", category: "things", icon: "vinyl", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/things/vinyl-effect.mp3" },
+  { id: "baby-shh", name: "Lullaby Shh", category: "things", icon: "shh", url: "https://raw.githubusercontent.com/brarcher/baby-sleep-sounds/master/app/src/main/res/raw/shhhh.mp3" },
+
+  // 8. White Noises & Binaural (8)
+  { id: "brown-noise", name: "Brown Noise", category: "noise", icon: "static-noise", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/noise/brown-noise.wav" },
+  { id: "pink-noise", name: "Pink Noise", category: "noise", icon: "static-noise", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/noise/pink-noise.wav" },
+  { id: "white-noise", name: "White Noise", category: "noise", icon: "static-noise", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/noise/white-noise.wav" },
+  { id: "binaural-alpha", name: "Binaural Alpha", category: "noise", icon: "binaural", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/binaural/binaural-alpha.wav" },
+  { id: "binaural-beta", name: "Binaural Beta", category: "noise", icon: "binaural", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/binaural/binaural-beta.wav" },
+  { id: "binaural-delta", name: "Binaural Delta", category: "noise", icon: "binaural", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/binaural/binaural-delta.wav" },
+  { id: "binaural-gamma", name: "Binaural Gamma", category: "noise", icon: "binaural", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/binaural/binaural-gamma.wav" },
+  { id: "binaural-theta", name: "Binaural Theta", category: "noise", icon: "binaural", url: "https://raw.githubusercontent.com/remvze/moodist/main/public/sounds/binaural/binaural-theta.wav" }
+];
+
+let soundscapeAudios = {};
+let soundscapeStates = {};
+let soundscapeVolumes = {};
+
+// Initialize state maps
+SOUNDSCAPES_CONFIG.forEach(item => {
+  soundscapeStates[item.id] = false;
+  soundscapeVolumes[item.id] = 0.5;
+});
+
+const SOUNDSCAPE_SVG_ICONS = {
+  "rain-light": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12.5A5.993 5.993 0 0018 7.228 7 7 0 005.352 9.07 4 4 0 006 17h12c1.472 0 2.766-.798 3.5-2m-12.5 3v2" /></svg>`,
+  "rain-heavy": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12.5A5.993 5.993 0 0018 7.228 7 7 0 005.352 9.07 4 4 0 006 17h12c1.472 0 2.766-.798 3.5-2m-13.5 3v2m4-2v2m4-2v2" /></svg>`,
+  "window": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3h18v18H3V3zm0 9h18M12 3v18" /></svg>`,
+  "leaves": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v13.5m0-13.5a9.75 9.75 0 018.15 4.53c.6 1 .9 2.1.9 3.22" /></svg>`,
+  "tent": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3L2 21h20L12 3zm0 0v18" /></svg>`,
+  "umbrella": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><path stroke-linecap="round" stroke-linejoin="round" d="M12 12v9m0-9a9 9 0 019-9H3a9 9 0 019 9z" /></svg>`,
+  "car": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><path stroke-linecap="round" stroke-linejoin="round" d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3C13 6.9 11.8 6.5 11 6.5H5c-.8 0-1.8.6-2.2 1.3L1 11.2V16c0 .6.4 1 1 1h2m11 0h4M5.5 17a2.5 2.5 0 100 5 2.5 2.5 0 000-5zm11 0a2.5 2.5 0 100 5 2.5 2.5 0 000-5z" /></svg>`,
+  "thunder": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>`,
+  "shower": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v15M8 6h8M6 10h12M4 14h16" /></svg>`,
+  "waterfall": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v18M8 6v12M16 6v12" /></svg>`,
+  "droplets": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><path stroke-linecap="round" stroke-linejoin="round" d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z" /></svg>`,
+  "boiling": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v4m-4-2h8m-9 8h10a2 2 0 012 2v2H5v-2a2 2 0 012-2z" /></svg>`,
+  "river": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12c3-3 6-3 9 0s6 3 9 0m-18 4c3-3 6-3 9 0s6 3 9 0" /></svg>`,
+  "stream": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 12h16.5m-16.5 4h16.5M3.75 8h16.5" /></svg>`,
+  "ocean": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12h18M3 16h18M3 8h18" /></svg>`,
+  "beach": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1.5M12 18.75V21M3.75 12H5.25M18.75 12H20.25M6.16 6.16l1.06 1.06m9.53 9.53l1.06 1.06" /></svg>`,
+  "underwater": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><path stroke-linecap="round" stroke-linejoin="round" d="M12 2a10 10 0 00-7.54 16.58L12 22l7.54-3.42A10 10 0 0012 2z" /></svg>`,
+  "bubbles": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><circle cx="6" cy="18" r="2" /><circle cx="12" cy="12" r="3" /><circle cx="19" cy="7" r="2" /></svg>`,
+  "rowboat": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12h18L17 19H7L3 12z" /></svg>`,
+  "sailboat": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v18M12 3l7 10H12M12 5L5 13H12" /></svg>`,
+  "submarine": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12a4 4 0 014-4h10a4 4 0 014 4v1a4 4 0 01-4 4H7a4 4 0 01-4-4v-1zM12 8V4h3" /></svg>`,
+  "washmachine": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><rect x="4" y="3" width="16" height="18" rx="2" /><circle cx="12" cy="13" r="5" /></svg>`,
+  "fire": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>`,
+  "wind": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12h19.5m-19.5-3h15.75M2.25 15h11.25" /></svg>`,
+  "trees": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3L3 17h18L12 3zm0 0v18" /></svg>`,
+  "wind-howl": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12h18M5 8h12M4 16h10" /></svg>`,
+  "jungle": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3a9 9 0 00-9 9c0 4.97 4.03 9 9 9s9-4.03 9-9a9 9 0 00-9-9z" /></svg>`,
+  "leaves-rustle": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v13.5m0-13.5a9.75 9.75 0 018.15 4.53c.6 1 .9 2.1.9 3.22m-9.05-7.75a9.75 9.75 0 00-8.15 4.53" /></svg>`,
+  "snow": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v18M3 12h18m-15-6l12 12m0-12L6 18" /></svg>`,
+  "gravel": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><circle cx="6" cy="6" r="2" /><circle cx="18" cy="6" r="2" /><circle cx="12" cy="12" r="2" /><circle cx="6" cy="18" r="2" /><circle cx="18" cy="18" r="2" /></svg>`,
+  "morning": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><circle cx="12" cy="10" r="4" /><path stroke-linecap="round" stroke-linejoin="round" d="M12 2v2M12 16v2M4.22 4.22l1.42 1.42M16.36 16.36l1.42 1.42M2 12h2M18 12h2M4.22 19.78l1.42-1.42M16.36 7.64l1.42-1.42" /></svg>`,
+  "forest": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><path d="M12 3L3 17h18L12 3zM8 12l2-4 2 4M6 15l3-6 3 6" /></svg>`,
+  "chimes": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><path d="M12 3v18M8 6v12M16 6v12M4 9h16" /></svg>`,
+  "wipers": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><path d="M4 18l8-10 8 10M12 8v10" /></svg>`,
+  "beehive": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><path d="M12 3v18M6 8h12M8 12h8M10 16h4" /></svg>`,
+  "birds": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9 9 0 100-18 9 9 0 000 18zm0-15v6m-3-3h6" /></svg>`,
+  "cat": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><path stroke-linecap="round" stroke-linejoin="round" d="M12 5c-3.87 0-7 3.13-7 7a7 7 0 007 7 7 7 0 007-7c0-3.87-3.13-7-7-7zm-4 7a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0zm8 0a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0z" /></svg>`,
+  "chickens": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><circle cx="12" cy="12" r="9" /><path d="M8 12h8M12 8v8" /></svg>`,
+  "cows": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><path d="M4 8h16v8H4V8zm4-4v4m8-4v4" /></svg>`,
+  "crickets": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v18M6 8h12M8 12h8M10 16h4" /></svg>`,
+  "crows": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><path d="M12 3v18M5 12h14" /></svg>`,
+  "dog": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><rect x="4" y="6" width="16" height="12" rx="2" /><path d="M8 18v2m8-2v2" /></svg>`,
+  "frog": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3a6 6 0 00-6 6c0 3.31 2.69 6 6 6s6-2.69 6-6a6 6 0 00-6-6zm0 18v-3" /></svg>`,
+  "horse": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><path d="M3 10h18v6H3v-6zm3-4v4m12-4v4" /></svg>`,
+  "owl": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><circle cx="8" cy="10" r="2" /><circle cx="16" cy="10" r="2" /><path stroke-linecap="round" stroke-linejoin="round" d="M12 14l-2-2h4l-2 2zm10-2a10 10 0 11-20 0 10 10 0 0120 0z" /></svg>`,
+  "seagulls": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10s4-3 9 0c5-3 9 0 9 0M5 14s3-2 7 0c4-2 7 0 7 0" /></svg>`,
+  "sheep": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><circle cx="12" cy="12" r="8" /><path d="M9 12h6" /></svg>`,
+  "whale": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><path d="M12 20a8 8 0 008-8h-3a5 5 0 00-5 5v3zm-8-8a8 8 0 008 8v-3a5 5 0 00-5-5H4z" /></svg>`,
+  "wolf": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3l3 6 6 1-4.5 4.5L18 21l-6-3-6 3 1.5-6.5L3 10l6-1 3-6z" /></svg>`,
+  "woodpecker": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><path stroke-linecap="round" stroke-linejoin="round" d="M18 10h-4V6a2 2 0 00-4 0v4H6a2 2 0 000 4h4v4a2 2 0 004 0v-4h4a2 2 0 000-4z" /></svg>`,
+  "airport": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z" /></svg>`,
+  "cafe": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><path d="M18 8h2a2 2 0 012 2v2a2 2 0 01-2 2h-2M2 8h14v10a2 2 0 01-2 2H4a2 2 0 01-2-2V8z" /></svg>`,
+  "carousel": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><path d="M12 2L2 7h20L12 2zm0 5v14M7 8v10M17 8v10" /></svg>`,
+  "church": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><path d="M12 2v4m-2-2h4m-2 4v14m-7 0h14" /></svg>`,
+  "construction": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><path d="M12 2L2 22h20L12 2zm0 12v4" /></svg>`,
+  "bar": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><path d="M12 3L2 21h20L12 3zm-2 12h4" /></svg>`,
+  "lab": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h14a2 2 0 012 2v14a2 2 0 01-2 2zM9 9h6m-6 4h6m-6 4h4" /></svg>`,
+  "laundry": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><rect x="4" y="3" width="16" height="18" rx="2" /><circle cx="12" cy="13" r="5" /></svg>`,
+  "library": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><path d="M4 19.5A2.5 2.5 0 016.5 17H20M4 19.5A2.5 2.5 0 006.5 22H20M4 19.5V3.5A2.5 2.5 0 016.5 1H20v16H6.5" /></svg>`,
+  "village": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><path stroke-linecap="round" stroke-linejoin="round" d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9zm6 13V12h6v10" /></svg>`,
+  "office": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><rect x="3" y="3" width="18" height="18" rx="2" /><path d="M9 3v18M15 3v18M3 9h18M3 15h18" /></svg>`,
+  "restaurant": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><path d="M12 3v18M5 8h14" /></svg>`,
+  "subway": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><rect x="3" y="4" width="18" height="12" rx="2" /><path d="M6 20l2-4m10 4l-2-4" /></svg>`,
+  "supermarket": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><circle cx="9" cy="21" r="1" /><circle cx="20" cy="21" r="1" /><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6" /></svg>`,
+  "temple": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><path d="M12 2L2 9h20L12 2zm-7 7v13h14V9H5zm4 7h6v6H9v-6z" /></svg>`,
+  "alarm": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><circle cx="12" cy="13" r="7" /><path d="M12 9v4l3 3M5 3L3 5m18-2l2 2" /></svg>`,
+  "airplane": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z" /></svg>`,
+  "insidetrain": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><rect x="3" y="3" width="18" height="18" rx="2" /><path d="M9 9h6v6H9V9z" /></svg>`,
+  "train": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><rect x="4" y="3" width="16" height="14" rx="2" /><circle cx="8" cy="20" r="1" /><circle cx="16" cy="20" r="1" /></svg>`,
+  "siren": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><path d="M12 2L2 22h20L12 2zm0 6v6m0 4v2" /></svg>`,
+  "busystreet": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><path d="M12 2v20M5 5h14M5 11h14M5 17h14" /></svg>`,
+  "crowd": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><circle cx="6" cy="7" r="3" /><circle cx="18" cy="7" r="3" /><path d="M2 20a6 6 0 0110 0m0 0a6 6 0 0110 0" /></svg>`,
+  "fireworks": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><path d="M12 2v4M12 18v4M2 12h4m12 0h4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83" /></svg>`,
+  "highway": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><path d="M6 3L3 21h18l-3-18H6zm6 0v18" /></svg>`,
+  "road": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><path d="M4 22L10 2m10 20L14 2" /></svg>`,
+  "traffic": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><rect x="9" y="3" width="6" height="18" rx="3" /><circle cx="12" cy="7" r="2" /><circle cx="12" cy="12" r="2" /><circle cx="12" cy="17" r="2" /></svg>`,
+  "fridge": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><rect x="5" y="2" width="14" height="20" rx="2" /><path d="M5 10h14M10 6v2m0 8v2" /></svg>`,
+  "vacuum": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><path d="M12 3v12M8 15h8M6 19h12" /></svg>`,
+  "dryer-raw": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><rect x="4" y="3" width="16" height="18" rx="2" /><circle cx="12" cy="12" r="6" /></svg>`,
+  "fan-raw": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><circle cx="12" cy="12" r="10" /><path d="M12 2v20M2 12h20" /></svg>`,
+  "clock": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><circle cx="12" cy="12" r="10" /><path d="M12 6v6l4 2" /></svg>`,
+  "dryer": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><rect x="4" y="3" width="16" height="18" rx="2" /><circle cx="12" cy="12" r="6" /></svg>`,
+  "keyboard": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><rect x="2" y="4" width="20" height="16" rx="2" /><path d="M6 8h2m4 0h2m4 0h2M6 12h2m4 0h2m4 0h2M7 16h10" /></svg>`,
+  "morse": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><path d="M3 12h2m4 0h6m4 0h2" /></svg>`,
+  "paper": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" /><path d="M14 2v6h6" /></svg>`,
+  "singingbowl": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><path d="M3 10a9 9 0 0018 0H3z" /></svg>`,
+  "projector": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><rect x="3" y="6" width="18" height="12" rx="2" /><circle cx="9" cy="12" r="3" /></svg>`,
+  "radio": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><rect x="2" y="6" width="20" height="14" rx="2" /><path d="M6 3l4 3m-4 7h12" /></svg>`,
+  "typewriter": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><rect x="4" y="6" width="16" height="12" rx="2" /><path d="M6 18h12" /></svg>`,
+  "vinyl": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><circle cx="12" cy="12" r="10" /><circle cx="12" cy="12" r="3" /></svg>`,
+  "shh": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><path d="M9 10a3 3 0 006 0M12 2a10 10 0 100 20 10 10 0 000-20z" /></svg>`,
+  "static-noise": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><path d="M3 12h18M3 6h18M3 18h18" /></svg>`,
+  "binaural": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sc-icon"><path d="M3 12h18M12 3v18" /></svg>`
+};
 
 /* Celestial canvas vars */
 let stars = [];
@@ -329,48 +872,356 @@ function calculateQibla(latitude, longitude) {
   return qiblaDirection;
 }
 
+async function getArabicLocationName(lat, lon) {
+  const locText = document.getElementById("location-text");
+  try {
+    const response = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&zoom=10&addressdetails=1&accept-language=ar`, {
+      headers: {
+        'User-Agent': 'AnNoor-Islamic-Web-App'
+      }
+    });
+    if (response.ok) {
+      const data = await response.json();
+      const city = data.address.city || data.address.town || data.address.village || data.address.state || "موقع غير معروف";
+      if (locText) {
+        locText.innerHTML = `<span class="loc-prefix">محط الرحال:</span> <span class="loc-name">${city}</span>`;
+      }
+    } else {
+      if (locText) {
+        locText.innerHTML = `<span class="loc-prefix">آفاق:</span> <span class="loc-name">${lat.toFixed(2)}° ، ${lon.toFixed(2)}°</span>`;
+      }
+    }
+  } catch (err) {
+    if (locText) {
+      locText.innerHTML = `<span class="loc-prefix">آفاق:</span> <span class="loc-name">${lat.toFixed(2)}° ، ${lon.toFixed(2)}°</span>`;
+    }
+  }
+}
+
+function syncLocationByIP() {
+  const locText = document.getElementById("location-text");
+  fetch("https://ipapi.co/json/")
+    .then(res => {
+      if (!res.ok) throw new Error("IP API failed");
+      return res.json();
+    })
+    .then(async (data) => {
+      userLatitude = data.latitude || 21.4225;
+      userLongitude = data.longitude || 39.8262;
+      hasUserLocation = true;
+      
+      await getArabicLocationName(userLatitude, userLongitude);
+      fetchPrayersForDate(selectedDate);
+    })
+    .catch(err => {
+      console.warn("IP Geolocation failed:", err);
+      if (locText) {
+        locText.innerHTML = `<span class="loc-prefix">محط الرحال:</span> <span class="loc-name">مكة المكرمة (افتراضي)</span>`;
+      }
+      fetchPrayersForDate(selectedDate);
+    });
+}
+
 function syncLocation() {
   if ("geolocation" in navigator) {
-    navigator.geolocation.getCurrentPosition(async (position) => {
-      const lat = position.coords.latitude;
-      const lng = position.coords.longitude;
+    const locBadge = document.getElementById("user-location-badge");
+    const locText = document.getElementById("location-text");
+    if (locBadge) locBadge.classList.remove("hidden");
+    if (locText) locText.innerHTML = "تحديد الموقع...";
 
-      const qiblaAngle = calculateQibla(lat, lng);
+    navigator.geolocation.getCurrentPosition(async (position) => {
+      userLatitude = position.coords.latitude;
+      userLongitude = position.coords.longitude;
+      hasUserLocation = true;
+
+      await getArabicLocationName(userLatitude, userLongitude);
+
+      const qiblaAngle = calculateQibla(userLatitude, userLongitude);
       const needle = document.querySelector(".compass-needle");
       if (needle) {
         needle.style.transform = `rotate(${qiblaAngle}deg)`;
       }
       const compassFooter = document.querySelector(".compass-footer");
       if (compassFooter) {
-        compassFooter.textContent = `Mecca is exactly ${Math.round(qiblaAngle)}° from north (synchronized with your location: ${lat.toFixed(2)}°, ${lng.toFixed(2)}°).`;
+        compassFooter.textContent = `Mecca is exactly ${Math.round(qiblaAngle)}° from north (synchronized with your location: ${userLatitude.toFixed(2)}°, ${userLongitude.toFixed(2)}°).`;
       }
 
-      try {
-        const timestamp = Math.floor(Date.now() / 1000);
-        const response = await fetch(`https://api.aladhan.com/v1/timings/${timestamp}?latitude=${lat}&longitude=${lng}&method=2`);
-        const json = await response.json();
-
-        if (json.code === 200 && json.data && json.data.timings) {
-          const timings = json.data.timings;
-          PRAYERS[0].time = timings.Fajr;
-          PRAYERS[1].time = timings.Sunrise;
-          PRAYERS[2].time = timings.Dhuhr;
-          PRAYERS[3].time = timings.Asr;
-          PRAYERS[4].time = timings.Maghrib;
-          PRAYERS[5].time = timings.Isha;
-
-          renderSalahHub();
-          renderDashboard();
-          syncPhaseWithRealTime();
-          console.log("Salah times synchronized live with user location successfully!");
-        }
-      } catch (err) {
-        console.error("Failed to load local prayer times from AlAdhan API", err);
-      }
+      fetchPrayersForDate(selectedDate);
     }, (error) => {
-      console.warn("Geolocation request denied or failed, falling back to default times.", error);
+      console.warn("Geolocation request denied or failed, attempting IP fallback...", error);
+      syncLocationByIP();
+    }, { timeout: 8000 });
+  } else {
+    console.warn("Navigator geolocation not supported, attempting IP fallback...");
+    syncLocationByIP();
+  }
+}
+
+/* ---------------------------------- Mathematical Fallbacks & Calculations ---------------------------------- */
+
+function degToRad(d) { return d * Math.PI / 180; }
+function radToDeg(r) { return r * 180 / Math.PI; }
+
+function calculateOfflinePrayers(date, lat, lng) {
+  // Day of year
+  const start = new Date(date.getFullYear(), 0, 0);
+  const diff = date - start + (start.getTimezoneOffset() - date.getTimezoneOffset()) * 60 * 1000;
+  const oneDay = 1000 * 60 * 60 * 24;
+  const dayOfYear = Math.floor(diff / oneDay);
+
+  // Timezone offset in hours
+  const timezoneOffset = -date.getTimezoneOffset() / 60;
+
+  // Simple solar calculation
+  // Equation of time EqT (in minutes)
+  const b = degToRad(360 * (dayOfYear - 81) / 365);
+  const eqt = 9.87 * Math.sin(2 * b) - 7.53 * Math.cos(b) - 1.5 * Math.sin(b);
+
+  // Solar declination (in radians)
+  const declination = degToRad(23.44 * Math.sin(degToRad(360 * (dayOfYear - 80) / 365)));
+
+  // Solar noon (Dhuhr) in hours
+  const dhuhr = 12 - (lng / 15) + timezoneOffset - (eqt / 60);
+
+  const latRad = degToRad(lat);
+
+  // Hour angle helper
+  const hourAngle = (angleDeg) => {
+    const angleRad = degToRad(angleDeg);
+    const cosH = (Math.sin(angleRad) - Math.sin(latRad) * Math.sin(declination)) / (Math.cos(latRad) * Math.cos(declination));
+    if (cosH > 1) return 0; // never rises
+    if (cosH < -1) return 12; // never sets
+    return radToDeg(Math.acos(cosH)) / 15;
+  };
+
+  // Standard angles
+  const hFajr = hourAngle(-18);
+  const hSunrise = hourAngle(-0.833);
+  const hMaghrib = hourAngle(-0.833);
+  const hIsha = hourAngle(-18);
+
+  // Asr shadow angle (Shafi / standard: shadow factor G = 1)
+  const g = 1;
+  const asrAlt = -radToDeg(Math.atan(g + Math.tan(Math.abs(latRad - declination))));
+  const hAsr = hourAngle(asrAlt);
+
+  const formatTime = (hDecimal) => {
+    let hh = Math.floor(hDecimal);
+    let mm = Math.round((hDecimal - hh) * 60);
+    if (mm === 60) { hh += 1; mm = 0; }
+    hh = (hh % 24 + 24) % 24;
+    return `${String(hh).padStart(2, '0')}:${String(mm).padStart(2, '0')}`;
+  };
+
+  return {
+    Fajr: formatTime(dhuhr - hFajr),
+    Sunrise: formatTime(dhuhr - hSunrise),
+    Dhuhr: formatTime(dhuhr),
+    Asr: formatTime(dhuhr + hAsr),
+    Maghrib: formatTime(dhuhr + hMaghrib),
+    Isha: formatTime(dhuhr + hIsha)
+  };
+}
+
+async function fetchPrayersForDate(date) {
+  // 1. Immediately calculate offline fallback times and render to ensure snappy responsiveness
+  const fallback = calculateOfflinePrayers(date, userLatitude, userLongitude);
+
+  PRAYERS[0].time = fallback.Fajr;
+  PRAYERS[1].time = fallback.Sunrise;
+  PRAYERS[2].time = fallback.Dhuhr;
+  PRAYERS[3].time = fallback.Asr;
+  PRAYERS[4].time = fallback.Maghrib;
+  PRAYERS[5].time = fallback.Isha;
+
+  renderSalahHub();
+  renderDashboard();
+  if (isViewingToday) {
+    syncPhaseWithRealTime();
+  }
+
+  // 2. Attempt online sync if user's location is active
+  try {
+    const timestamp = Math.floor(date.getTime() / 1000);
+    const response = await fetch(`https://api.aladhan.com/v1/timings/${timestamp}?latitude=${userLatitude}&longitude=${userLongitude}`);
+    const json = await response.json();
+
+    if (json.code === 200 && json.data && json.data.timings) {
+      const timings = json.data.timings;
+
+      const cleanTime = (tStr) => tStr.split(" ")[0];
+
+      PRAYERS[0].time = cleanTime(timings.Fajr);
+      PRAYERS[1].time = cleanTime(timings.Sunrise);
+      PRAYERS[2].time = cleanTime(timings.Dhuhr);
+      PRAYERS[3].time = cleanTime(timings.Asr);
+      PRAYERS[4].time = cleanTime(timings.Maghrib);
+      PRAYERS[5].time = cleanTime(timings.Isha);
+
+      renderSalahHub();
+      renderDashboard();
+      if (isViewingToday) {
+        syncPhaseWithRealTime();
+      }
+      console.log(`Successfully synced times for ${date.toDateString()} online.`);
+    }
+  } catch (err) {
+    console.warn("Using offline mathematical calculations for prayer times.", err);
+  }
+}
+
+function resetToToday() {
+  selectedDate = new Date();
+  isViewingToday = true;
+  syncDatePickerFields();
+  renderHeader();
+  fetchPrayersForDate(selectedDate);
+}
+
+function isSameDay(d1, d2) {
+  return d1.getFullYear() === d2.getFullYear() &&
+    d1.getMonth() === d2.getMonth() &&
+    d1.getDate() === d2.getDate();
+}
+
+function getLocalDateString(d) {
+  const offset = d.getTimezoneOffset();
+  const local = new Date(d.getTime() - (offset * 60 * 1000));
+  return local.toISOString().split('T')[0];
+}
+
+function getGregorianFromHijri(year, monthIndex, day) {
+  const epoch = -42523286400000;
+  // Tabular Islamic Calendar algorithm
+  const days = Math.floor((year - 1) * 354.367) + Math.floor(monthIndex * 29.53) + (day - 1);
+  const ms = epoch + days * 86400000;
+  return new Date(ms + 43200000); // Add 12 hours to avoid timezone shifts
+}
+
+function syncDatePickerFields() {
+  const gInput = document.getElementById("gregorian-input");
+  if (gInput) gInput.value = getLocalDateString(selectedDate);
+
+  const hijri = getHijriApprox(selectedDate);
+  const hDay = document.getElementById("hijri-day-select");
+  const hMonth = document.getElementById("hijri-month-select");
+  const hYear = document.getElementById("hijri-year-select");
+
+  if (hDay) hDay.value = hijri.day;
+  if (hMonth) hMonth.value = HIJRI_MONTHS.indexOf(hijri.month);
+  if (hYear) hYear.value = hijri.year;
+}
+
+function initDatePicker() {
+  // Populate Hijri day
+  const daySelect = document.getElementById("hijri-day-select");
+  if (daySelect) {
+    let daysHtml = "";
+    for (let d = 1; d <= 30; d++) {
+      daysHtml += `<option value="${d}">${d}</option>`;
+    }
+    daySelect.innerHTML = daysHtml;
+  }
+
+  // Populate Hijri month
+  const monthSelect = document.getElementById("hijri-month-select");
+  if (monthSelect) {
+    let monthsHtml = "";
+    HIJRI_MONTHS.forEach((m, idx) => {
+      monthsHtml += `<option value="${idx}">${m}</option>`;
+    });
+    monthSelect.innerHTML = monthsHtml;
+  }
+
+  // Populate Hijri year
+  const yearSelect = document.getElementById("hijri-year-select");
+  if (yearSelect) {
+    let yearsHtml = "";
+    const currentHijriYear = getHijriApprox(new Date()).year;
+    for (let y = currentHijriYear - 5; y <= currentHijriYear + 15; y++) {
+      yearsHtml += `<option value="${y}">${y} AH</option>`;
+    }
+    yearSelect.innerHTML = yearsHtml;
+  }
+
+  // Set initial picker field values
+  syncDatePickerFields();
+
+  // Add picker trigger handler
+  const trigger = document.getElementById("date-picker-trigger");
+  const dropdown = document.getElementById("date-picker-dropdown");
+  if (trigger && dropdown) {
+    trigger.addEventListener("click", (e) => {
+      e.stopPropagation();
+      dropdown.classList.toggle("hidden");
     });
   }
+
+  // Add tabs switcher handler
+  const tabButtons = document.querySelectorAll(".date-tab-btn");
+  tabButtons.forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      tabButtons.forEach(t => t.classList.remove("active"));
+      btn.classList.add("active");
+
+      const selectedTab = btn.getAttribute("data-date-tab");
+      const panes = document.querySelectorAll(".date-pane");
+      panes.forEach(pane => pane.classList.remove("active"));
+
+      const targetPane = document.getElementById(`${selectedTab}-date-pane`);
+      if (targetPane) targetPane.classList.add("active");
+    });
+  });
+
+  // Add Apply button handler
+  const applyBtn = document.getElementById("date-picker-apply-btn");
+  if (applyBtn) {
+    applyBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const activeTabBtn = document.querySelector(".date-tab-btn.active");
+      const activeTab = activeTabBtn ? activeTabBtn.getAttribute("data-date-tab") : "gregorian";
+
+      if (activeTab === "gregorian") {
+        const gInput = document.getElementById("gregorian-input");
+        if (gInput && gInput.value) {
+          selectedDate = new Date(gInput.value + "T12:00:00");
+        }
+      } else {
+        const hDay = parseInt(document.getElementById("hijri-day-select").value, 10);
+        const hMonthIdx = parseInt(document.getElementById("hijri-month-select").value, 10);
+        const hYear = parseInt(document.getElementById("hijri-year-select").value, 10);
+        selectedDate = getGregorianFromHijri(hYear, hMonthIdx, hDay);
+      }
+
+      isViewingToday = isSameDay(selectedDate, new Date());
+
+      // Keep selectors aligned
+      syncDatePickerFields();
+      renderHeader();
+      fetchPrayersForDate(selectedDate);
+
+      if (dropdown) dropdown.classList.add("hidden");
+    });
+  }
+
+  // Add Today button handler
+  const todayBtn = document.getElementById("date-picker-today-btn");
+  if (todayBtn) {
+    todayBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      resetToToday();
+      if (dropdown) dropdown.classList.add("hidden");
+    });
+  }
+
+  // Add outside click close handler
+  document.addEventListener("click", (e) => {
+    if (!dropdown || !trigger) return;
+    if (!trigger.contains(e.target) && !dropdown.contains(e.target)) {
+      dropdown.classList.add("hidden");
+    }
+  });
 }
 
 /* ---------------------------------- Init & Setup ---------------------------------- */
@@ -384,10 +1235,13 @@ document.addEventListener("DOMContentLoaded", () => {
   fetchAllSurahs(); // Dynamic Quran API call
   initHadiths();
   initAdhkar();
-  initQuiz();
   initChat();
+  initDatePicker();
   renderAll();
   syncLocation();
+  fetchDailyQuizQuestions().then(() => {
+    initQuiz();
+  });
   setInterval(updateCountdown, 1000);
 
   setInterval(() => {
@@ -433,6 +1287,18 @@ function loadState() {
 
   const savedTranslation = localStorage.getItem("translation");
   if (savedTranslation) translation = savedTranslation;
+
+  const savedFontSize = localStorage.getItem("quranAyahFontSize");
+  if (savedFontSize) {
+    ayahFontSize = parseInt(savedFontSize, 10);
+  } else {
+    if (window.innerWidth <= 767) {
+      ayahFontSize = 19;
+    } else {
+      ayahFontSize = 24;
+    }
+  }
+  updateAyahFontSize(ayahFontSize);
 }
 
 function saveState() {
@@ -443,6 +1309,16 @@ function saveState() {
   localStorage.setItem("adhkarSessionCounts", JSON.stringify(adhkarSessionCounts));
   localStorage.setItem("reciter", reciter);
   localStorage.setItem("translation", translation);
+  localStorage.setItem("quranAyahFontSize", ayahFontSize.toString());
+}
+
+function updateAyahFontSize(size) {
+  ayahFontSize = Math.max(14, Math.min(38, size));
+  document.documentElement.style.setProperty("--ayah-font-size", `${ayahFontSize}px`);
+  const display = document.getElementById("font-size-display");
+  if (display) {
+    display.textContent = `${ayahFontSize}px`;
+  }
 }
 
 /* ---------------------------------- Helper Utilities ---------------------------------- */
@@ -483,6 +1359,9 @@ function applyThemeVariables() {
   document.documentElement.style.setProperty("--glow-color", cfg.glow);
   document.documentElement.style.setProperty("--body-color", cfg.bodyColor);
   document.documentElement.style.setProperty("--star-opacity", cfg.starOpacity.toString());
+
+  document.body.classList.remove("phase-fajr", "phase-dhuhr", "phase-asr", "phase-maghrib", "phase-isha");
+  document.body.classList.add(`phase-${currentPhase}`);
 }
 
 /* ---------------------------------- Event Handlers ---------------------------------- */
@@ -495,6 +1374,11 @@ function setupEventListeners() {
       switchView(view);
     });
   });
+
+  const btnSalahAlertHide = document.getElementById("btn-salah-alert-hide");
+  if (btnSalahAlertHide) {
+    btnSalahAlertHide.addEventListener("click", hideSalahAlert);
+  }
 
   const phaseButtons = document.getElementById("phase-buttons");
   phaseButtons.addEventListener("click", (e) => {
@@ -530,10 +1414,10 @@ function setupEventListeners() {
     const tafseerPanel = document.getElementById("ayah-tafseer");
     if (tafseerOpen) {
       tafseerPanel.classList.remove("collapsed");
-      tafseerToggle.textContent = "hide tafseer";
+      tafseerToggle.textContent = "إخفاء التفسير";
     } else {
       tafseerPanel.classList.add("collapsed");
-      tafseerToggle.textContent = "show tafseer";
+      tafseerToggle.textContent = "عرض التفسير";
     }
   });
 
@@ -568,33 +1452,54 @@ function setupEventListeners() {
     saveState();
     const reciterLabels = document.querySelectorAll(".audio-wave-reciter");
     reciterLabels.forEach(lbl => lbl.textContent = reciter);
-  });
 
-  const translationSelect = document.getElementById("translation-select");
-  translationSelect.addEventListener("change", (e) => {
-    translation = e.target.value;
-    saveState();
-    if (openSurah) {
-      openSurahModal(openSurah); // Refresh verses with new translation API
+    // Instant reload with new reciter voice
+    if (playingSurah && playingAyahKey) {
+      const parts = playingAyahKey.split(":");
+      const sId = parseInt(parts[0]);
+      const aNum = parseInt(parts[1]);
+
+      const currentSurahMeta = allSurahs.find(s => s.id === sId);
+      if (currentSurahMeta) {
+        reloadSurahWithNewReciter(currentSurahMeta, aNum);
+      }
     }
   });
+
+  const btnFontSmaller = document.getElementById("btn-font-smaller");
+  if (btnFontSmaller) {
+    btnFontSmaller.addEventListener("click", () => {
+      updateAyahFontSize(ayahFontSize - 2);
+      saveState();
+    });
+  }
+
+  const btnFontLarger = document.getElementById("btn-font-larger");
+  if (btnFontLarger) {
+    btnFontLarger.addEventListener("click", () => {
+      updateAyahFontSize(ayahFontSize + 2);
+      saveState();
+    });
+  }
 
   const tabWudu = document.getElementById("tab-wudu");
   const tabSalah = document.getElementById("tab-salah");
 
-  tabWudu.addEventListener("click", () => {
-    activeSalahTab = "wudu";
-    tabWudu.classList.add("active");
-    tabSalah.classList.remove("active");
-    renderChecklist();
-  });
+  if (tabWudu && tabSalah) {
+    tabWudu.addEventListener("click", () => {
+      activeSalahTab = "wudu";
+      tabWudu.classList.add("active");
+      tabSalah.classList.remove("active");
+      renderChecklist();
+    });
 
-  tabSalah.addEventListener("click", () => {
-    activeSalahTab = "salah";
-    tabSalah.classList.add("active");
-    tabWudu.classList.remove("active");
-    renderChecklist();
-  });
+    tabSalah.addEventListener("click", () => {
+      activeSalahTab = "salah";
+      tabSalah.classList.add("active");
+      tabWudu.classList.remove("active");
+      renderChecklist();
+    });
+  }
 
   window.addEventListener("mousemove", (e) => {
     const nx = (e.clientX / window.innerWidth - 0.5) * 2;
@@ -602,6 +1507,9 @@ function setupEventListeners() {
     mouse.x = nx;
     mouse.y = ny;
   });
+
+  setupPersistentPlayerListeners();
+  initSoundscapes();
 }
 
 function updateLiveSyncUI() {
@@ -637,6 +1545,11 @@ function setupSpotlightTracker() {
 function switchView(newViewId) {
   if (currentView === newViewId) return;
 
+  // Track previous active view before entering the dedicated player
+  if (currentView !== "dedicated-player") {
+    previousActiveView = currentView;
+  }
+
   const prevBtn = document.querySelector(`.nav-btn[data-view="${currentView}"]`);
   if (prevBtn) prevBtn.classList.remove("active");
 
@@ -661,6 +1574,19 @@ function switchView(newViewId) {
   }
 
   currentView = newViewId;
+
+  // Control persistent player visibility when entering/leaving dedicated-player
+  const player = document.getElementById("persistent-player");
+  if (player && playingAyahKey) {
+    if (newViewId === "dedicated-player") {
+      player.classList.add("hidden");
+      document.body.classList.remove("persistent-player-active");
+    } else {
+      player.classList.remove("hidden");
+      document.body.classList.add("persistent-player-active");
+      updatePersistentPlayerUI();
+    }
+  }
 }
 
 /* ---------------------------------- Quran API Integration ---------------------------------- */
@@ -674,9 +1600,9 @@ async function fetchAllSurahs() {
         id: s.number,
         name: s.englishName,
         arabic: s.name,
-        meaning: s.englishNameTranslation,
+        meaning: s.name,
         ayahCount: s.numberOfAyahs,
-        revelation: s.revelationType
+        revelation: s.revelationType === "Meccan" ? "مكية" : "مدنية"
       }));
       renderQuran();
     }
@@ -687,16 +1613,20 @@ async function fetchAllSurahs() {
   }
 }
 
+function getAudioUrl(surahId, ayahNumber, fallbackUrl) {
+  if (reciter === "Ali Jaber") {
+    const paddedSurah = String(surahId).padStart(3, '0');
+    const paddedAyah = String(ayahNumber).padStart(3, '0');
+    return `https://everyayah.com/data/Ali_Jaber_64kbps/${paddedSurah}${paddedAyah}.mp3`;
+  }
+  return fallbackUrl;
+}
+
 async function openSurahModal(surah) {
   openSurah = surah;
   activeAyahKey = null;
-
-  if (currentAudio) {
-    currentAudio.pause();
-    currentAudio = null;
-  }
-  playingAyahKey = null;
   ayahTab = "translation";
+  lastScrolledAyahKey = null;
 
   const modal = document.getElementById("surah-modal");
   modal.classList.add("active");
@@ -709,7 +1639,7 @@ async function openSurahModal(surah) {
   list.classList.add("hidden");
 
   document.getElementById("modal-surah-name").textContent = surah.name;
-  document.getElementById("modal-surah-meta").textContent = `${surah.meaning} · ${surah.revelation}`;
+  document.getElementById("modal-surah-meta").textContent = `${surah.ayahCount} آية · ${surah.revelation}`;
   document.getElementById("modal-surah-arabic").textContent = surah.arabic;
 
   try {
@@ -721,8 +1651,10 @@ async function openSurahModal(surah) {
     };
     const edition = translationMap[translation] || "en.sahih";
 
+    const isCustomReciter = (reciter === "Ali Jaber");
+    const reciterEdition = isCustomReciter ? "ar.alafasy" : (RECITER_MAP[reciter] || "ar.alafasy");
     // Fetch combined simple Arabic text + selected translation + audio reciter URLs
-    const url = `https://api.alquran.cloud/v1/surah/${surah.id}/editions/quran-simple,${edition},ar.alafasy`;
+    const url = `https://api.alquran.cloud/v1/surah/${surah.id}/editions/quran-simple,${edition},${reciterEdition}`;
     const res = await fetch(url);
     const json = await res.json();
 
@@ -735,7 +1667,7 @@ async function openSurahModal(surah) {
         n: ayah.numberInSurah,
         ar: ayah.text,
         en: translationAyahs[i].text,
-        audio: audioAyahs[i].audio
+        audio: getAudioUrl(surah.id, ayah.numberInSurah, audioAyahs[i].audio)
       }));
 
       loader.classList.add("hidden");
@@ -747,8 +1679,8 @@ async function openSurahModal(surah) {
   } catch (err) {
     console.error("Failed to load surah verses", err);
     loader.innerHTML = `
-      <p class="loader-text font-serif" style="color: #f43f5e; margin: 0;">Failed to load verses. Check connection.</p>
-      <button class="counter-button gold-glow" onclick="closeModal()" style="width: auto; height: auto; padding: 10px 24px; border-radius: 9999px; font-size: 14px; margin-top: 14px;">Close Modal</button>
+      <p class="loader-text font-serif" style="color: #f43f5e; margin: 0;">فشل تحميل الآيات. تحقق من الاتصال.</p>
+      <button class="counter-button gold-glow" onclick="closeModal()" style="width: auto; height: auto; padding: 10px 24px; border-radius: 9999px; font-size: 14px; margin-top: 14px;">إغلاق</button>
     `;
   }
 }
@@ -759,11 +1691,10 @@ function closeModal() {
   document.body.style.overflow = "auto";
   openSurah = null;
   activeAyahKey = null;
-  if (currentAudio) {
-    currentAudio.pause();
-    currentAudio = null;
+
+  if (playingAyahKey && currentAudio) {
+    showPersistentPlayer();
   }
-  playingAyahKey = null;
 }
 
 function renderSurahModalContent() {
@@ -772,13 +1703,15 @@ function renderSurahModalContent() {
   const ayahsList = document.getElementById("modal-ayahs-list");
   ayahsList.innerHTML = "";
 
+  let activeRowElement = null;
+
   openSurah.ayahs.forEach((ayah) => {
     const key = `${openSurah.id}:${ayah.n}`;
     const isActive = activeAyahKey === key;
     const isPlaying = playingAyahKey === key;
 
     const row = document.createElement("div");
-    row.className = `ayah-row ${isActive ? 'expanded' : ''}`;
+    row.className = `ayah-row ${isActive ? 'expanded' : ''} ${isPlaying ? 'playing-ayah' : ''}`;
     row.id = `ayah-row-${ayah.n}`;
 
     const isBookmarked = bookmarks.has(key);
@@ -791,27 +1724,11 @@ function renderSurahModalContent() {
         </div>
         <div class="ayah-controls">
           <button class="control-btn play-btn" data-key="${key}">
-            ${isPlaying ? "❚❚" : "▶"}
-          </button>
-          <button class="control-btn bookmark-btn ${isBookmarked ? 'bookmarked' : ''}" data-key="${key}">
-            ♥
+            ${isPlaying && currentAudio && !currentAudio.paused ? "❚❚" : "▶"}
           </button>
         </div>
       </div>
       
-      <!-- Audio wave visualizer inside row -->
-      ${isPlaying ? `
-        <div class="audio-wave">
-          <div class="audio-wave-bar" style="animation-delay: 0.0s"></div>
-          <div class="audio-wave-bar" style="animation-delay: 0.1s"></div>
-          <div class="audio-wave-bar" style="animation-delay: 0.2s"></div>
-          <div class="audio-wave-bar" style="animation-delay: 0.3s"></div>
-          <div class="audio-wave-bar" style="animation-delay: 0.4s"></div>
-          <div class="audio-wave-bar" style="animation-delay: 0.5s"></div>
-          <span class="audio-wave-reciter">${reciter}</span>
-        </div>
-      ` : ""}
-
       <!-- Expandable details panel -->
       <div class="ayah-expansion-panel">
         <div class="expansion-tabs">
@@ -833,12 +1750,6 @@ function renderSurahModalContent() {
         activeAyahKey = key;
       }
       renderSurahModalContent();
-    });
-
-    const bookmarkBtn = row.querySelector(".bookmark-btn");
-    bookmarkBtn.addEventListener("click", (e) => {
-      e.stopPropagation();
-      toggleBookmark(key, bookmarkBtn);
     });
 
     const playBtn = row.querySelector(".play-btn");
@@ -870,7 +1781,40 @@ function renderSurahModalContent() {
     }
 
     ayahsList.appendChild(row);
+
+    if (isPlaying) {
+      activeRowElement = row;
+    }
   });
+
+  // Auto-centering: scroll the playing ayah to the middle of the list
+  if (activeRowElement && lastScrolledAyahKey !== playingAyahKey) {
+    const targetKey = playingAyahKey;
+    const targetAyahNum = targetKey ? targetKey.split(":")[1] : null;
+    const isInitialOpen = (lastScrolledAyahKey === null);
+    const delay = isInitialOpen ? 450 : 50;
+
+    setTimeout(() => {
+      if (playingAyahKey === targetKey && targetAyahNum) {
+        const container = document.getElementById("modal-ayahs-list");
+        // Look up the element FRESH from the live DOM (not a stale reference)
+        const liveRow = document.getElementById(`ayah-row-${targetAyahNum}`);
+
+        if (container && liveRow) {
+          const containerHeight = container.clientHeight;
+          const rect = liveRow.getBoundingClientRect();
+          const containerRect = container.getBoundingClientRect();
+
+          const elementOffsetTop = rect.top - containerRect.top + container.scrollTop;
+          const elementHeight = rect.height;
+          const targetScrollTop = elementOffsetTop - (containerHeight / 2) + (elementHeight / 2);
+
+          container.scrollTop = Math.max(0, targetScrollTop);
+        }
+      }
+    }, delay);
+    lastScrolledAyahKey = playingAyahKey;
+  }
 }
 
 function toggleBookmark(key, btn) {
@@ -917,38 +1861,809 @@ function triggerBurstParticles(parentEl) {
   }, 800);
 }
 
-function togglePlayAudio(key, audioUrl) {
+function togglePlayAudio(key, audioUrl, startTime = 0) {
+  // If we clicked on the same verse and no seeking is requested
+  if (playingAyahKey === key && currentAudio && startTime === 0) {
+    if (currentAudio.paused) {
+      currentAudio.play().catch(err => console.error("Playback play failed", err));
+    } else {
+      currentAudio.pause();
+    }
+    updatePersistentPlayerUI();
+    renderSurahModalContent();
+    return;
+  }
+
+  // If we clicked a different verse or audio is not initialized
   if (currentAudio) {
     currentAudio.pause();
     currentAudio = null;
   }
 
-  if (playingAyahKey === key) {
-    playingAyahKey = null;
-    renderSurahModalContent();
-  } else {
-    playingAyahKey = key;
-    renderSurahModalContent();
+  // Update playingSurah to match openSurah if we are playing from the modal
+  if (openSurah) {
+    playingSurah = openSurah;
+  }
 
-    currentAudio = new Audio(audioUrl);
-    currentAudio.play();
+  // Initialize ayahDurations if missing
+  if (playingSurah && (!playingSurah.ayahDurations || playingSurah.ayahDurations.length !== playingSurah.ayahs.length)) {
+    playingSurah.ayahDurations = new Array(playingSurah.ayahs.length).fill(0);
+  }
 
-    currentAudio.addEventListener("ended", () => {
-      // Premium Autoplay: triggers the next verse sequentially
-      const parts = key.split(":");
-      const sId = parseInt(parts[0]);
+  playingAyahKey = key;
+  renderSurahModalContent();
+
+  currentAudio = new Audio();
+  if (reverbLevel > 0) {
+    currentAudio.crossOrigin = "anonymous";
+  }
+  currentAudio.src = audioUrl;
+  currentAudio.volume = audioVolume;
+  currentAudio.muted = isAudioMuted;
+
+  // Handle CORS errors gracefully
+  currentAudio.addEventListener("error", (e) => {
+    if (currentAudio && currentAudio.crossOrigin === "anonymous") {
+      console.log("[AUDIO] CORS error detected, reloading without crossOrigin");
+      const savedTime = currentAudio.currentTime;
+      currentAudio.crossOrigin = null;
+      currentAudio.src = audioUrl;
+      currentAudio.currentTime = savedTime;
+      currentAudio.play().catch(err => console.error("Reload play failed", err));
+    }
+  });
+
+  // Cache duration on load
+  currentAudio.addEventListener("durationchange", () => {
+    if (playingSurah && playingSurah.ayahDurations && currentAudio) {
+      const parts = playingAyahKey.split(":");
       const aNum = parseInt(parts[1]);
-      const nextKey = `${sId}:${aNum + 1}`;
+      if (currentAudio.duration && !isNaN(currentAudio.duration)) {
+        playingSurah.ayahDurations[aNum - 1] = currentAudio.duration;
+      }
+    }
+    updateProgressUI();
+  });
 
-      const nextAyah = openSurah.ayahs.find(a => a.n === aNum + 1);
+  currentAudio.addEventListener("loadedmetadata", () => {
+    if (playingSurah && playingSurah.ayahDurations && currentAudio) {
+      const parts = playingAyahKey.split(":");
+      const aNum = parseInt(parts[1]);
+      if (currentAudio.duration && !isNaN(currentAudio.duration)) {
+        playingSurah.ayahDurations[aNum - 1] = currentAudio.duration;
+      }
+    }
+    if (startTime > 0 && currentAudio) {
+      currentAudio.currentTime = startTime;
+    }
+    updateProgressUI();
+  });
+
+  // Bind progress events
+  currentAudio.addEventListener("timeupdate", updateProgressUI);
+  currentAudio.addEventListener("play", () => {
+    applyAudioEffects();
+    updatePersistentPlayerUI();
+    renderSurahModalContent();
+  });
+  currentAudio.addEventListener("pause", () => {
+    updatePersistentPlayerUI();
+    renderSurahModalContent();
+  });
+
+  currentAudio.play().catch(err => console.error("Playback start failed", err));
+
+  currentAudio.addEventListener("ended", () => {
+    // Autoplay next verse
+    const parts = key.split(":");
+    const sId = parseInt(parts[0]);
+    const aNum = parseInt(parts[1]);
+    const nextKey = `${sId}:${aNum + 1}`;
+
+    // Get the next ayah from playingSurah (since openSurah might be null if modal is closed)
+    if (playingSurah && playingSurah.ayahs) {
+      const nextAyah = playingSurah.ayahs.find(a => a.n === aNum + 1);
       if (nextAyah) {
-        playingAyahKey = null;
         togglePlayAudio(nextKey, nextAyah.audio);
       } else {
-        playingAyahKey = null;
+        // End of Surah reached
+        if (isSurahReplaying) {
+          // Loop current Surah
+          const firstAyah = playingSurah.ayahs[0];
+          const firstKey = `${sId}:1`;
+          togglePlayAudio(firstKey, firstAyah.audio);
+        } else if (isAutoplayNextActive) {
+          // Play next Surah
+          playNextSurah();
+        } else {
+          hidePersistentPlayer();
+        }
+      }
+    } else {
+      hidePersistentPlayer();
+    }
+  });
+
+  // If modal is closed, show persistent player bar
+  if (!openSurah) {
+    showPersistentPlayer();
+  } else {
+    // Keep persistent player synced behind modal
+    updatePersistentPlayerUI();
+  }
+}
+
+function showPersistentPlayer() {
+  const player = document.getElementById("persistent-player");
+  if (!player) return;
+
+  if (currentView === "dedicated-player") {
+    player.classList.add("hidden");
+    return;
+  }
+
+  player.classList.remove("hidden");
+  document.body.classList.add("persistent-player-active");
+
+  updatePersistentPlayerUI();
+}
+
+function hidePersistentPlayer() {
+  const player = document.getElementById("persistent-player");
+  if (!player) return;
+
+  player.classList.add("hidden");
+  document.body.classList.remove("persistent-player-active");
+
+  if (currentAudio) {
+    currentAudio.pause();
+    currentAudio = null;
+  }
+
+  playingAyahKey = null;
+  playingSurah = null;
+
+  // If we are currently inside the dedicated player, exit back to previous view
+  if (currentView === "dedicated-player") {
+    switchView(previousActiveView);
+  }
+
+  renderSurahModalContent();
+  updateSurahCardsPlayButtons();
+}
+
+function formatTime(secs) {
+  if (isNaN(secs)) return "0:00";
+  const m = Math.floor(secs / 60);
+  const s = Math.floor(secs % 60);
+  return `${m}:${s < 10 ? '0' : ''}${s}`;
+}
+
+function updateProgressUI() {
+  if (!currentAudio || !playingSurah || !playingAyahKey) return;
+
+  const parts = playingAyahKey.split(":");
+  const currentANum = parseInt(parts[1]);
+
+  if (!playingSurah.ayahDurations) {
+    playingSurah.ayahDurations = new Array(playingSurah.ayahs.length).fill(0);
+  }
+
+  if (currentAudio.duration && !isNaN(currentAudio.duration)) {
+    playingSurah.ayahDurations[currentANum - 1] = currentAudio.duration;
+  }
+
+  // Calculate cumulative elapsed time
+  let cumulativeElapsed = 0;
+  for (let j = 0; j < currentANum - 1; j++) {
+    cumulativeElapsed += playingSurah.ayahDurations[j] || 10;
+  }
+  cumulativeElapsed += currentAudio.currentTime;
+
+  // Calculate cumulative total duration
+  let cumulativeTotal = 0;
+  for (let j = 0; j < playingSurah.ayahs.length; j++) {
+    if (j === currentANum - 1 && currentAudio.duration && !isNaN(currentAudio.duration)) {
+      cumulativeTotal += currentAudio.duration;
+    } else {
+      cumulativeTotal += playingSurah.ayahDurations[j] || 10;
+    }
+  }
+
+  const elapsedEl = document.getElementById("player-current-time");
+  const durationEl = document.getElementById("player-duration");
+  const progressFill = document.getElementById("player-progress-fill");
+
+  if (elapsedEl) elapsedEl.textContent = formatTime(cumulativeElapsed);
+  if (durationEl) durationEl.textContent = formatTime(cumulativeTotal);
+
+  if (progressFill && cumulativeTotal > 0) {
+    const percentage = (cumulativeElapsed / cumulativeTotal) * 100;
+    progressFill.style.width = `${percentage}%`;
+  }
+
+  // Dedicated progress elements sync
+  const dedicatedElapsedEl = document.getElementById("dedicated-current-time");
+  const dedicatedDurationEl = document.getElementById("dedicated-duration");
+  const dedicatedProgressFill = document.getElementById("dedicated-progress-fill");
+
+  if (dedicatedElapsedEl) dedicatedElapsedEl.textContent = formatTime(cumulativeElapsed);
+  if (dedicatedDurationEl) dedicatedDurationEl.textContent = formatTime(cumulativeTotal);
+  if (dedicatedProgressFill && cumulativeTotal > 0) {
+    const percentage = (cumulativeElapsed / cumulativeTotal) * 100;
+    dedicatedProgressFill.style.width = `${percentage}%`;
+  }
+}
+
+function updateVolumeUI() {
+  const volumeSlider = document.getElementById("player-volume-slider");
+  const muteBtn = document.getElementById("player-mute-btn");
+
+  if (volumeSlider) {
+    volumeSlider.value = isAudioMuted ? 0 : audioVolume;
+  }
+
+  if (muteBtn) {
+    const speakerOn = muteBtn.querySelector(".volume-on");
+    const speakerMuted = muteBtn.querySelector(".volume-muted");
+
+    if (isAudioMuted || audioVolume === 0) {
+      if (speakerOn) speakerOn.classList.add("hidden");
+      if (speakerMuted) speakerMuted.classList.remove("hidden");
+    } else {
+      if (speakerOn) speakerOn.classList.remove("hidden");
+      if (speakerMuted) speakerMuted.classList.add("hidden");
+    }
+  }
+
+  // Dedicated volume elements sync
+  const dedicatedVolumeSlider = document.getElementById("dedicated-volume-slider");
+  const dedicatedMuteBtn = document.getElementById("dedicated-mute-btn");
+
+  if (dedicatedVolumeSlider) {
+    dedicatedVolumeSlider.value = isAudioMuted ? 0 : audioVolume;
+  }
+
+  if (dedicatedMuteBtn) {
+    const speakerOn = dedicatedMuteBtn.querySelector(".volume-on");
+    const speakerMuted = dedicatedMuteBtn.querySelector(".volume-muted");
+    if (isAudioMuted || audioVolume === 0) {
+      if (speakerOn) speakerOn.classList.add("hidden");
+      if (speakerMuted) speakerMuted.classList.remove("hidden");
+    } else {
+      if (speakerOn) speakerOn.classList.remove("hidden");
+      if (speakerMuted) speakerMuted.classList.add("hidden");
+    }
+  }
+}
+
+function updatePersistentPlayerUI() {
+  if (!playingSurah || !playingAyahKey) return;
+
+  const parts = playingAyahKey.split(":");
+  const aNum = parts[1];
+
+  const surahTitle = document.getElementById("player-surah-title");
+  const ayahMeta = document.getElementById("player-ayah-meta");
+
+  if (surahTitle) {
+    surahTitle.textContent = `Surah ${playingSurah.name}`;
+  }
+
+  if (ayahMeta) {
+    ayahMeta.textContent = `Ayah ${aNum} · Recited by ${reciter}`;
+  }
+
+  // Update play/pause buttons
+  const playBtn = document.getElementById("player-play-btn");
+  const isPlaying = (currentAudio && !currentAudio.paused);
+
+  // Toggle dedicated player avatar spin animation
+  const orbitRing = document.getElementById("avatar-orbit-ring");
+  if (orbitRing) {
+    if (isPlaying) {
+      orbitRing.classList.add("playing");
+    } else {
+      orbitRing.classList.remove("playing");
+    }
+  }
+
+  if (playBtn) {
+    const playIcon = playBtn.querySelector(".play-icon");
+    const pauseIcon = playBtn.querySelector(".pause-icon");
+
+    if (isPlaying) {
+      if (playIcon) playIcon.classList.add("hidden");
+      if (pauseIcon) pauseIcon.classList.remove("hidden");
+    } else {
+      if (playIcon) playIcon.classList.remove("hidden");
+      if (pauseIcon) pauseIcon.classList.add("hidden");
+    }
+  }
+
+  // Toggle mini wave visualizer inside player bar
+  const playerWave = document.getElementById("player-wave");
+  if (playerWave) {
+    if (isPlaying) {
+      playerWave.classList.remove("hidden");
+    } else {
+      playerWave.classList.add("hidden");
+    }
+  }
+
+  // Disable prev button if first ayah
+  const prevBtn = document.getElementById("player-prev-btn");
+  if (prevBtn) {
+    const isFirst = (parseInt(aNum) === 1);
+    prevBtn.disabled = isFirst;
+    prevBtn.style.opacity = isFirst ? 0.3 : 1;
+    prevBtn.style.pointerEvents = isFirst ? "none" : "auto";
+  }
+
+  // Disable next button if last ayah
+  const nextBtn = document.getElementById("player-next-btn");
+  if (nextBtn) {
+    const lastAyahNum = playingSurah.ayahs ? playingSurah.ayahs.length : 0;
+    const isLast = (parseInt(aNum) === lastAyahNum);
+    nextBtn.disabled = isLast;
+    nextBtn.style.opacity = isLast ? 0.3 : 1;
+    nextBtn.style.pointerEvents = isLast ? "none" : "auto";
+  }
+
+  // Sync replay & autoplay toggle states
+  const replayBtn = document.getElementById("player-replay-btn");
+  if (replayBtn) {
+    replayBtn.classList.toggle("active", isSurahReplaying);
+  }
+  const autoplayBtn = document.getElementById("player-autoplay-btn");
+  if (autoplayBtn) {
+    autoplayBtn.classList.toggle("active", isAutoplayNextActive);
+  }
+
+  // Dedicated text fields sync
+  const decSurahTitle = document.getElementById("dedicated-surah-title");
+  const decAyahMeta = document.getElementById("dedicated-ayah-meta");
+  const decReciterName = document.getElementById("dedicated-reciter-name");
+  const decAvatarMonogram = document.getElementById("dedicated-avatar-monogram");
+
+  if (decSurahTitle) {
+    decSurahTitle.textContent = `Surah ${playingSurah.name} (${playingSurah.meaning})`;
+  }
+  if (decAyahMeta) {
+    const total = playingSurah.ayahs ? playingSurah.ayahs.length : 0;
+    decAyahMeta.textContent = `Ayah ${aNum} of ${total}`;
+  }
+  if (decReciterName) {
+    decReciterName.textContent = `Sheikh ${reciter}`;
+  }
+  if (decAvatarMonogram) {
+    decAvatarMonogram.textContent = MONOGRAM_MAP[reciter] || "Q";
+  }
+
+  // Dedicated play/pause buttons sync
+  const decPlayBtn = document.getElementById("dedicated-play-btn");
+  if (decPlayBtn) {
+    const playIcon = decPlayBtn.querySelector(".play-icon");
+    const pauseIcon = decPlayBtn.querySelector(".pause-icon");
+    if (isPlaying) {
+      if (playIcon) playIcon.classList.add("hidden");
+      if (pauseIcon) pauseIcon.classList.remove("hidden");
+    } else {
+      if (playIcon) playIcon.classList.remove("hidden");
+      if (pauseIcon) pauseIcon.classList.add("hidden");
+    }
+  }
+
+  // Dedicated prev/next button disable state
+  const decPrevBtn = document.getElementById("dedicated-prev-btn");
+  if (decPrevBtn) {
+    const isFirst = (parseInt(aNum) === 1);
+    decPrevBtn.disabled = isFirst;
+    decPrevBtn.style.opacity = isFirst ? 0.3 : 1;
+    decPrevBtn.style.pointerEvents = isFirst ? "none" : "auto";
+  }
+  const decNextBtn = document.getElementById("dedicated-next-btn");
+  if (decNextBtn) {
+    const lastAyahNum = playingSurah.ayahs ? playingSurah.ayahs.length : 0;
+    const isLast = (parseInt(aNum) === lastAyahNum);
+    decNextBtn.disabled = isLast;
+    decNextBtn.style.opacity = isLast ? 0.3 : 1;
+    decNextBtn.style.pointerEvents = isLast ? "none" : "auto";
+  }
+
+  // Dedicated toggle states sync
+  const decReplayBtn = document.getElementById("dedicated-replay-btn");
+  if (decReplayBtn) {
+    decReplayBtn.classList.toggle("active", isSurahReplaying);
+  }
+  const decAutoplayBtn = document.getElementById("dedicated-autoplay-btn");
+  if (decAutoplayBtn) {
+    decAutoplayBtn.classList.toggle("active", isAutoplayNextActive);
+  }
+
+  updateVolumeUI();
+  updateSurahCardsPlayButtons();
+}
+
+function applyAudioEffects() {
+  if (!currentAudio) return;
+
+  // Set speed playback rate
+  currentAudio.playbackRate = currentSpeedRate;
+
+  if (reverbLevel > 0) {
+    try {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+
+      if (audioCtx.state === "suspended") {
+        audioCtx.resume();
+      }
+
+      // If Web Audio source has already been created, we just update parameters
+      if (currentAudio.__effectsConnected) {
+        if (activeWetGain) {
+          activeWetGain.gain.setValueAtTime(reverbLevel, audioCtx.currentTime);
+        }
+        if (activeDelayNode) {
+          activeDelayNode.delayTime.setValueAtTime(reverbSpace, audioCtx.currentTime);
+        }
+        return;
+      }
+
+      // Attempt to link to Web Audio nodes. Will succeed if crossOrigin anonymous works
+      const source = audioCtx.createMediaElementSource(currentAudio);
+
+      const delay = audioCtx.createDelay();
+      const feedback = audioCtx.createGain();
+      const wet = audioCtx.createGain();
+      const dry = audioCtx.createGain();
+
+      source.connect(dry);
+      dry.connect(audioCtx.destination);
+
+      source.connect(delay);
+      delay.connect(feedback);
+      feedback.connect(delay); // Feedback loop
+
+      delay.connect(wet);
+      wet.connect(audioCtx.destination);
+
+      delay.delayTime.value = reverbSpace;
+      feedback.gain.value = 0.45; // Mosque echo persistence
+      wet.gain.value = reverbLevel;
+      dry.gain.value = 1.0;
+
+      activeDelayNode = delay;
+      activeFeedbackGain = feedback;
+      activeWetGain = wet;
+
+      currentAudio.__effectsConnected = true;
+    } catch (err) {
+      console.warn("Could not connect audio effects nodes (CORS or browser context constraint):", err);
+    }
+  } else {
+    if (activeWetGain) {
+      activeWetGain.gain.setValueAtTime(0, audioCtx.currentTime);
+    }
+  }
+}
+
+function playSoundscape(id) {
+  const config = SOUNDSCAPES_CONFIG.find(item => item.id === id);
+  if (!config) return;
+
+  if (soundscapeStates[id]) {
+    if (!soundscapeAudios[id]) {
+      soundscapeAudios[id] = new Audio(config.url);
+      soundscapeAudios[id].loop = true;
+      soundscapeAudios[id].crossOrigin = "anonymous";
+    }
+    soundscapeAudios[id].volume = soundscapeVolumes[id];
+    soundscapeAudios[id].play().catch(err => {
+      console.log(`Failed to play soundscape ${id}:`, err);
+      // Fallback: try playing without anonymous crossOrigin if it fails (CORS check)
+      soundscapeAudios[id].crossOrigin = null;
+      soundscapeAudios[id].play().catch(e => console.error("Soundscape play failure:", e));
+    });
+  } else {
+    if (soundscapeAudios[id]) {
+      soundscapeAudios[id].pause();
+    }
+  }
+}
+
+function initSoundscapes() {
+  const grid = document.getElementById("soundscapes-grid");
+  if (!grid) return;
+
+  // 1. Build and Render Cards
+  grid.innerHTML = SOUNDSCAPES_CONFIG.map(item => `
+    <div class="sc-card" id="sc-card-${item.id}" data-id="${item.id}">
+      <div class="sc-card-header">
+        ${SOUNDSCAPE_SVG_ICONS[item.icon] || ""}
+        <span class="sc-name">${item.name}</span>
+      </div>
+      <div class="sc-card-slider-wrapper">
+        <div class="sc-volume-label">
+          <span>Volume</span>
+          <span id="sc-vol-val-${item.id}">${Math.round(soundscapeVolumes[item.id] * 100)}%</span>
+        </div>
+        <input type="range" class="sc-slider sc-card-slider" id="sc-slider-${item.id}" min="0" max="1" step="0.05" value="${soundscapeVolumes[item.id]}">
+      </div>
+    </div>
+  `).join("");
+
+  // 2. Bind listeners to each card
+  SOUNDSCAPES_CONFIG.forEach(item => {
+    const card = document.getElementById(`sc-card-${item.id}`);
+    const slider = document.getElementById(`sc-slider-${item.id}`);
+
+    if (card) {
+      card.addEventListener("click", (e) => {
+        // Ignore clicks directly inside the slider input
+        if (e.target.closest(".sc-card-slider-wrapper")) return;
+
+        const id = item.id;
+        soundscapeStates[id] = !soundscapeStates[id];
+        card.classList.toggle("active", soundscapeStates[id]);
+
+        playSoundscape(id);
+      });
+    }
+
+    if (slider) {
+      slider.addEventListener("input", (e) => {
+        const id = item.id;
+        const vol = parseFloat(e.target.value);
+        soundscapeVolumes[id] = vol;
+
+        const label = document.getElementById(`sc-vol-val-${id}`);
+        if (label) {
+          label.textContent = `${Math.round(vol * 100)}%`;
+        }
+
+        if (soundscapeAudios[id]) {
+          soundscapeAudios[id].volume = vol;
+        }
+      });
+    }
+  });
+
+  // 3. Search Bar listener
+  const searchInput = document.getElementById("soundscapes-search-input");
+  if (searchInput) {
+    searchInput.addEventListener("input", () => {
+      filterSoundscapes();
+    });
+  }
+
+  // 4. Category tabs listeners
+  const tabs = document.querySelectorAll(".soundscapes-tab-btn");
+  tabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+      tabs.forEach(t => t.classList.remove("active"));
+      tab.classList.add("active");
+      filterSoundscapes();
+    });
+  });
+
+  // Filter logic combining search and categories
+  function filterSoundscapes() {
+    const searchVal = searchInput ? searchInput.value.toLowerCase() : "";
+    const activeTab = document.querySelector(".soundscapes-tab-btn.active");
+    const filterCategory = activeTab ? activeTab.getAttribute("data-filter") : "all";
+
+    SOUNDSCAPES_CONFIG.forEach(item => {
+      const card = document.getElementById(`sc-card-${item.id}`);
+      if (!card) return;
+
+      const matchesSearch = item.name.toLowerCase().includes(searchVal);
+      const matchesCategory = (filterCategory === "all" || item.category === filterCategory);
+
+      if (matchesSearch && matchesCategory) {
+        card.style.display = "flex";
+      } else {
+        card.style.display = "none";
+      }
+    });
+  }
+
+  // 5. Global Actions: Mute All
+  const muteAllBtn = document.getElementById("btn-soundscapes-mute-all");
+  if (muteAllBtn) {
+    muteAllBtn.addEventListener("click", () => {
+      SOUNDSCAPES_CONFIG.forEach(item => {
+        soundscapeStates[item.id] = false;
+        const card = document.getElementById(`sc-card-${item.id}`);
+        if (card) card.classList.remove("active");
+
+        if (soundscapeAudios[item.id]) {
+          soundscapeAudios[item.id].pause();
+        }
+      });
+    });
+  }
+
+  // 6. Global Actions: Reset
+  const resetBtn = document.getElementById("btn-soundscapes-reset");
+  if (resetBtn) {
+    resetBtn.addEventListener("click", () => {
+      SOUNDSCAPES_CONFIG.forEach(item => {
+        soundscapeStates[item.id] = false;
+        soundscapeVolumes[item.id] = 0.5;
+
+        const card = document.getElementById(`sc-card-${item.id}`);
+        const slider = document.getElementById(`sc-slider-${item.id}`);
+        const label = document.getElementById(`sc-vol-val-${item.id}`);
+
+        if (card) card.classList.remove("active");
+        if (slider) slider.value = 0.5;
+        if (label) label.textContent = "50%";
+
+        if (soundscapeAudios[item.id]) {
+          soundscapeAudios[item.id].pause();
+          soundscapeAudios[item.id].volume = 0.5;
+        }
+      });
+    });
+  }
+}
+
+function setupPersistentPlayerListeners() {
+  const playBtn = document.querySelector("#player-play-btn");
+  if (playBtn) {
+    playBtn.addEventListener("click", () => {
+      if (!playingAyahKey || !playingSurah) return;
+
+      if (currentAudio) {
+        if (currentAudio.paused) {
+          currentAudio.play().catch(err => console.error("Play failed", err));
+        } else {
+          currentAudio.pause();
+        }
+        updatePersistentPlayerUI();
         renderSurahModalContent();
       }
     });
+  }
+
+  const prevBtn = document.getElementById("player-prev-btn");
+  if (prevBtn) {
+    prevBtn.addEventListener("click", () => {
+      playAdjacentAyah(-1);
+    });
+  }
+
+  const nextBtn = document.getElementById("player-next-btn");
+  if (nextBtn) {
+    nextBtn.addEventListener("click", () => {
+      playAdjacentAyah(1);
+    });
+  }
+
+  const volumeSlider = document.getElementById("player-volume-slider");
+  if (volumeSlider) {
+    volumeSlider.addEventListener("input", (e) => {
+      audioVolume = parseFloat(e.target.value);
+      if (currentAudio) {
+        currentAudio.volume = audioVolume;
+      }
+      if (audioVolume === 0) {
+        isAudioMuted = true;
+      } else {
+        isAudioMuted = false;
+      }
+      updateVolumeUI();
+    });
+  }
+
+  const muteBtn = document.getElementById("player-mute-btn");
+  if (muteBtn) {
+    muteBtn.addEventListener("click", () => {
+      isAudioMuted = !isAudioMuted;
+      if (currentAudio) {
+        currentAudio.muted = isAudioMuted;
+      }
+      updateVolumeUI();
+    });
+  }
+
+  const progressBg = document.getElementById("player-progress-bg");
+  if (progressBg) {
+    progressBg.addEventListener("click", (e) => {
+      if (!currentAudio || !playingSurah || !playingAyahKey) return;
+
+      // Calculate total duration (cumulative)
+      const parts = playingAyahKey.split(":");
+      const currentANum = parseInt(parts[1]);
+
+      if (!playingSurah.ayahDurations) {
+        playingSurah.ayahDurations = new Array(playingSurah.ayahs.length).fill(0);
+      }
+
+      let cumulativeTotal = 0;
+      for (let j = 0; j < playingSurah.ayahs.length; j++) {
+        if (j === currentANum - 1 && currentAudio.duration && !isNaN(currentAudio.duration)) {
+          cumulativeTotal += currentAudio.duration;
+        } else {
+          cumulativeTotal += playingSurah.ayahDurations[j] || 10;
+        }
+      }
+
+      const rect = progressBg.getBoundingClientRect();
+      const clickX = e.clientX - rect.left;
+      const width = rect.width;
+      const percentage = clickX / width;
+      const targetTime = percentage * cumulativeTotal;
+
+      // Find which Ayah this targetTime falls into
+      let accumulatedTime = 0;
+      let targetAyahIndex = 0;
+      let relativeOffset = 0;
+
+      for (let j = 0; j < playingSurah.ayahs.length; j++) {
+        const dur = playingSurah.ayahDurations[j] || 10;
+        if (accumulatedTime + dur >= targetTime) {
+          targetAyahIndex = j;
+          relativeOffset = targetTime - accumulatedTime;
+          break;
+        }
+        accumulatedTime += dur;
+        // Fallback for end of track
+        if (j === playingSurah.ayahs.length - 1) {
+          targetAyahIndex = j;
+          relativeOffset = dur - 0.1; // seek to just before end
+        }
+      }
+
+      const targetAyah = playingSurah.ayahs[targetAyahIndex];
+      const targetKey = `${playingSurah.id}:${targetAyah.n}`;
+
+      // Play target verse at offset
+      togglePlayAudio(targetKey, targetAyah.audio, relativeOffset);
+    });
+  }
+
+  const closePlayerBtn = document.getElementById("player-close-btn");
+  if (closePlayerBtn) {
+    closePlayerBtn.addEventListener("click", () => {
+      hidePersistentPlayer();
+    });
+  }
+
+  const replayBtn = document.getElementById("player-replay-btn");
+  if (replayBtn) {
+    replayBtn.addEventListener("click", () => {
+      isSurahReplaying = !isSurahReplaying;
+      replayBtn.classList.toggle("active", isSurahReplaying);
+    });
+  }
+
+  const autoplayBtn = document.getElementById("player-autoplay-btn");
+  if (autoplayBtn) {
+    autoplayBtn.addEventListener("click", () => {
+      isAutoplayNextActive = !isAutoplayNextActive;
+      autoplayBtn.classList.toggle("active", isAutoplayNextActive);
+    });
+  }
+}
+
+function playAdjacentAyah(direction) {
+  if (!playingAyahKey || !playingSurah || !playingSurah.ayahs) return;
+
+  const parts = playingAyahKey.split(":");
+  const sId = parseInt(parts[0]);
+  const aNum = parseInt(parts[1]);
+  const targetNum = aNum + direction;
+
+  const targetAyah = playingSurah.ayahs.find(a => a.n === targetNum);
+  if (targetAyah) {
+    const targetKey = `${sId}:${targetNum}`;
+
+    // Play the target ayah
+    togglePlayAudio(targetKey, targetAyah.audio);
   }
 }
 
@@ -991,25 +2706,35 @@ function renderAll() {
 function renderSelectors() {
   const reciterSelect = document.getElementById("reciter-select");
   reciterSelect.innerHTML = RECITERS.map(r => `<option value="${r}" ${r === reciter ? 'selected' : ''}>${r}</option>`).join("");
-
-  const translationSelect = document.getElementById("translation-select");
-  translationSelect.innerHTML = TRANSLATIONS.map(t => `<option value="${t}" ${t === translation ? 'selected' : ''}>${t}</option>`).join("");
 }
 
 function renderHeader() {
   const cfg = PHASES[currentPhase];
 
-  document.getElementById("header-phase-label").textContent = `${cfg.label} · ${cfg.arabic}`;
-  document.getElementById("header-greeting-en").textContent = cfg.greeting;
-  document.getElementById("header-greeting-ar").textContent = cfg.greetingArabic;
+  document.getElementById("header-phase-label").textContent = cfg.arabic;
 
-  const now = new Date();
-  const dateStr = now.toLocaleDateString(undefined, { weekday: "long", day: "numeric", month: "long", year: "numeric" });
+  const greetEn = document.getElementById("header-greeting-en");
+  if (greetEn) greetEn.style.display = "none";
+
+  const greetAr = document.getElementById("header-greeting-ar");
+  if (greetAr) greetAr.textContent = cfg.greetingArabic;
+
+  const dateStr = selectedDate.toLocaleDateString("ar-EG", { weekday: "long", day: "numeric", month: "long", year: "numeric" });
   document.getElementById("gregorian-date").textContent = dateStr;
 
-  const hijri = getHijriApprox(now);
-  document.getElementById("hijri-date").textContent = `${hijri.day} ${hijri.month} ${hijri.year} AH`;
+  const hijri = getHijriApprox(selectedDate);
+  const hijriStr = `${hijri.day} ${hijri.month} ${hijri.year} هـ`;
+  document.getElementById("hijri-date").textContent = hijriStr;
 
+  // Big Dashboard Date elements
+  const dayName = selectedDate.toLocaleDateString("ar-EG", { weekday: "long" });
+  const gregorianDateOnly = selectedDate.toLocaleDateString("ar-EG", { day: "numeric", month: "long", year: "numeric" }) + " م";
+
+  const bigDayEl = document.getElementById("dashboard-big-day");
+  if (bigDayEl) bigDayEl.textContent = dayName;
+
+  const bigDatesEl = document.getElementById("dashboard-big-dates");
+  if (bigDatesEl) bigDatesEl.textContent = `${hijriStr} • ${gregorianDateOnly}`;
   const btns = document.querySelectorAll(".phase-btn");
   btns.forEach(btn => {
     if (btn.getAttribute("data-phase") === currentPhase) {
@@ -1026,7 +2751,7 @@ function renderCelestialBody() {
 
   if (currentPhase === "isha") {
     bodyContainer.innerHTML = `
-      <svg class="moon-svg" width="150" height="150" viewBox="0 0 150 150">
+      <svg class="moon-svg" width="150" height="150" viewBox="0 0 150 150" style="overflow: visible; filter: drop-shadow(0 0 20px ${color}aa) drop-shadow(0 0 50px ${color}33);">
         <defs>
           <radialGradient id="moonGrad" cx="35%" cy="35%" r="70%">
             <stop offset="0%" stop-color="#fffaf0" />
@@ -1034,7 +2759,7 @@ function renderCelestialBody() {
             <stop offset="100%" stop-color="#b8905a" />
           </radialGradient>
         </defs>
-        <path d="M75 15 A60 60 0 1 0 75 135 A48 60 0 1 1 75 15 Z" fill="url(#moonGrad)" style="filter: drop-shadow(0 0 34px ${color}99) drop-shadow(0 0 70px ${color}44)" />
+        <path d="M75 15 A60 60 0 1 0 75 135 A48 60 0 1 1 75 15 Z" fill="url(#moonGrad)" />
       </svg>
     `;
     bodyContainer.style.top = "16%";
@@ -1074,6 +2799,64 @@ function renderNatureBackdrop() {
 
 function updateCountdown() {
   const now = new Date();
+  const currentHHMM = `${String(now.getHours()).padStart(2, "0")}:${String(now.getMinutes()).padStart(2, "0")}`;
+
+  PRAYERS.forEach(p => {
+    if (p.name === "Sunrise") return;
+    if (p.time === currentHHMM) {
+      if (lastAlertedPrayer !== p.name) {
+        lastAlertedPrayer = p.name;
+        showSalahAlert(p);
+      }
+    }
+  });
+
+  if (lastAlertedPrayer && !PRAYERS.some(p => p.time === currentHHMM)) {
+    lastAlertedPrayer = "";
+  }
+
+  const nameEl = document.getElementById("next-prayer-name");
+  const arabicEl = document.getElementById("next-prayer-arabic");
+  const labelEl = document.getElementById("countdown-label");
+  const countdownDisplay = document.querySelector(".countdown-display");
+
+  if (!isViewingToday) {
+    let returnBtn = document.getElementById("return-live-btn");
+    if (!returnBtn) {
+      returnBtn = document.createElement("button");
+      returnBtn.id = "return-live-btn";
+      returnBtn.className = "return-live-btn gold-glow";
+      returnBtn.textContent = "Return to Live Times";
+      returnBtn.addEventListener("click", () => {
+        resetToToday();
+      });
+      if (countdownDisplay) {
+        countdownDisplay.parentNode.insertBefore(returnBtn, countdownDisplay);
+      }
+    }
+
+    if (returnBtn) returnBtn.style.display = "block";
+    if (countdownDisplay) countdownDisplay.style.display = "none";
+
+    if (labelEl) labelEl.textContent = "Viewing selected date";
+    if (nameEl) {
+      nameEl.textContent = selectedDate.toLocaleDateString(undefined, { weekday: "short", month: "short", day: "numeric" });
+    }
+    if (arabicEl) {
+      const hijri = getHijriApprox(selectedDate);
+      arabicEl.textContent = `${hijri.day} ${hijri.month}`;
+      arabicEl.style.fontSize = "16px";
+    }
+    return;
+  }
+
+  // Restore live countdown visibility
+  if (countdownDisplay) countdownDisplay.style.display = "flex";
+  const returnBtn = document.getElementById("return-live-btn");
+  if (returnBtn) returnBtn.style.display = "none";
+
+  if (labelEl) labelEl.textContent = "Time to next prayer";
+
   let nextPrayer = null;
   let minDiff = Infinity;
 
@@ -1102,15 +2885,11 @@ function updateCountdown() {
     nextPrayer = fajr;
   }
 
-  const nameEl = document.getElementById("next-prayer-name");
-  const arabicEl = document.getElementById("next-prayer-arabic");
   const hrsEl = document.getElementById("countdown-hours");
   const minsEl = document.getElementById("countdown-minutes");
   const secsEl = document.getElementById("countdown-seconds");
 
   if (nameEl) {
-    nameEl.textContent = `Next: ${nextPrayer.name}`;
-
     const ARABIC_NAMES = {
       Fajr: "الفجر",
       Dhuhr: "الظهر",
@@ -1118,8 +2897,20 @@ function updateCountdown() {
       Maghrib: "المغرب",
       Isha: "العشاء"
     };
+
+    let displayName = nextPrayer.name;
+    let displayArabic = ARABIC_NAMES[nextPrayer.name] || "";
+
+    if (nextPrayer.name === "Dhuhr" && now.getDay() === 5) {
+      displayName = "الجمعة";
+      displayArabic = "الجمعة";
+    }
+
+    nameEl.textContent = displayArabic;
+
     if (arabicEl) {
-      arabicEl.textContent = ARABIC_NAMES[nextPrayer.name] || "";
+      arabicEl.textContent = "";
+      arabicEl.style.fontSize = ""; // Reset custom font size
     }
 
     const hours = Math.floor(minDiff / 3600000);
@@ -1137,13 +2928,21 @@ function renderPrayersStrip() {
   const strip = document.getElementById("dashboard-prayers-strip");
   if (!strip) return;
 
+  const isFriday = selectedDate.getDay() === 5;
+
   strip.innerHTML = PRAYERS.map(p => {
-    const isCurrent = p.name.toLowerCase() === currentPhase;
+    const isCurrent = isViewingToday && p.name.toLowerCase() === currentPhase;
+    let displayArabic = p.arabic;
+
+    if (p.name === "Dhuhr" && isFriday) {
+      displayArabic = "الجمعة";
+    }
+
     return `
       <div class="strip-item ${isCurrent ? 'active' : ''}">
-        <span class="strip-arabic-tag font-arabic">${p.arabic}</span>
+        <span class="strip-arabic-tag font-arabic">${displayArabic}</span>
         <div class="strip-indicator"></div>
-        <span class="strip-name">${p.name}</span>
+        <span class="strip-name">${displayArabic}</span>
         <span class="strip-time">${p.time}</span>
       </div>
     `;
@@ -1153,14 +2952,30 @@ function renderPrayersStrip() {
 function renderDashboard() {
   updateCountdown();
   renderPrayersStrip();
+  renderDashboardAdhkarWidget();
   const cfg = PHASES[currentPhase];
 
-  document.getElementById("ayah-arabic").textContent = "وَبَشِّرِ الصَّابِرِينَ الَّذِينَ إِذَا أَصَابَتْهُم مُّصِيبَةٌ قَالُوا إِنَّا لِلَّهِ وَإِنَّا إِلَيْهِ رَاجِعُونَ";
-  document.getElementById("ayah-translation").textContent = `"And give good tidings to the patient, who, when disaster strikes them, say: Indeed we belong to Allah, and indeed to Him we will return." — Al-Baqarah 2:155–156`;
-  document.querySelector("#ayah-tafseer p").textContent = "This verse teaches that patience through hardship, paired with remembering our return to Allah, is itself a form of worship worthy of glad tidings.";
+  const seed = getDailySeed(selectedDate);
 
-  document.getElementById("dua-arabic").textContent = "رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ";
-  document.getElementById("dua-translation").textContent = `"Our Lord, give us good in this world and good in the hereafter, and protect us from the punishment of the Fire."`;
+  const dailyAyah = DAILY_AYAHS[seed % DAILY_AYAHS.length];
+  document.getElementById("ayah-arabic").textContent = dailyAyah.ar;
+  document.getElementById("ayah-translation").textContent = dailyAyah.en;
+  document.querySelector("#ayah-tafseer p").textContent = dailyAyah.tafseer;
+
+  const dailyDua = DAILY_DUAS[seed % DAILY_DUAS.length];
+  document.getElementById("dua-arabic").textContent = dailyDua.ar;
+  document.getElementById("dua-translation").textContent = dailyDua.en;
+
+  const dailyHadith = DAILY_HADITHS[seed % DAILY_HADITHS.length];
+  const hadithTextEl = document.getElementById("hadith-text");
+  const hadithRefEl = document.getElementById("hadith-ref");
+  if (hadithTextEl) hadithTextEl.textContent = dailyHadith.text;
+  if (hadithRefEl) hadithRefEl.textContent = dailyHadith.ref;
+
+  const dailyReminder = DAILY_REMINDERS[seed % DAILY_REMINDERS.length];
+  const reminderTextEl = document.getElementById("spiritual-reminder-text");
+  if (reminderTextEl) reminderTextEl.textContent = dailyReminder;
+
   document.getElementById("counter-value").textContent = adhkarCount;
 
   const waveform = document.getElementById("dashboard-waveform");
@@ -1208,7 +3023,96 @@ function renderDashboard() {
   dialHand.style.transform = `rotate(${angle}deg)`;
 
   const dialText = document.getElementById("dial-phase-text");
-  dialText.textContent = cfg.label;
+  dialText.textContent = cfg.arabic;
+}
+
+function renderDashboardAdhkarWidget() {
+  const titleEl = document.getElementById("adhkar-widget-title");
+  const descEl = document.getElementById("adhkar-widget-description");
+  const redirectBtn = document.getElementById("btn-adhkar-redirect");
+  if (!titleEl || !descEl || !redirectBtn) return;
+
+  const now = new Date();
+  const hrs = now.getHours();
+  let category = "salah";
+  let title = "";
+  let desc = "";
+
+  if (hrs >= 4 && hrs < 12) {
+    category = "morning";
+    title = "أذكار الصباح";
+    desc = "ابدأ يومك بالحمد والتحصين. حثّ النبي ﷺ على تلاوة أذكار الصباح بين الفجر والشروق للسكينة والبركة.";
+  } else if (hrs >= 16 && hrs < 22) {
+    category = "evening";
+    title = "أذكار المساء";
+    desc = "مع اقتراب نهاية اليوم، خصص لحظات لشكر الله والاستعاذة به قبل حلول الليل. تُقرأ بين العصر والمغرب.";
+  } else if (hrs >= 22 || hrs < 4) {
+    category = "sleep";
+    title = "أذكار النوم";
+    desc = "هيئ قلبك للراحة. اقرأ آية الكرسي والمعوذات لحفظ نفسك طوال الليل كما علمنا النبي ﷺ.";
+  } else {
+    category = "salah";
+    title = "أذكار بعد الصلاة";
+    desc = "بعد إتمام الصلوات المفروضة، اذكر الله بالتسبيح والتحميد والتكبير لمضاعفة أجرك.";
+  }
+
+  titleEl.textContent = title;
+  descEl.textContent = desc;
+
+  // Clear previous listeners to prevent multiple triggers
+  const newBtn = redirectBtn.cloneNode(true);
+  redirectBtn.parentNode.replaceChild(newBtn, redirectBtn);
+
+  newBtn.addEventListener("click", () => {
+    switchView("adhkar");
+    startAdhkarSession(category);
+  });
+}
+
+function showSalahAlert(prayer) {
+  const modal = document.getElementById("salah-alert-modal");
+  if (!modal) return;
+
+  // Reset previous classes
+  modal.className = "salah-alert-overlay";
+
+  const isFriday = new Date().getDay() === 5;
+  let className = prayer.name.toLowerCase();
+  let displayName = prayer.name;
+  let displayArabic = prayer.arabic;
+
+  if (prayer.name === "Dhuhr" && isFriday) {
+    className = "jumuah";
+    displayName = "الجمعة";
+    displayArabic = "الجمعة";
+  }
+
+  modal.classList.add(className);
+
+  document.getElementById("salah-alert-arabic-name").textContent = displayArabic;
+  document.getElementById("salah-alert-title").textContent = `حان وقت صلاة ${displayArabic}`;
+
+  modal.classList.add("visible");
+
+  if (alertDismissTimeout) {
+    clearTimeout(alertDismissTimeout);
+  }
+
+  // Auto dismiss after 1 hour (3600000 ms)
+  alertDismissTimeout = setTimeout(() => {
+    hideSalahAlert();
+  }, 3600000);
+}
+
+function hideSalahAlert() {
+  const modal = document.getElementById("salah-alert-modal");
+  if (modal) {
+    modal.classList.remove("visible");
+  }
+  if (alertDismissTimeout) {
+    clearTimeout(alertDismissTimeout);
+    alertDismissTimeout = null;
+  }
 }
 
 function renderQuran(filterQuery = "") {
@@ -1234,12 +3138,25 @@ function renderQuran(filterQuery = "") {
       <div class="surah-info-left">
         <span class="surah-id">${surah.id}</span>
         <div>
-          <h3 class="surah-name">${surah.name}</h3>
-          <p class="surah-meta">${surah.meaning} · ${surah.ayahCount} ayahs · ${surah.revelation}</p>
+          <h3 class="surah-name">${surah.arabic}</h3>
+          <p class="surah-meta">${surah.ayahCount} آية · ${surah.revelation}</p>
         </div>
       </div>
-      <span dir="rtl" class="surah-arabic">${surah.arabic}</span>
+      <div class="surah-info-right">
+        <span dir="rtl" class="surah-arabic">${surah.arabic}</span>
+        <button class="surah-card-play-btn" data-surah-id="${surah.id}" title="تشغيل السورة كاملة">
+          <svg class="play-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z" /></svg>
+          <svg class="pause-svg hidden" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" /></svg>
+          <span class="card-spinner hidden"></span>
+        </button>
+      </div>
     `;
+
+    const playBtn = card.querySelector(".surah-card-play-btn");
+    playBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      playFullSurah(surah, playBtn);
+    });
 
     card.addEventListener("click", () => {
       openSurahModal(surah);
@@ -1252,12 +3169,18 @@ function renderQuran(filterQuery = "") {
       card.style.transform = "translateY(0)";
     }, index * 12);
   });
+
+  // Sync button states on render
+  updateSurahCardsPlayButtons();
 }
 
 function renderSalahHub() {
-  const currentIdx = { fajr: 0, dhuhr: 2, asr: 3, maghrib: 4, isha: 5 }[currentPhase] || 5;
+  const currentIdx = isViewingToday
+    ? ({ fajr: 0, dhuhr: 2, asr: 3, maghrib: 4, isha: 5 }[currentPhase] || 5)
+    : -1;
 
   const prayerGrid = document.getElementById("prayer-times-grid");
+  if (!prayerGrid) return;
   prayerGrid.innerHTML = "";
 
   PRAYERS.forEach((p, i) => {
@@ -1266,10 +3189,9 @@ function renderSalahHub() {
     card.className = `glass-card prayer-card ${isActive ? 'active' : ''}`;
 
     card.innerHTML = `
-      <div class="prayer-title">${p.name}</div>
-      <div dir="rtl" class="prayer-arabic">${p.arabic}</div>
+      <div class="prayer-title">${p.arabic}</div>
       <div class="prayer-time">${p.time}</div>
-      ${isActive ? `<div class="prayer-now-tag">now</div>` : ""}
+      ${isActive ? `<div class="prayer-now-tag">الآن</div>` : ""}
     `;
     prayerGrid.appendChild(card);
   });
@@ -1302,6 +3224,7 @@ function setupCompassAstrolabeTilt() {
 
 function renderChecklist() {
   const checklistContainer = document.getElementById("checklist-container");
+  if (!checklistContainer) return;
   checklistContainer.innerHTML = "";
 
   const steps = activeSalahTab === "wudu" ? WUDU_STEPS : SALAH_STEPS;
@@ -1389,88 +3312,415 @@ function renderHadiths(query = "") {
 
 /* ---------------------------------- ADHKAR SANCTUARY ---------------------------------- */
 
+function playHapticTick() {
+  try {
+    const ctx = audioCtx || new (window.AudioContext || window.webkitAudioContext)();
+    if (!audioCtx) audioCtx = ctx;
+
+    if (ctx.state === "suspended") {
+      ctx.resume();
+    }
+
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+
+    osc.type = "sine";
+    osc.frequency.setValueAtTime(900, ctx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(150, ctx.currentTime + 0.08);
+
+    gain.gain.setValueAtTime(0.12, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.08);
+
+    osc.start(ctx.currentTime);
+    osc.stop(ctx.currentTime + 0.08);
+  } catch (e) {
+    console.warn("Tactile audio feedback failed to play: ", e);
+  }
+}
+
 function initAdhkar() {
-  const tabs = document.querySelectorAll(".adhkar-tabs .tab-btn");
-  tabs.forEach(tab => {
-    tab.addEventListener("click", () => {
-      tabs.forEach(t => t.classList.remove("active"));
-      tab.classList.add("active");
-      activeAdhkarCategory = tab.getAttribute("data-category");
-      renderAdhkar();
+  const btnExit = document.getElementById("btn-session-exit");
+  if (btnExit) btnExit.addEventListener("click", exitAdhkarSession);
+
+  const btnReset = document.getElementById("btn-session-reset");
+  if (btnReset) btnReset.addEventListener("click", resetActiveSessionCounts);
+
+  const btnPrev = document.getElementById("btn-session-prev");
+  if (btnPrev) btnPrev.addEventListener("click", prevSessionItem);
+
+  const btnNext = document.getElementById("btn-session-next");
+  if (btnNext) btnNext.addEventListener("click", nextSessionItem);
+
+  const btnDone = document.getElementById("btn-celebration-done");
+  if (btnDone) btnDone.addEventListener("click", exitAdhkarSession);
+
+  const beadBtn = document.getElementById("adhkar-bead-button");
+  if (beadBtn) {
+    beadBtn.addEventListener("click", () => {
+      incrementSessionCount();
     });
-  });
+  }
+
+  if (window._adhkarKeydownBound) {
+    window.removeEventListener("keydown", window._adhkarKeydownBound);
+  }
+  window._adhkarKeydownBound = (e) => {
+    if (!isSessionActive) return;
+    if (e.code === "Space") {
+      e.preventDefault();
+      incrementSessionCount();
+    } else if (e.code === "ArrowLeft") {
+      prevSessionItem();
+    } else if (e.code === "ArrowRight") {
+      nextSessionItem();
+    }
+  };
+  window.addEventListener("keydown", window._adhkarKeydownBound);
+
   renderAdhkar();
 }
 
 function renderAdhkar() {
-  const list = document.getElementById("adhkar-list");
-  list.innerHTML = "";
+  isSessionActive = false;
+  const ov = document.getElementById("adhkar-overview-panel");
+  const ss = document.getElementById("adhkar-session-panel");
+  const cl = document.getElementById("adhkar-celebration-screen");
+  if (ov) ov.classList.remove("hidden");
+  if (ss) ss.classList.add("hidden");
+  if (cl) cl.classList.add("hidden");
+}
 
-  const items = ADHKAR[activeAdhkarCategory] || [];
-  items.forEach((item, index) => {
-    const key = `${activeAdhkarCategory}-${index}`;
-    const count = adhkarSessionCounts[key] || 0;
-    const isCompleted = count >= item.target;
+function startAdhkarSession(category) {
+  sessionCategory = category;
+  sessionActiveIndex = 0;
+  isSessionActive = true;
 
-    const card = document.createElement("div");
-    card.className = `glass-card adhkar-card spotlight ${isCompleted ? 'completed' : ''}`;
+  const ov = document.getElementById("adhkar-overview-panel");
+  const ss = document.getElementById("adhkar-session-panel");
+  const cl = document.getElementById("adhkar-celebration-screen");
+  if (ov) ov.classList.add("hidden");
+  if (ss) ss.classList.remove("hidden");
+  if (cl) cl.classList.add("hidden");
 
-    // Circ circle circumference = 2 * pi * r = 2 * 3.14 * 24 = 150.79
-    const circ = 150.79;
-    const offset = circ - (Math.min(count, item.target) / item.target) * circ;
+  renderSessionItem();
+}
 
-    card.innerHTML = `
-      <div class="adhkar-info">
-        <span class="card-subtitle" style="font-size: 10px; color: ${isCompleted ? '#34d399' : 'rgba(253, 230, 138, 0.4)'}">${item.title}</span>
-        <p dir="rtl" class="adhkar-arabic-text">${item.ar}</p>
-        <p class="adhkar-translit">${item.translit}</p>
-        <p class="adhkar-translation">"${item.translation}"</p>
-      </div>
-      <div class="adhkar-progress-container">
-        <svg class="progress-ring-svg" viewBox="0 0 58 58">
-          <circle class="progress-ring-track" cx="29" cy="29" r="24" fill="none" stroke-width="3" />
-          <circle class="progress-ring-bar" cx="29" cy="29" r="24" fill="none" stroke-width="3.5" 
-                  stroke-dasharray="${circ}" stroke-dashoffset="${offset}" />
-        </svg>
-        <div class="adhkar-progress-value">
-          <span>${count}</span>
-          <span class="adhkar-progress-target">/${item.target}</span>
-        </div>
-      </div>
-    `;
+function renderSessionItem() {
+  const items = ADHKAR[sessionCategory] || [];
+  if (items.length === 0) return;
 
-    card.addEventListener("click", () => {
-      let currentCount = adhkarSessionCounts[key] || 0;
-      if (currentCount < item.target) {
-        currentCount++;
-        adhkarSessionCounts[key] = currentCount;
-        saveState();
+  const item = items[sessionActiveIndex];
+  const key = `${sessionCategory}-${sessionActiveIndex}`;
+  const count = adhkarSessionCounts[key] || 0;
 
-        // Dynamic re-render of progress ring offset
-        const ringOffset = circ - (currentCount / item.target) * circ;
-        const bar = card.querySelector(".progress-ring-bar");
-        bar.style.strokeDashoffset = ringOffset;
+  const titleEl = document.getElementById("session-adhkar-title");
+  const arEl = document.getElementById("session-adhkar-ar");
+  const translitEl = document.getElementById("session-adhkar-translit");
+  const transEl = document.getElementById("session-adhkar-translation");
 
-        const valSpan = card.querySelector(".adhkar-progress-value span:first-child");
-        valSpan.textContent = currentCount;
+  if (titleEl) titleEl.textContent = item.title;
+  if (arEl) arEl.textContent = item.ar;
+  if (translitEl) translitEl.textContent = item.translit;
+  if (transEl) transEl.textContent = item.translation || item.en || "";
 
-        if (currentCount >= item.target) {
-          card.classList.add("completed");
-          valSpan.parentElement.style.color = "#34d399";
-          bar.style.stroke = "#34d399";
+  const valEl = document.getElementById("bead-count-val");
+  const targetEl = document.getElementById("bead-target-val");
+  if (valEl) valEl.textContent = count;
+  if (targetEl) targetEl.textContent = `/ ${item.target}`;
+
+  const fillEl = document.getElementById("session-bar-fill");
+  const labelEl = document.getElementById("session-progress-text");
+  const progressPercent = ((sessionActiveIndex) / items.length) * 100;
+  if (fillEl) fillEl.style.width = `${progressPercent}%`;
+  if (labelEl) labelEl.textContent = `الذكر ${sessionActiveIndex + 1} من ${items.length}`;
+
+  const prevBtn = document.getElementById("btn-session-prev");
+  const nextBtn = document.getElementById("btn-session-next");
+  if (prevBtn) prevBtn.disabled = (sessionActiveIndex === 0);
+  if (nextBtn) nextBtn.disabled = (sessionActiveIndex === items.length - 1);
+
+  const circ = 339.29;
+  const progressRatio = Math.min(count, item.target) / item.target;
+  const barOffset = circ - progressRatio * circ;
+  const progressBar = document.getElementById("bead-progress-bar");
+  if (progressBar) {
+    progressBar.style.strokeDashoffset = barOffset;
+  }
+
+  const beadButton = document.getElementById("adhkar-bead-button");
+  if (beadButton) {
+    if (count >= item.target) {
+      beadButton.classList.add("completed-bead");
+    } else {
+      beadButton.classList.remove("completed-bead");
+    }
+  }
+}
+
+function incrementSessionCount() {
+  const items = ADHKAR[sessionCategory] || [];
+  if (items.length === 0) return;
+
+  const item = items[sessionActiveIndex];
+  const key = `${sessionCategory}-${sessionActiveIndex}`;
+  let count = adhkarSessionCounts[key] || 0;
+
+  if (count < item.target) {
+    playHapticTick();
+    count++;
+    adhkarSessionCounts[key] = count;
+    saveState();
+
+    adhkarCount++;
+    const counterValEl = document.getElementById("counter-value");
+    if (counterValEl) counterValEl.textContent = adhkarCount;
+
+    const beadButton = document.getElementById("adhkar-bead-button");
+    if (beadButton) {
+      beadButton.classList.add("tapped");
+      setTimeout(() => beadButton.classList.remove("tapped"), 150);
+    }
+
+    renderSessionItem();
+
+    if (count >= item.target) {
+      playSuccessChime();
+
+      setTimeout(() => {
+        if (sessionActiveIndex < items.length - 1) {
+          nextSessionItem();
+        } else {
+          const ss = document.getElementById("adhkar-session-panel");
+          const cl = document.getElementById("adhkar-celebration-screen");
+          if (ss) ss.classList.add("hidden");
+          if (cl) cl.classList.remove("hidden");
         }
-      }
-    });
+      }, 700);
+    }
+  }
+}
 
-    list.appendChild(card);
+function playSuccessChime() {
+  try {
+    const ctx = audioCtx || new (window.AudioContext || window.webkitAudioContext)();
+    if (!audioCtx) audioCtx = ctx;
+
+    if (ctx.state === "suspended") {
+      ctx.resume();
+    }
+
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+
+    osc.type = "sine";
+    osc.frequency.setValueAtTime(523.25, ctx.currentTime);
+    osc.frequency.setValueAtTime(659.25, ctx.currentTime + 0.12);
+    osc.frequency.setValueAtTime(783.99, ctx.currentTime + 0.24);
+
+    gain.gain.setValueAtTime(0.1, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.45);
+
+    osc.start(ctx.currentTime);
+    osc.stop(ctx.currentTime + 0.5);
+  } catch (e) {
+    console.warn("Success chime audio error: ", e);
+  }
+}
+
+function prevSessionItem() {
+  if (sessionActiveIndex > 0) {
+    sessionActiveIndex--;
+    renderSessionItem();
+  }
+}
+
+function nextSessionItem() {
+  const items = ADHKAR[sessionCategory] || [];
+  if (sessionActiveIndex < items.length - 1) {
+    sessionActiveIndex++;
+    renderSessionItem();
+  }
+}
+
+function exitAdhkarSession() {
+  isSessionActive = false;
+  renderAdhkar();
+}
+
+function resetActiveSessionCounts() {
+  const items = ADHKAR[sessionCategory] || [];
+  items.forEach((item, index) => {
+    const key = `${sessionCategory}-${index}`;
+    adhkarSessionCounts[key] = 0;
   });
+  saveState();
+  renderSessionItem();
 }
 
 /* ---------------------------------- LEARNING JOURNEY ---------------------------------- */
 
+let activeQuizQuestions = [];
+
+async function fetchDailyQuizQuestions() {
+  const cachedQuestions = localStorage.getItem("daily_quiz_questions");
+  const cachedDate = localStorage.getItem("daily_quiz_date");
+  const todayStr = new Date().toDateString();
+
+  if (cachedQuestions && cachedDate === todayStr) {
+    try {
+      const parsed = JSON.parse(cachedQuestions);
+      if (parsed && parsed.length > 5) {
+        activeQuizQuestions = parsed;
+        console.log("Loaded cached daily quiz questions. Count:", activeQuizQuestions.length);
+        return;
+      }
+    } catch (e) {
+      console.warn("Error parsing cached quiz questions, refetching...", e);
+    }
+  }
+
+  // Get user-configured Gemini API Key
+  const userKey = localStorage.getItem("gemini_api_key");
+  if (!userKey) {
+    console.log("No Gemini API key configured. Using static fallback questions.");
+    activeQuizQuestions = [...QUIZ_QUESTIONS];
+    return;
+  }
+
+  // Generate 20 questions
+  const prompt = `أنت خبير في التربية الإسلامية والتاريخ الإسلامي والسيرة النبوية الشريفة. قم بتوليد 20 سؤالاً متعدد الخيارات (MCQ) لبرنامج مسابقات ديني وثقافي.
+يجب أن تغطي الأسئلة مواضيع متنوعة مثل: السيرة النبوية الشريفة، الغزوات، القرآن الكريم وعلومه، الأنبياء والرسل عليهم السلام، الفقه، الأخلاق والمعاملات الإسلامية، والتاريخ الإسلامي العام.
+يجب أن يكون الإخراج بصيغة JSON فقط كصفوفة من الكائنات (Array of Objects) بدون أي كلام أو علامات تنصيص مائلة أو لغة markdown.
+شكل الكائن لكل سؤال:
+{
+  "q": "نص السؤال باللغة العربية الفصحى بصياغة بليغة وواضحة ودقيقة جداً",
+  "choices": ["الخيار الأول", "الخيار الثاني", "الخيار الثالث", "الخيار الرابع"],
+  "answer": 0, // الرقم التعريفي للجواب الصحيح من 0 إلى 3
+  "exp": "شرح مبسط وموثوق علمياً وتاريخياً يوضح المعلومة ويثري ثقافة القارئ باللغة العربية"
+}
+تأكد بنسبة 100% أن الأسئلة دقيقة علمياً وتاريخياً ولا تحتوي على أي أخطاء.`;
+
+  try {
+    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent?key=${userKey}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        contents: [{
+          parts: [{
+            text: prompt
+          }]
+        }],
+        generationConfig: {
+          responseMimeType: "application/json"
+        }
+      })
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      const text = data.candidates[0].content.parts[0].text;
+      const parsed = JSON.parse(text);
+      if (Array.isArray(parsed) && parsed.length > 0) {
+        activeQuizQuestions = parsed;
+        localStorage.setItem("daily_quiz_questions", JSON.stringify(parsed));
+        localStorage.setItem("daily_quiz_date", todayStr);
+        console.log("Successfully fetched and cached 20 new questions from Gemini.");
+        return;
+      }
+    }
+    throw new Error("Invalid response or API key restricted.");
+  } catch (err) {
+    console.error("Gemini API call failed, falling back to static questions:", err);
+    activeQuizQuestions = [...QUIZ_QUESTIONS];
+  }
+}
+
 function initQuiz() {
-  document.getElementById("quiz-next-btn").addEventListener("click", () => {
-    if (quizCurrentIndex < QUIZ_QUESTIONS.length - 1) {
+  const nextBtn = document.getElementById("quiz-next-btn");
+  if (!nextBtn) return;
+
+  // Toggle Settings Panel
+  const configBtn = document.getElementById("btn-quiz-key-config");
+  const configPanel = document.getElementById("quiz-key-config-panel");
+  if (configBtn && configPanel) {
+    configBtn.onclick = () => {
+      configPanel.classList.toggle("hidden");
+    };
+  }
+
+  // Pre-fill key if exists
+  const keyInput = document.getElementById("quiz-api-key-input");
+  const saveKeyBtn = document.getElementById("btn-save-quiz-key");
+  const clearKeyBtn = document.getElementById("btn-clear-quiz-key");
+  const statusMsg = document.getElementById("quiz-key-status");
+
+  if (keyInput) {
+    const savedKey = localStorage.getItem("gemini_api_key");
+    if (savedKey) {
+      keyInput.value = savedKey;
+    }
+  }
+
+  // Save key button handler
+  if (saveKeyBtn && keyInput && statusMsg) {
+    saveKeyBtn.onclick = async () => {
+      const newKey = keyInput.value.trim();
+      if (!newKey) {
+        statusMsg.className = "key-status-msg error";
+        statusMsg.textContent = "الرجاء إدخال مفتاح صالح.";
+        return;
+      }
+      statusMsg.className = "key-status-msg";
+      statusMsg.textContent = "جاري تفعيل المفتاح وجلب الأسئلة الجديدة...";
+      
+      localStorage.setItem("gemini_api_key", newKey);
+      localStorage.removeItem("daily_quiz_questions"); // Clear previous cached questions to force refetch
+      localStorage.removeItem("daily_quiz_date");
+
+      await fetchDailyQuizQuestions();
+
+      if (activeQuizQuestions.length > 5) {
+        statusMsg.className = "key-status-msg success";
+        statusMsg.textContent = "تم حفظ وتفعيل المفتاح بنجاح! تم تحميل ٢٠ سؤالاً جديداً.";
+        quizCurrentIndex = 0;
+        quizScore = 0;
+        quizAnswered = false;
+        renderQuizQuestion();
+      } else {
+        statusMsg.className = "key-status-msg error";
+        statusMsg.textContent = "فشل التحقق من المفتاح أو لم يدعم خادم Gemini الطلب. الرجاء التأكد من صحة المفتاح.";
+        localStorage.removeItem("gemini_api_key");
+      }
+    };
+  }
+
+  // Clear key button handler
+  if (clearKeyBtn && keyInput && statusMsg) {
+    clearKeyBtn.onclick = () => {
+      localStorage.removeItem("gemini_api_key");
+      localStorage.removeItem("daily_quiz_questions");
+      localStorage.removeItem("daily_quiz_date");
+      keyInput.value = "";
+      statusMsg.className = "key-status-msg success";
+      statusMsg.textContent = "تم إزالة المفتاح والعودة للأسئلة الافتراضية.";
+      activeQuizQuestions = [...QUIZ_QUESTIONS];
+      quizCurrentIndex = 0;
+      quizScore = 0;
+      quizAnswered = false;
+      renderQuizQuestion();
+    };
+  }
+
+  nextBtn.addEventListener("click", () => {
+    if (quizCurrentIndex < activeQuizQuestions.length - 1) {
       quizCurrentIndex++;
       quizAnswered = false;
       renderQuizQuestion();
@@ -1486,42 +3736,55 @@ function initQuiz() {
 }
 
 function renderQuizQuestion() {
-  const currentQuestion = QUIZ_QUESTIONS[quizCurrentIndex];
+  if (activeQuizQuestions.length === 0) {
+    activeQuizQuestions = [...QUIZ_QUESTIONS];
+  }
+  const currentQuestion = activeQuizQuestions[quizCurrentIndex];
 
   // Progress Bar updates
   const progressText = document.getElementById("quiz-progress-text");
   const progressBar = document.getElementById("quiz-progress-bar");
-  const percent = ((quizCurrentIndex + 1) / QUIZ_QUESTIONS.length) * 100;
-
-  progressText.textContent = `Question ${quizCurrentIndex + 1} of ${QUIZ_QUESTIONS.length}`;
-  progressBar.style.width = `${percent}%`;
+  if (progressText && progressBar) {
+    const percent = ((quizCurrentIndex + 1) / activeQuizQuestions.length) * 100;
+    progressText.textContent = `السؤال ${quizCurrentIndex + 1} من ${activeQuizQuestions.length}`;
+    progressBar.style.width = `${percent}%`;
+  }
 
   // Question Text
-  document.getElementById("quiz-question-text").textContent = currentQuestion.q;
+  const qText = document.getElementById("quiz-question-text");
+  if (qText) qText.textContent = currentQuestion.q;
 
   // Answers choices list
   const choicesBox = document.getElementById("quiz-choices");
-  choicesBox.innerHTML = "";
-
-  currentQuestion.choices.forEach((choice, index) => {
-    const btn = document.createElement("button");
-    btn.className = "quiz-choice-btn";
-    btn.textContent = choice;
-    btn.addEventListener("click", () => handleQuizAnswer(index, btn));
-    choicesBox.appendChild(btn);
-  });
+  if (choicesBox) {
+    choicesBox.innerHTML = "";
+    currentQuestion.choices.forEach((choice, index) => {
+      const btn = document.createElement("button");
+      btn.className = "quiz-choice-btn";
+      btn.textContent = choice;
+      btn.addEventListener("click", () => handleQuizAnswer(index, btn));
+      choicesBox.appendChild(btn);
+    });
+  }
 
   // Hide next button and explanations
-  document.getElementById("quiz-explanation").classList.add("hidden");
-  document.getElementById("quiz-next-btn").classList.add("hidden");
-  document.getElementById("quiz-score").textContent = quizScore;
+  const expBox = document.getElementById("quiz-explanation");
+  if (expBox) expBox.classList.add("hidden");
+  
+  if (document.getElementById("quiz-next-btn")) {
+    document.getElementById("quiz-next-btn").classList.add("hidden");
+  }
+  
+  if (document.getElementById("quiz-score")) {
+    document.getElementById("quiz-score").textContent = Math.round(quizScore);
+  }
 }
 
 function handleQuizAnswer(choiceIndex, clickedBtn) {
   if (quizAnswered) return;
   quizAnswered = true;
 
-  const currentQuestion = QUIZ_QUESTIONS[quizCurrentIndex];
+  const currentQuestion = activeQuizQuestions[quizCurrentIndex];
   const isCorrect = choiceIndex === currentQuestion.answer;
 
   const buttons = document.querySelectorAll(".quiz-choices .quiz-choice-btn");
@@ -1533,25 +3796,29 @@ function handleQuizAnswer(choiceIndex, clickedBtn) {
   });
 
   if (isCorrect) {
-    quizScore += 20; // 20 pts per correct choice (100 max)
-    document.getElementById("quiz-score").textContent = quizScore;
+    quizScore += 100 / activeQuizQuestions.length; // Dynamic scoring (100 max)
+    const scoreEl = document.getElementById("quiz-score");
+    if (scoreEl) scoreEl.textContent = Math.round(quizScore);
   } else {
     clickedBtn.classList.add("incorrect");
   }
 
   // Show explanation details
   const expBox = document.getElementById("quiz-explanation");
-  expBox.textContent = currentQuestion.exp;
-  expBox.classList.remove("hidden");
+  if (expBox) {
+    expBox.textContent = currentQuestion.exp;
+    expBox.classList.remove("hidden");
+  }
 
   // Next Question triggers
   const nextBtn = document.getElementById("quiz-next-btn");
-  nextBtn.classList.remove("hidden");
-
-  if (quizCurrentIndex === QUIZ_QUESTIONS.length - 1) {
-    nextBtn.textContent = "Restart Quiz";
-  } else {
-    nextBtn.textContent = "Next Question";
+  if (nextBtn) {
+    nextBtn.classList.remove("hidden");
+    if (quizCurrentIndex === activeQuizQuestions.length - 1) {
+      nextBtn.textContent = "إعادة الاختبار";
+    } else {
+      nextBtn.textContent = "السؤال التالي";
+    }
   }
 }
 
@@ -1560,6 +3827,7 @@ function handleQuizAnswer(choiceIndex, clickedBtn) {
 function initChat() {
   const sendBtn = document.getElementById("chat-send-btn");
   const chatInput = document.getElementById("chat-input");
+  if (!sendBtn || !chatInput) return;
 
   const sendMessage = () => {
     const text = chatInput.value.trim();
@@ -1614,7 +3882,7 @@ function simulateAiResponse(queryText) {
   // Show "typing..." bubble
   const typingBubble = document.createElement("div");
   typingBubble.className = "chat-bubble ai typing";
-  typingBubble.textContent = "Murshid is typing...";
+  typingBubble.textContent = "مرشد يكتب...";
   container.appendChild(typingBubble);
   container.scrollTop = container.scrollHeight;
 
@@ -1629,35 +3897,35 @@ function simulateAiResponse(queryText) {
 function getAiReply(query) {
   const q = query.toLowerCase();
 
-  if (q.includes("wudu") || q.includes("ablution")) {
-    return "Performing Wudu involves clean intentions (Niyyah), washing your hands 3x, rinsing your mouth and nose 3x, washing your face 3x, washing your arms up to the elbows 3x, wiping your head and ears once, and washing your feet to the ankles 3x. These steps purify physical and spiritual states before prayer.";
+  if (q.includes("وضوء") || q.includes("wudu") || q.includes("أتوضأ")) {
+    return "الوضوء يبدأ بالنية، ثم غسل اليدين ثلاث مرات، والمضمضة والاستنشاق ثلاثاً، وغسل الوجه ثلاثاً، وغسل اليدين إلى المرفقين ثلاثاً، ومسح الرأس والأذنين، وغسل القدمين إلى الكعبين ثلاثاً. هذه الخطوات تطهر الجسد والروح قبل الصلاة.";
   }
-  if (q.includes("salah") || q.includes("pray")) {
-    return "Salah is the second pillar of Islam, acting as a direct connection between you and Allah. The five daily prayers (Fajr, Dhuhr, Asr, Maghrib, Isha) serve as spiritual anchor points throughout your day, keeping you mindful of your creator.";
+  if (q.includes("صلاة") || q.includes("salah") || q.includes("الصلاة")) {
+    return "الصلاة هي الركن الثاني من أركان الإسلام، وهي صلة مباشرة بينك وبين الله. الصلوات الخمس (الفجر، الظهر، العصر، المغرب، العشاء) هي محطات روحية تبقيك على اتصال بخالقك طوال اليوم.";
   }
-  if (q.includes("patience") || q.includes("ease") || q.includes("sabur")) {
-    return "Allah says in the Quran: 'Seek help through patience and prayer, and indeed, it is difficult except for the humbly submissive' (Al-Baqarah 2:45). Remember that with hardship comes ease, and your patience during trials is highly rewarded.";
+  if (q.includes("صبر") || q.includes("تيسير") || q.includes("صعوبة")) {
+    return "قال الله تعالى: 'واستعينوا بالصبر والصلاة وإنها لكبيرة إلا على الخاشعين' (البقرة ٢:٤٥). تذكر أن مع العسر يسراً، وصبرك على الابتلاءات له أجر عظيم.";
   }
-  if (q.includes("hadith") || q.includes("sunnah")) {
-    return "The Prophet ﷺ said: 'The most beloved of deeds to Allah are those that are most constant, even if they are small' (Bukhari). Applying small Sunnah deeds consistently leads to positive spiritual growth.";
+  if (q.includes("حديث") || q.includes("سنة") || q.includes("خلق")) {
+    return "قال النبي ﷺ: 'أحب الأعمال إلى الله أدومها وإن قلّ' (البخاري). المداومة على الأعمال الصغيرة من السنة تقود إلى نمو روحي كبير.";
   }
-  if (q.includes("ihsan")) {
-    return "Ihsan is to worship Allah as if you see Him, for if you do not see Him, He indeed sees you. It is the pinnacle of faith, where sincerity meets complete excellence in action.";
+  if (q.includes("إحسان") || q.includes("ihsan")) {
+    return "الإحسان هو أن تعبد الله كأنك تراه، فإن لم تكن تراه فإنه يراك. هو قمة الإيمان حيث يلتقي الإخلاص مع الإتقان في العمل.";
   }
-  if (q.includes("dua") || q.includes("supplication")) {
-    return "Prophet Muhammad ﷺ taught us: 'Dua is the essence of worship' (Tirmidhi). You can call upon Allah at any time, in any language. The best times for acceptance are during prostration (Sujud) and in the last third of the night.";
+  if (q.includes("دعاء") || q.includes("دعوة")) {
+    return "قال النبي ﷺ: 'الدعاء هو العبادة' (الترمذي). يمكنك الدعاء في أي وقت. أفضل أوقات الإجابة هي في السجود وفي الثلث الأخير من الليل.";
   }
-  if (q.includes("ramadan") || q.includes("fasting")) {
-    return "Ramadan is the month of spiritual purification and charity. Fasting (Sawm) teaches self-restraint and empathy for the less fortunate, helping us redirect focus toward inner reflection.";
+  if (q.includes("رمضان") || q.includes("صيام") || q.includes("صوم")) {
+    return "رمضان شهر التطهير الروحي والصدقة. الصيام يعلّم ضبط النفس والتعاطف مع المحتاجين، ويوجه التركيز نحو التأمل الداخلي.";
   }
-  if (q.includes("zakat") || q.includes("charity")) {
-    return "Zakat is a mandatory charity of 2.5% of our qualifying wealth, purifying our earnings and supporting the poor. In addition, optional charity (Sadaqah) carries immense rewards.";
+  if (q.includes("زكاة") || q.includes("صدقة")) {
+    return "الزكاة فريضة بنسبة ٢.٥٪ من المال المؤهل، تطهر المال وتدعم الفقراء. والصدقة التطوعية لها أجر عظيم أيضاً.";
   }
-  if (q.includes("hello") || q.includes("assalamu") || q.includes("hi")) {
-    return "Wa Alaikum Assalam! May peace and blessings be upon you. Ask me any question about Salah, Quran, Wudu, or general reflections.";
+  if (q.includes("السلام") || q.includes("مرحبا") || q.includes("hello") || q.includes("hi")) {
+    return "وعليكم السلام ورحمة الله وبركاته! اسألني عن الصلاة أو القرآن أو الوضوء أو أي سؤال إيماني.";
   }
 
-  return "I hear your reflection. Seeking knowledge is a beautiful act of worship in Islam. Feel free to ask about Salah, Quran, Wudu, Hadith, or Duas to help you along your journey.";
+  return "أسمع تأملك. طلب العلم عبادة جميلة في الإسلام. اسألني عن الصلاة، القرآن، الوضوء، الأحاديث، أو الأدعية لمساعدتك في رحلتك.";
 }
 
 /* ---------------------------------- Celestial Background Animation Helpers ---------------------------------- */
@@ -2105,4 +4373,173 @@ function initCelestialBackground() {
   }
 
   loop();
+}
+
+async function playFullSurah(surah, btnEl) {
+  // If this Surah is already the one playing
+  if (playingSurah && playingSurah.id === surah.id) {
+    if (currentAudio) {
+      if (currentAudio.paused) {
+        currentAudio.play().catch(err => console.error("Play failed", err));
+      } else {
+        currentAudio.pause();
+      }
+      updatePersistentPlayerUI();
+      renderSurahModalContent();
+      updateSurahCardsPlayButtons();
+    }
+    return;
+  }
+
+  // Load and play new Surah
+  loadAndPlaySurah(surah, btnEl);
+}
+
+async function loadAndPlaySurah(surah, btnEl = null) {
+  if (btnEl) btnEl.classList.add("loading");
+
+  try {
+    const editionMap = {
+      "English": "en.sahih",
+      "Français": "fr.hamidullah",
+      "Türkçe": "tr.yazir",
+      "اردو": "ur.maududi"
+    };
+    const edition = editionMap[translation] || "en.sahih";
+    const isCustomReciter = (reciter === "Ali Jaber");
+    const reciterEdition = isCustomReciter ? "ar.alafasy" : (RECITER_MAP[reciter] || "ar.alafasy");
+    const url = `https://api.alquran.cloud/v1/surah/${surah.id}/editions/quran-simple,${edition},${reciterEdition}`;
+    const res = await fetch(url);
+    const json = await res.json();
+
+    if (json.code === 200 && json.data) {
+      const arabicAyahs = json.data[0].ayahs;
+      const translationAyahs = json.data[1].ayahs;
+      const audioAyahs = json.data[2].ayahs;
+
+      // Build the full surah object with ayahs
+      const fullSurah = {
+        ...surah,
+        ayahs: arabicAyahs.map((ayah, i) => ({
+          n: ayah.numberInSurah,
+          ar: ayah.text,
+          en: translationAyahs[i].text,
+          audio: getAudioUrl(surah.id, ayah.numberInSurah, audioAyahs[i].audio)
+        }))
+      };
+
+      if (btnEl) btnEl.classList.remove("loading");
+
+      // Set playingSurah to this newly loaded fullSurah
+      playingSurah = fullSurah;
+      playingSurah.ayahDurations = new Array(fullSurah.ayahs.length).fill(0);
+
+      // Start playing from first verse
+      const firstAyah = fullSurah.ayahs[0];
+      const firstKey = `${surah.id}:1`;
+
+      togglePlayAudio(firstKey, firstAyah.audio);
+      updateSurahCardsPlayButtons();
+    } else {
+      throw new Error("Failed to fetch surah data");
+    }
+  } catch (err) {
+    console.error("Failed to load and play surah", err);
+    if (btnEl) btnEl.classList.remove("loading");
+    updateSurahCardsPlayButtons();
+    alert("Could not load Surah audio. Please check your internet connection.");
+  }
+}
+
+function playNextSurah() {
+  if (!playingSurah) return;
+  const currentId = playingSurah.id;
+
+  // Find index in allSurahs
+  const currentIndex = allSurahs.findIndex(s => s.id === currentId);
+  if (currentIndex !== -1 && currentIndex + 1 < allSurahs.length) {
+    const nextSurah = allSurahs[currentIndex + 1];
+
+    // Auto play next Surah
+    loadAndPlaySurah(nextSurah);
+  } else {
+    // End of Quran reached, stop player
+    hidePersistentPlayer();
+  }
+}
+
+async function reloadSurahWithNewReciter(surah, targetANum) {
+  try {
+    const editionMap = {
+      "English": "en.sahih",
+      "Français": "fr.hamidullah",
+      "Türkçe": "tr.yazir",
+      "اردو": "ur.maududi"
+    };
+    const edition = editionMap[translation] || "en.sahih";
+    const isCustomReciter = (reciter === "Ali Jaber");
+    const reciterEdition = isCustomReciter ? "ar.alafasy" : (RECITER_MAP[reciter] || "ar.alafasy");
+    const url = `https://api.alquran.cloud/v1/surah/${surah.id}/editions/quran-simple,${edition},${reciterEdition}`;
+    const res = await fetch(url);
+    const json = await res.json();
+
+    if (json.code === 200 && json.data) {
+      const arabicAyahs = json.data[0].ayahs;
+      const translationAyahs = json.data[1].ayahs;
+      const audioAyahs = json.data[2].ayahs;
+
+      const fullSurah = {
+        ...surah,
+        ayahs: arabicAyahs.map((ayah, i) => ({
+          n: ayah.numberInSurah,
+          ar: ayah.text,
+          en: translationAyahs[i].text,
+          audio: getAudioUrl(surah.id, ayah.numberInSurah, audioAyahs[i].audio)
+        }))
+      };
+
+      playingSurah = fullSurah;
+      playingSurah.ayahDurations = new Array(fullSurah.ayahs.length).fill(0);
+
+      const targetAyah = fullSurah.ayahs[targetANum - 1];
+      const targetKey = `${surah.id}:${targetANum}`;
+
+      togglePlayAudio(targetKey, targetAyah.audio);
+    }
+  } catch (err) {
+    console.error("Failed to reload surah with new reciter", err);
+  }
+}
+
+function updateSurahCardsPlayButtons() {
+  const buttons = document.querySelectorAll(".surah-card-play-btn");
+  buttons.forEach(btn => {
+    const sId = parseInt(btn.getAttribute("data-surah-id"));
+    const playIcon = btn.querySelector(".play-svg");
+    const pauseIcon = btn.querySelector(".pause-svg");
+
+    // Check if this button's Surah is currently playing
+    const isThisSurahPlaying = (playingSurah && playingSurah.id === sId);
+    const isActivelyPlaying = (isThisSurahPlaying && currentAudio && !currentAudio.paused);
+
+    if (isActivelyPlaying) {
+      if (playIcon) playIcon.classList.add("hidden");
+      if (pauseIcon) pauseIcon.classList.remove("hidden");
+    } else {
+      if (playIcon) playIcon.classList.remove("hidden");
+      if (pauseIcon) pauseIcon.classList.add("hidden");
+    }
+
+    // Ensure loading state is cleared if it's not the active one
+    if (!isThisSurahPlaying) {
+      btn.classList.remove("loading");
+    }
+
+    // Sync Surah Card Highlights
+    const card = btn.closest(".surah-card");
+    if (card) {
+      card.classList.toggle("playing", !!isThisSurahPlaying);
+      card.classList.toggle("active-play", !!isActivelyPlaying);
+    }
+  });
 }

@@ -17,6 +17,9 @@
     rel="stylesheet">
   <!-- Stylesheets -->
   <link rel="stylesheet" href="style_v1.css">
+  <!-- Inline Favicon to resolve 404 Console Error -->
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✨</text></svg>">
 </head>
 
 <body>
@@ -42,13 +45,11 @@
   </div>
 
   <!-- Main Application Wrapper -->
-  <div class="app-layout">
-
-    <!-- Sidebar Navigation -->
+  <div class="app-layout"> <!-- Sidebar Navigation -->
     <aside class="sidebar" id="sidebar-nav">
       <div class="brand">
         <span class="brand-icon">☾</span>
-        <span class="brand-text">AN-NOOR</span>
+        <span class="brand-text">النور</span>
       </div>
       <div class="nav-links">
         <button id="nav-dashboard" class="nav-btn active" data-view="dashboard">
@@ -58,7 +59,7 @@
                 d="M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 18v-2.25ZM13.5 6a2.25 2.25 0 0 1 2.25-2.25H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25a2.25 2.25 0 0 1-2.25-2.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-2.25A2.25 2.25 0 0 1 13.5 18v-2.25Z" />
             </svg>
           </span>
-          <span class="nav-text">Dashboard</span>
+          <span class="nav-text">لوحة التحكم</span>
         </button>
         <button id="nav-quran" class="nav-btn" data-view="quran">
           <span class="nav-icon">
@@ -67,16 +68,7 @@
                 d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
             </svg>
           </span>
-          <span class="nav-text">Quran</span>
-        </button>
-        <button id="nav-salah" class="nav-btn" data-view="salah">
-          <span class="nav-icon">
-            <svg class="nav-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path stroke-linecap="round" stroke-linejoin="round"
-                d="M15.042 21.672 13.684 16.6m0 0-2.51 2.225.569-9.47 5.227 7.917-3.286-.672ZM12 2.25V4.5m0 15v2.25m6.75-11.25h-2.25m-9 0H2.25m15.91-5.91-1.59 1.59M5.27 18.73l-1.59 1.59m0-15.91 1.59 1.59m12.23 12.23 1.59 1.59" />
-            </svg>
-          </span>
-          <span class="nav-text">Salah & Qibla</span>
+          <span class="nav-text">القرآن الكريم</span>
         </button>
         <button id="nav-sunnah" class="nav-btn" data-view="sunnah">
           <span class="nav-icon">
@@ -85,7 +77,7 @@
                 d="M11.48 3.499c.172-.363.69-.363.863 0l2.3 4.851a.5.5 0 0 0 .385.29l5.059.734c.389.056.545.556.262.84l-3.66 3.562a.5.5 0 0 0-.138.44l.864 5.038c.066.386-.328.694-.668.512l-4.524-2.381a.5.5 0 0 0-.448 0l-4.524 2.38c-.34.18-.734-.128-.668-.511l.864-5.038a.5.5 0 0 0-.138-.44L2.023 11.22c-.283-.284-.127-.784.262-.84l5.059-.734a.5.5 0 0 0 .385-.29l2.3-4.852Z" />
             </svg>
           </span>
-          <span class="nav-text">Sunnah Directory</span>
+          <span class="nav-text">الأحاديث النبوية</span>
         </button>
         <button id="nav-adhkar" class="nav-btn" data-view="adhkar">
           <span class="nav-icon">
@@ -94,7 +86,7 @@
                 d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
             </svg>
           </span>
-          <span class="nav-text">Adhkar Sanctuary</span>
+          <span class="nav-text">واحة الأذكار</span>
         </button>
         <button id="nav-learning" class="nav-btn" data-view="learning">
           <span class="nav-icon">
@@ -103,16 +95,16 @@
                 d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.57 50.57 0 0 0-2.658-.813A5.906 5.906 0 0 1 12 3.493a5.905 5.905 0 0 1 6.74 5.84c-.896.223-1.783.494-2.658.814m-11.822 0a48.474 48.474 0 0 1 11.822-1.765 48.474 48.474 0 0 1 11.822 1.765M18 10.147a60.436 60.436 0 0 0 .5-6.347m0 0a5.99 5.99 0 0 1 2.25 4.5" />
             </svg>
           </span>
-          <span class="nav-text">Learning Journey</span>
+          <span class="nav-text">رحلة المعرفة</span>
         </button>
-        <button id="nav-assistant" class="nav-btn" data-view="assistant">
+        <button id="nav-soundscapes" class="nav-btn" data-view="soundscapes">
           <span class="nav-icon">
             <svg class="nav-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
               <path stroke-linecap="round" stroke-linejoin="round"
-                d="M9.813 15.904L9 21m3.813-5.096L15 21m-5.187-5.096h4.375M12 3v1.25m6.364.386-1.091 1.091M21 12h-1.25m-.386 6.364-1.091-1.091M12 18.75V20m-4.773-4.227-1.091 1.091M5.25 12H4m4.227-4.773L7.136 6.136M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                d="M12 3v1.5M12 18.75V21m-9-9h1.5M18.75 12H21m-2.83-6.83l-1.06 1.06M6.16 16.84l-1.06 1.06m0-11.66l1.06 1.06m9.53 9.53l1.06 1.06M12 9a3 3 0 110 6 3 3 0 010-6z" />
             </svg>
           </span>
-          <span class="nav-text">Murshid AI</span>
+          <span class="nav-text">الأصوات الطبيعية</span>
         </button>
       </div>
     </aside>
@@ -128,9 +120,41 @@
           <p id="header-greeting-ar" class="greeting-arabic" dir="rtl"></p>
         </div>
         <div class="header-dates-controls">
-          <div class="date-display">
-            <div id="gregorian-date" class="date-gregorian"></div>
-            <div id="hijri-date" class="date-hijri"></div>
+          <div class="date-picker-container">
+            <button id="date-picker-trigger" class="date-display-trigger" title="Select custom date">
+              <div class="date-display">
+                <div id="gregorian-date" class="date-gregorian"></div>
+                <div id="hijri-date" class="date-hijri"></div>
+              </div>
+              <span class="date-edit-icon">
+                <svg class="edit-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
+                </svg>
+              </span>
+            </button>
+            <div id="date-picker-dropdown" class="date-picker-dropdown glass-card hidden">
+              <div class="date-picker-tabs">
+                <button type="button" class="date-tab-btn active" data-date-tab="gregorian">Gregorian</button>
+                <button type="button" class="date-tab-btn" data-date-tab="hijri">Hijri</button>
+              </div>
+              <div id="gregorian-date-pane" class="date-pane active">
+                <label for="gregorian-input" class="pane-label">Choose Date</label>
+                <input type="date" id="gregorian-input" class="premium-date-input">
+              </div>
+              <div id="hijri-date-pane" class="date-pane">
+                <label class="pane-label">Choose Hijri Date</label>
+                <div class="hijri-select-row">
+                  <select id="hijri-day-select" class="premium-select" title="Hijri Day"></select>
+                  <select id="hijri-month-select" class="premium-select" title="Hijri Month"></select>
+                  <select id="hijri-year-select" class="premium-select" title="Hijri Year"></select>
+                </div>
+              </div>
+              <div class="date-picker-footer">
+                <button type="button" id="date-picker-today-btn" class="text-btn">Today</button>
+                <button type="button" id="date-picker-apply-btn" class="apply-btn gold-glow">Apply</button>
+              </div>
+            </div>
           </div>
           <div class="phase-controls-wrapper">
             <div class="phase-buttons" id="phase-buttons">
@@ -149,49 +173,91 @@
 
       <!-- VIEW: Dashboard -->
       <section id="view-dashboard" class="content-view visible active">
+        <!-- Premium Location Badge -->
+        <div id="user-location-badge" class="location-badge-premium hidden">
+          <svg class="location-premium-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="goldGradLocation" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#fde68a" />
+                <stop offset="100%" stop-color="#c9a15c" />
+              </linearGradient>
+            </defs>
+            <!-- Mosque silhouette inside teardrop map pin -->
+            <path d="M12 2C7.58 2 4 5.58 4 10c0 5.25 8 12 8 12s8-6.75 8-12c0-4.42-3.58-8-8-8zm0 11.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z" fill="url(#goldGradLocation)"/>
+            <path d="M12 7c-.83 0-1.5.67-1.5 1.5v2c0 .28.22.5.5.5h2c.28 0 .5-.22.5-.5v-2c0-.83-.67-1.5-1.5-1.5z" fill="#111827"/>
+            <circle cx="12" cy="6" r="0.8" fill="url(#goldGradLocation)"/>
+          </svg>
+          <span id="location-text">جاري تحديد الموقع...</span>
+        </div>
+
+        <div class="dashboard-big-date-container">
+          <h2 id="dashboard-big-day" class="dashboard-big-day font-arabic"></h2>
+          <p id="dashboard-big-dates" class="dashboard-big-dates"></p>
+        </div>
         <div class="dashboard-grid">
           <!-- Next Prayer Countdown Widget -->
           <div class="glass-card p-6 spotlight next-prayer-widget" id="next-prayer-card" style="grid-column: 1 / -1;">
             <div class="next-prayer-grid">
               <div class="countdown-section">
-                <span class="card-subtitle" id="countdown-label">Time to next prayer</span>
+                <span class="card-subtitle" id="countdown-label">الوقت المتبقي للصلاة التالية</span>
                 <div class="next-prayer-title-row">
-                  <h2 id="next-prayer-name" class="next-prayer-title">Next: Fajr</h2>
+                  <h2 id="next-prayer-name" class="next-prayer-title">الصلاة القادمة: الفجر</h2>
                   <span id="next-prayer-arabic" class="next-prayer-arabic-calligraphy font-arabic">الفجر</span>
                 </div>
                 <div class="countdown-display">
                   <div class="countdown-unit">
                     <span id="countdown-hours" class="countdown-val">00</span>
-                    <span class="countdown-unit-label">hrs</span>
+                    <span class="countdown-unit-label">ساعة</span>
                   </div>
                   <div class="countdown-divider">:</div>
                   <div class="countdown-unit">
                     <span id="countdown-minutes" class="countdown-val">00</span>
-                    <span class="countdown-unit-label">mins</span>
+                    <span class="countdown-unit-label">دقيقة</span>
                   </div>
                   <div class="countdown-divider">:</div>
                   <div class="countdown-unit">
                     <span id="countdown-seconds" class="countdown-val">00</span>
-                    <span class="countdown-unit-label">secs</span>
+                    <span class="countdown-unit-label">ثانية</span>
                   </div>
                 </div>
               </div>
               <div class="prayer-times-strip">
-                <span class="card-subtitle">Daily prayer times</span>
+                <span class="card-subtitle">مواقيت الصلاة اليومية</span>
                 <div class="strip-grid" id="dashboard-prayers-strip">
                   <!-- Rendered dynamically in JS -->
                 </div>
               </div>
             </div>
           </div>
+
+          <!-- Adhkar Recommendation Widget -->
+          <div class="glass-card p-6 spotlight adhkar-recommendation-widget" id="dashboard-adhkar-card"
+            style="grid-column: 1 / -1;">
+            <div class="adhkar-widget-flex">
+              <div class="adhkar-widget-info">
+                <span class="card-subtitle">الأذكار المقترحة</span>
+                <h3 id="adhkar-widget-title" class="adhkar-widget-title font-serif gold-text-gradient"></h3>
+                <p id="adhkar-widget-description" class="adhkar-widget-desc"></p>
+              </div>
+              <button id="btn-adhkar-redirect" class="counter-button gold-glow compact-redirect-btn">
+                اقرأ الأذكار
+                <svg viewBox="0 0 20 20" fill="currentColor" class="arrow-icon">
+                  <path fill-rule="evenodd"
+                    d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                    clip-rule="evenodd" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
           <!-- Ayah of the Day -->
           <div class="glass-card col-span-2 p-6 spotlight" id="ayah-card">
             <div class="card-header">
-              <span class="card-subtitle">Ayah of the day</span>
-              <button id="tafseer-toggle-btn" class="text-btn">show tafseer</button>
+              <span class="card-subtitle">آية اليوم</span>
+              <button id="tafseer-toggle-btn" class="text-btn">عرض التفسير</button>
             </div>
             <p id="ayah-arabic" dir="rtl" class="ayah-arabic-text"></p>
-            <p id="ayah-translation" class="ayah-english-text"></p>
+            <p id="ayah-translation" class="ayah-english-text" style="display: none;"></p>
             <div id="ayah-tafseer" class="ayah-tafseer-panel collapsed">
               <p></p>
             </div>
@@ -203,39 +269,38 @@
 
           <!-- Dua of the Day -->
           <div class="glass-card p-6 spotlight" id="dua-card">
-            <span class="card-subtitle">Dua of the day</span>
+            <span class="card-subtitle">دعاء اليوم</span>
             <p id="dua-arabic" dir="rtl" class="dua-arabic-text"></p>
-            <p id="dua-translation" class="dua-english-text"></p>
+            <p id="dua-translation" class="dua-english-text" style="display: none;"></p>
             <div class="counter-section">
               <button id="counter-btn" class="counter-button gold-glow">
                 <span id="counter-value">0</span>
               </button>
-              <span class="counter-instruction">tap to count recitations</span>
+              <span class="counter-instruction">اضغط لعد التكرار</span>
             </div>
           </div>
 
           <!-- Hadith of the Day -->
           <div class="glass-card p-6 spotlight">
-            <span class="card-subtitle">Hadith of the day</span>
-            <p class="hadith-text">
-              The Prophet ﷺ said: "None of you truly believes until he loves for his brother what he loves for himself."
+            <span class="card-subtitle">الحديث الشريف اليومي</span>
+            <p id="hadith-text" class="hadith-text font-arabic" dir="rtl">
+              قال النبي ﷺ: "لا يؤمن أحدكم حتى يحب لأخيه ما يحب لنفسه."
             </p>
-            <p class="hadith-reference">Sahih al-Bukhari 13</p>
+            <p id="hadith-ref" class="hadith-reference">صحيح البخاري ١٣</p>
           </div>
 
           <!-- Spiritual Reminder -->
           <div class="glass-card p-6 spotlight animated-float">
-            <span class="card-subtitle">Spiritual reminder</span>
-            <p class="spiritual-text">
-              "Whoever relies upon Allah — then He is sufficient for him." Let today's small acts of remembrance carry
-              you gently forward.
+            <span class="card-subtitle">التذكرة الإيمانية</span>
+            <p id="spiritual-reminder-text" class="spiritual-text font-arabic" dir="rtl">
+              "ومن يتوكل على الله فهو حسبه." اجعل خطواتك اليوم مباركة بذكر الله والاستغفار.
             </p>
           </div>
 
           <!-- Cosmic Dial -->
           <div class="glass-card p-6 spotlight flex-center">
             <div class="cosmic-dial-wrapper">
-              <span class="card-subtitle dial-subtitle">Cosmic dial</span>
+              <span class="card-subtitle dial-subtitle">القرص الفلكي</span>
               <div class="dial-container">
                 <svg id="dial-svg" viewBox="0 0 100 100">
                   <circle cx="50" cy="50" r="44" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1.5" />
@@ -252,8 +317,8 @@
       <!-- VIEW: Quran Companion -->
       <section id="view-quran" class="content-view">
         <div class="quran-header">
-          <h1 class="view-title gold-text-gradient">Quran Companion</h1>
-          <p class="view-desc">Search, read, and reflect upon all 114 Surahs of the Holy Quran.</p>
+          <h1 class="view-title gold-text-gradient">القرآن الكريم</h1>
+          <p class="view-desc">ابحث، اقرأ وتدبر في سور القرآن الكريم الـ 114.</p>
 
           <!-- Premium Search Bar -->
           <div class="search-bar-wrapper">
@@ -263,7 +328,7 @@
                   d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.637 10.637Z" />
               </svg>
             </span>
-            <input type="text" id="quran-search" placeholder="Search Surahs (e.g. Al-Fatiha, Ya-Sin)..."
+            <input type="text" id="quran-search" placeholder="ابحث عن السور (مثال: الفاتحة، يس)..."
               class="quran-search-input">
           </div>
         </div>
@@ -271,96 +336,10 @@
           <!-- Rendered dynamically in JavaScript -->
         </div>
       </section>
-
-      <!-- VIEW: Salah Hub -->
-      <section id="view-salah" class="content-view">
-        <h1 class="view-title gold-text-gradient">Salah & Qibla</h1>
-        <p class="view-desc">Prayer times, direction, and daily tracking.</p>
-
-        <!-- Prayer Times Grid -->
-        <div id="prayer-times-grid" class="prayer-grid">
-          <!-- Generated dynamically in Javascript -->
-        </div>
-
-        <div class="salah-tools-grid">
-          <!-- Qibla Compass Card - Lux Gold Astrolabe Design -->
-          <div class="glass-card compass-card flex-center spotlight" id="compass-wrapper">
-            <span class="card-subtitle">Qibla compass</span>
-            <div class="compass-viewport">
-              <div id="compass-body" class="compass-dial astrolabe">
-
-                <!-- Ornate structural lines -->
-                <div class="astrolabe-grid">
-                  <svg viewBox="0 0 200 200" class="astrolabe-svg">
-                    <circle cx="100" cy="100" r="92" fill="none" stroke="url(#goldGrad)" stroke-width="1"
-                      opacity="0.3" />
-                    <circle cx="100" cy="100" r="82" fill="none" stroke="url(#goldGrad)" stroke-width="0.7"
-                      stroke-dasharray="2 3" opacity="0.4" />
-                    <circle cx="100" cy="100" r="45" fill="none" stroke="url(#goldGrad)" stroke-width="0.5"
-                      opacity="0.25" />
-                    <line x1="100" y1="8" x2="100" y2="192" stroke="url(#goldGrad)" stroke-width="0.5" opacity="0.2" />
-                    <line x1="8" y1="100" x2="192" y2="100" stroke="url(#goldGrad)" stroke-width="0.5" opacity="0.2" />
-
-                    <!-- Decorative Gold Gradient Definitions -->
-                    <defs>
-                      <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stop-color="#fde68a" />
-                        <stop offset="100%" stop-color="#c9a15c" />
-                      </linearGradient>
-                    </defs>
-                  </svg>
-                </div>
-
-                <!-- Labels -->
-                <span class="compass-dir dir-n font-serif">N</span>
-                <span class="compass-dir dir-e font-serif">E</span>
-                <span class="compass-dir dir-s font-serif">S</span>
-                <span class="compass-dir dir-w font-serif">W</span>
-
-                <!-- Astrolabe Reticle -->
-                <div class="astrolabe-reticle">
-                  <svg viewBox="0 0 200 200" class="astrolabe-svg">
-                    <circle cx="140" cy="100" r="24" fill="none" stroke="url(#goldGrad)" stroke-width="0.6"
-                      opacity="0.25" />
-                    <circle cx="60" cy="100" r="24" fill="none" stroke="url(#goldGrad)" stroke-width="0.6"
-                      opacity="0.25" />
-                    <path d="M 100 18 A 82 82 0 0 1 182 100 L 100 100 Z" fill="none" stroke="url(#goldGrad)"
-                      stroke-width="0.5" opacity="0.15" />
-                  </svg>
-                </div>
-
-                <!-- Custom Luxury Astrolabe Pointer Pointer -->
-                <div class="compass-needle astrolabe-pointer">
-                  <div class="pointer-stem"></div>
-                  <div class="pointer-crescent">☾</div>
-                  <div class="pointer-tip"></div>
-                </div>
-
-                <!-- Astrolabe Center Pivot -->
-                <div class="compass-center">⌂</div>
-              </div>
-            </div>
-            <p class="compass-footer">Mecca is approximately 38° from north — move your cursor to explore the compass in
-              3D.</p>
-          </div>
-
-          <!-- Salah Checklist Card -->
-          <div class="glass-card checklist-card p-6 spotlight">
-            <div class="checklist-tabs">
-              <button id="tab-wudu" class="tab-btn active" data-tab="wudu">Wudu</button>
-              <button id="tab-salah" class="tab-btn" data-tab="salah">Salah</button>
-            </div>
-            <div id="checklist-container" class="checklist-steps">
-              <!-- Rendered dynamically in Javascript -->
-            </div>
-          </div>
-        </div>
-      </section>
-
       <!-- VIEW: Sunnah Directory -->
       <section id="view-sunnah" class="content-view">
-        <h1 class="view-title gold-text-gradient">Sunnah Directory</h1>
-        <p class="view-desc">Explore, search, and reflect upon Sahih Hadiths.</p>
+        <h1 class="view-title gold-text-gradient">الأحاديث النبوية الشريفة</h1>
+        <p class="view-desc">استكشف، ابحث وتدبر في الأحاديث النبوية الشريفة الصحيحة.</p>
         <div class="sunnah-controls">
           <div class="search-bar-wrapper">
             <span class="search-icon-inside">
@@ -369,13 +348,12 @@
                   d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.637 10.637Z" />
               </svg>
             </span>
-            <input type="text" id="hadith-search" placeholder="Search Hadiths (e.g. intention, character)..."
-              class="quran-search-input">
+            <input type="text" id="hadith-search" placeholder="ابحث في الأحاديث الشريفة..." class="quran-search-input">
           </div>
           <div class="checklist-tabs sunnah-tabs">
-            <button id="tab-bukhari" class="tab-btn active" data-book="bukhari">Sahih al-Bukhari</button>
-            <button id="tab-muslim" class="tab-btn" data-book="muslim">Sahih Muslim</button>
-            <button id="tab-nawawi" class="tab-btn" data-book="nawawi">40 Hadith Nawawi</button>
+            <button id="tab-bukhari" class="tab-btn active" data-book="bukhari">صحيح البخاري</button>
+            <button id="tab-muslim" class="tab-btn" data-book="muslim">صحيح مسلم</button>
+            <button id="tab-nawawi" class="tab-btn" data-book="nawawi">الأربعون النووية</button>
           </div>
         </div>
         <div id="hadith-list" class="hadith-grid">
@@ -385,27 +363,236 @@
 
       <!-- VIEW: Adhkar Sanctuary -->
       <section id="view-adhkar" class="content-view">
-        <h1 class="view-title gold-text-gradient">Adhkar Sanctuary</h1>
-        <p class="view-desc">A peaceful space for morning, evening, and salah supplications.</p>
-        <div class="checklist-tabs adhkar-tabs">
-          <button id="tab-adhkar-morning" class="tab-btn active" data-category="morning">Morning</button>
-          <button id="tab-adhkar-evening" class="tab-btn" data-category="evening">Evening</button>
-          <button id="tab-adhkar-salah" class="tab-btn" data-category="salah">After Salah</button>
-          <button id="tab-adhkar-sleep" class="tab-btn" data-category="sleep">Before Sleep</button>
+        <!-- Overview Panel -->
+        <div id="adhkar-overview-panel">
+          <h1 class="view-title gold-text-gradient">واحة الأذكار</h1>
+          <p class="view-desc">اختر إحدى العبادات أدناه لبدء جلسة التسبيح الرقمية المركزة.</p>
+
+          <div class="sanctuary-page-frame">
+            <!-- Rub el Hizb Corner Stars -->
+            <div class="frame-star top-left">۞</div>
+            <div class="frame-star top-right">۞</div>
+            <div class="frame-star bottom-left">۞</div>
+            <div class="frame-star bottom-right">۞</div>
+
+            <div class="adhkar-categories-grid">
+              <div class="glass-card adhkar-cat-card spotlight" onclick="startAdhkarSession('morning')">
+                <div class="card-mihrab-dome">
+                  <div class="cat-card-icon-wrapper">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" class="cat-svg-icon">
+                      <circle cx="12" cy="12" r="5" stroke="#c9a15c" />
+                      <path
+                        d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"
+                        stroke="#c9a15c" stroke-linecap="round" />
+                    </svg>
+                  </div>
+                </div>
+                <h3 class="cat-card-title">أذكار الصباح</h3>
+                <p class="cat-card-desc">أذكار وتحصينات للبركة والحفظ بعد صلاة الفجر.</p>
+                <button class="counter-button gold-glow compact-redirect-btn" style="margin: 0 auto;">ابدأ
+                  الجلسة</button>
+              </div>
+
+              <div class="glass-card adhkar-cat-card spotlight" onclick="startAdhkarSession('evening')">
+                <div class="card-mihrab-dome">
+                  <div class="cat-card-icon-wrapper">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" class="cat-svg-icon">
+                      <path d="M12 3a9 9 0 109 9 9.75 9.75 0 00-.05-1 6 6 0 11-7.95-7.95A9.75 9.75 0 0012 3z"
+                        stroke="#c9a15c" stroke-linejoin="round" />
+                      <path d="M19 3h.01M16 6h.01M20 7h.01" stroke="#c9a15c" stroke-linecap="round" />
+                    </svg>
+                  </div>
+                </div>
+                <h3 class="cat-card-title">أذكار المساء</h3>
+                <p class="cat-card-desc">ذكر الله للسكينة والحفظ والتحصين مع غروب الشمس.</p>
+                <button class="counter-button gold-glow compact-redirect-btn" style="margin: 0 auto;">ابدأ
+                  الجلسة</button>
+              </div>
+
+              <div class="glass-card adhkar-cat-card spotlight" onclick="startAdhkarSession('opening')">
+                <div class="card-mihrab-dome">
+                  <div class="cat-card-icon-wrapper">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" class="cat-svg-icon">
+                      <path d="M12 2v4m0 0a4 4 0 00-4 4v11h8V10a4 4 0 00-4-4zm-8 7h16M7 21v-4M17 21v-4" stroke="#c9a15c"
+                        stroke-linecap="round" />
+                      <circle cx="12" cy="14" r="1.5" fill="#c9a15c" />
+                    </svg>
+                  </div>
+                </div>
+                <h3 class="cat-card-title">دعاء الاستفتاح</h3>
+                <p class="cat-card-desc">دعاء الاستفتاح الذي يستفتح به المسلم صلاته المفروضة.</p>
+                <button class="counter-button gold-glow compact-redirect-btn" style="margin: 0 auto;">ابدأ
+                  الجلسة</button>
+              </div>
+
+              <div class="glass-card adhkar-cat-card spotlight" onclick="startAdhkarSession('salah')">
+                <div class="card-mihrab-dome">
+                  <div class="cat-card-icon-wrapper">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" class="cat-svg-icon">
+                      <circle cx="12" cy="5" r="2" stroke="#c9a15c" />
+                      <circle cx="17" cy="8" r="2" stroke="#c9a15c" />
+                      <circle cx="19" cy="13" r="2" stroke="#c9a15c" />
+                      <circle cx="16" cy="18" r="2" stroke="#c9a15c" />
+                      <circle cx="11" cy="20" r="2" stroke="#c9a15c" />
+                      <circle cx="6" cy="17" r="2" stroke="#c9a15c" />
+                      <circle cx="4" cy="12" r="2" stroke="#c9a15c" />
+                      <circle cx="7" cy="7" r="2" stroke="#c9a15c" />
+                      <path d="M11 11l2 2" stroke="#c9a15c" stroke-linecap="round" />
+                    </svg>
+                  </div>
+                </div>
+                <h3 class="cat-card-title">أذكار بعد الصلاة</h3>
+                <p class="cat-card-desc">التسبيح والتهليل والاستغفار المسنون بعد الصلوات المفروضة.</p>
+                <button class="counter-button gold-glow compact-redirect-btn" style="margin: 0 auto;">ابدأ
+                  الجلسة</button>
+              </div>
+
+              <div class="glass-card adhkar-cat-card spotlight" onclick="startAdhkarSession('wudu')">
+                <div class="card-mihrab-dome">
+                  <div class="cat-card-icon-wrapper">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" class="cat-svg-icon">
+                      <path d="M12 3v13m0 0a3.5 3.5 0 11-7 0c0-3.5 7-10 7-10s7 6.5 7 10a3.5 3.5 0 01-7 0z"
+                        stroke="#c9a15c" stroke-linejoin="round" />
+                    </svg>
+                  </div>
+                </div>
+                <h3 class="cat-card-title">أذكار الوضوء</h3>
+                <p class="cat-card-desc">الأذكار المشروعة قبل البدء بالوضوء وأثناءه وبعد الفراغ منه.</p>
+                <button class="counter-button gold-glow compact-redirect-btn" style="margin: 0 auto;">ابدأ
+                  الجلسة</button>
+              </div>
+
+              <div class="glass-card adhkar-cat-card spotlight" onclick="startAdhkarSession('sleep')">
+                <div class="card-mihrab-dome">
+                  <div class="cat-card-icon-wrapper">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" class="cat-svg-icon">
+                      <path d="M2 18h20M6 18v-4a2 2 0 012-2h8a2 2 0 012 2v4" stroke="#c9a15c" />
+                      <circle cx="12" cy="7" r="2" stroke="#c9a15c" />
+                      <path d="M21 14h-4a2 2 0 00-2 2v2" stroke="#c9a15c" />
+                    </svg>
+                  </div>
+                </div>
+                <h3 class="cat-card-title">أذكار النوم</h3>
+                <p class="cat-card-desc">آية الكرسي والمعوذات والأدعية المسنونة للتحصين قبل النوم.</p>
+                <button class="counter-button gold-glow compact-redirect-btn" style="margin: 0 auto;">ابدأ
+                  الجلسة</button>
+              </div>
+            </div>
+          </div>
         </div>
-        <div id="adhkar-list" class="adhkar-grid">
-          <!-- Populated dynamically in script.js -->
+
+        <!-- Focused Session Panel (Hidden by default) -->
+        <div id="adhkar-session-panel" class="hidden">
+          <div class="session-header-bar">
+            <button id="btn-session-exit" class="text-btn session-exit-btn">✕ إنهاء الجلسة</button>
+            <div class="session-progress-wrapper">
+              <span id="session-progress-text" class="session-progress-label">الذكر ١ من ٥</span>
+              <div class="session-bar-bg">
+                <div id="session-bar-fill" class="session-bar-fill" style="width: 20%;"></div>
+              </div>
+            </div>
+            <button id="btn-session-reset" class="text-btn session-reset-btn">إعادة الضبط</button>
+          </div>
+
+          <div class="session-content-deck">
+            <!-- Navigation Chevrons -->
+            <button id="btn-session-prev" class="session-nav-chevron" title="الذكر السابق">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+
+            <div class="session-card-main glass-card spotlight">
+              <div class="session-adhkar-text-area">
+                <h4 id="session-adhkar-title" class="session-adhkar-title font-serif gold-text-gradient">آية الكرسي</h4>
+                <p id="session-adhkar-ar" dir="rtl" class="session-arabic-text font-arabic"></p>
+                <div class="arabic-divider">
+                  <svg viewBox="0 0 100 10" class="scroll-divider">
+                    <path d="M0 5h40l5-3 5 3-5 3-5-3h-40M100 5h-40l-5-3-5 3 5 3 5-3h40" stroke="#c9a15c"
+                      stroke-width="1" fill="none" opacity="0.35" />
+                    <polygon points="50,1 54,5 50,9 46,5" fill="#c9a15c" opacity="0.8" />
+                  </svg>
+                </div>
+                <p id="session-adhkar-translit" class="session-translit-text" style="display: none;"></p>
+                <p id="session-adhkar-translation" class="session-translation-text" style="display: none;"></p>
+              </div>
+
+              <!-- Interactive Tasbih Bead Button Counter -->
+              <div class="session-counter-section">
+                <button id="adhkar-bead-button" class="adhkar-bead-bead">
+                  <svg class="bead-progress-svg" viewBox="0 0 120 120">
+                    <circle class="bead-progress-track" cx="60" cy="60" r="54" fill="none" stroke-width="4" />
+                    <circle id="bead-progress-bar" class="bead-progress-bar" cx="60" cy="60" r="54" fill="none"
+                      stroke-width="5" />
+                  </svg>
+                  <div class="bead-values">
+                    <span id="bead-count-val" class="bead-count">0</span>
+                    <span id="bead-target-val" class="bead-target">/ ٣</span>
+                  </div>
+                </button>
+                <span class="bead-hint-text">انقر على السبحة أو اضغط على زر المسافة (Spacebar) للعد</span>
+              </div>
+            </div>
+
+            <button id="btn-session-next" class="session-nav-chevron" title="الذكر التالي">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Success Celebration Screen -->
+        <div id="adhkar-celebration-screen" class="celebration-screen hidden">
+          <div class="celebration-card glass-card spotlight text-center">
+            <div class="celebration-seal">
+              <svg viewBox="0 0 24 24" fill="currentColor" class="seal-icon"
+                style="width: 48px; height: 48px; color: #34d399;">
+                <path
+                  d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+              </svg>
+            </div>
+            <h2 class="celebration-title gold-text-gradient font-serif" style="font-size: 2rem; margin-top: 16px;">
+              اكتملت الجلسة بنجاح</h2>
+            <p class="celebration-desc"
+              style="color: rgba(255, 255, 255, 0.7); font-size: 0.95rem; margin: 12px 0 24px;">تقبل الله طاعتكم وصالح
+              أعمالكم، وجعل قلوبكم عامرة بذكر الله وطمأنينته.</p>
+            <button id="btn-celebration-done" class="counter-button gold-glow compact-redirect-btn"
+              style="margin: 0 auto; display: block;">العودة لواحة الأذكار</button>
+          </div>
         </div>
       </section>
 
       <!-- VIEW: Learning Journey -->
       <section id="view-learning" class="content-view">
-        <h1 class="view-title gold-text-gradient">Learning Journey</h1>
-        <p class="view-desc">Test and build your Islamic knowledge with trivia challenges.</p>
+        <div class="learning-header-row">
+          <div class="learning-header-titles">
+            <h1 class="view-title gold-text-gradient">رحلة المعرفة</h1>
+            <p class="view-desc">اختبر معلوماتك الدينية وثقف نفسك عبر تحدي المعرفة الإسلامي.</p>
+          </div>
+          <button id="btn-quiz-key-config" class="quiz-config-btn" title="إعدادات مفتاح الذكاء الاصطناعي">
+            🔑 مفتاح الذكاء الاصطناعي (Gemini)
+          </button>
+        </div>
+
+        <!-- Key Config Slide-down Panel -->
+        <div id="quiz-key-config-panel" class="glass-card quiz-key-panel hidden">
+          <h4 class="gold-text-gradient">إعدادات مفتاح الذكاء الاصطناعي (Gemini API Key)</h4>
+          <p class="panel-desc">يُستخدم هذا المفتاح لتوليد ٢٠ سؤالاً إسلامياً متنوعاً وجديداً كل يوم بشكل تلقائي بالكامل عبر نموذج الذكاء الاصطناعي (Gemini).</p>
+          <div class="key-input-row">
+            <input type="password" id="quiz-api-key-input" placeholder="أدخل مفتاح Gemini API هنا (مثال: AIzaSy...)..." class="quran-search-input">
+            <div class="key-actions">
+              <button id="btn-save-quiz-key" class="apply-btn gold-glow">حفظ المفتاح</button>
+              <button id="btn-clear-quiz-key" class="text-btn">حذف</button>
+            </div>
+          </div>
+          <p id="quiz-key-status" class="key-status-msg"></p>
+        </div>
+
         <div class="learning-container flex-center">
           <div class="glass-card quiz-card spotlight p-6">
             <div class="quiz-header">
-              <span class="card-subtitle" id="quiz-progress-text">Question 1 of 5</span>
+              <span class="card-subtitle" id="quiz-progress-text">السؤال ١ من ٥</span>
               <div class="quiz-progress-bar-bg">
                 <div id="quiz-progress-bar" class="quiz-progress-bar-fill" style="width: 20%;"></div>
               </div>
@@ -422,44 +609,71 @@
             </div>
 
             <div class="quiz-footer">
-              <div class="quiz-score-indicator">Score: <span id="quiz-score">0</span></div>
+              <div class="quiz-score-indicator">النتيجة: <span id="quiz-score">0</span></div>
               <button id="quiz-next-btn" class="counter-button gold-glow hidden"
-                style="width: auto; height: auto; padding: 10px 24px; border-radius: 9999px; font-size: 14px; margin: 0;">Next
-                Question</button>
+                style="width: auto; height: auto; padding: 10px 24px; border-radius: 9999px; font-size: 14px; margin: 0;">السؤال
+                التالي</button>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- VIEW: Murshid AI -->
-      <section id="view-assistant" class="content-view">
-        <h1 class="view-title gold-text-gradient">Murshid AI</h1>
-        <p class="view-desc">Ask your companion questions about Quran, Salah, or general guidance.</p>
-        <div class="chat-container">
-          <div class="glass-card chat-card spotlight">
-            <!-- Chat Messages Pane -->
-            <div id="chat-messages" class="chat-messages">
-              <!-- Populated dynamically in script.js -->
-            </div>
+      <!-- VIEW: Aura Soundscapes Nature Mixer -->
+      <section id="view-soundscapes" class="content-view">
+        <div class="soundscapes-container glass-card">
+          <!-- Top Description Header -->
+          <div class="soundscapes-header">
+            <h2 class="gold-text-gradient font-serif">الأصوات الطبيعية الهادئة</h2>
+            <p class="subtitle-text">انغمس في أصوات الطبيعة المهدئة. ابحث وامزج بين ٣٠ صوتاً طبيعياً مختلفاً لتهيئة
+              مساحة مريحة للتركيز والتأمل.</p>
 
-            <!-- Quick Action Prompt Chips -->
-            <div class="chat-prompt-chips">
-              <button class="prompt-chip" data-prompt="How to perform Wudu?">How to perform Wudu?</button>
-              <button class="prompt-chip" data-prompt="Dua for patience and ease">Dua for patience</button>
-              <button class="prompt-chip" data-prompt="Hadith on character">Hadith on character</button>
-              <button class="prompt-chip" data-prompt="Concept of Ihsan">Concept of Ihsan</button>
-            </div>
-
-            <!-- Chat Input Bar -->
-            <div class="chat-input-bar">
-              <input type="text" id="chat-input" placeholder="Ask Murshid..." autocomplete="off">
-              <button id="chat-send-btn" class="chat-send-btn">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                  <path stroke-linecap="round" stroke-linejoin="round"
-                    d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
+            <div class="soundscapes-console-bar">
+              <!-- Search and Filters -->
+              <div class="console-search-wrapper">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="search-icon">
+                  <circle cx="11" cy="11" r="8" />
+                  <path d="M21 21l-4.35-4.35" />
                 </svg>
-              </button>
+                <input type="text" id="soundscapes-search-input"
+                  placeholder="ابحث عن الأصوات (مثل: مطر، رياح، طيور)...">
+              </div>
+
+              <!-- Action buttons -->
+              <div class="console-actions-row">
+                <button id="btn-soundscapes-mute-all" class="soundscapes-console-btn" title="كتم جميع الأصوات النشطة">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-svg-icon">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M17.25 9.75L19.5 12m0 0l2.25 2.25M19.5 12l2.25-2.25M19.5 12l-2.25 2.25m-10.5-6L11.47 3.53a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75z" />
+                  </svg>
+                  كتم الكل
+                </button>
+                <button id="btn-soundscapes-reset" class="soundscapes-console-btn" title="إعادة تعيين جميع الأصوات">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-svg-icon">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
+                  </svg>
+                  Reset
+                </button>
+              </div>
             </div>
+
+            <!-- Categories Tabs -->
+            <div class="soundscapes-filter-tabs">
+              <button class="soundscapes-tab-btn active" data-filter="all">الكل</button>
+              <button class="soundscapes-tab-btn" data-filter="rain">🌧️ الأمطار والعواصف</button>
+              <button class="soundscapes-tab-btn" data-filter="water">💧 المياه والمحيطات</button>
+              <button class="soundscapes-tab-btn" data-filter="forest">🍃 الغابات والرياح</button>
+              <button class="soundscapes-tab-btn" data-filter="wildlife">🐦 الطيور والحيوانات</button>
+              <button class="soundscapes-tab-btn" data-filter="ambient">🏠 الأماكن الدافئة</button>
+              <button class="soundscapes-tab-btn" data-filter="transport">🚗 المدن والمواصلات</button>
+              <button class="soundscapes-tab-btn" data-filter="things">⌨️ الأصوات اليومية</button>
+              <button class="soundscapes-tab-btn" data-filter="noise">🧠 الضوضاء والتركيز</button>
+            </div>
+          </div>
+
+          <!-- Dynamic Grid Container -->
+          <div id="soundscapes-grid" class="soundscapes-grid-wrapper">
+            <!-- Populated via Javascript -->
           </div>
         </div>
       </section>
@@ -486,10 +700,10 @@
             <!-- Rendered from JS config -->
           </select>
         </div>
-        <div class="select-wrapper">
-          <select id="translation-select">
-            <!-- Rendered from JS config -->
-          </select>
+        <div class="ayah-font-size-control">
+          <button id="btn-font-smaller" class="font-size-btn" title="Decrease Text Size">A-</button>
+          <span id="font-size-display" class="font-size-label">24px</span>
+          <button id="btn-font-larger" class="font-size-btn" title="Increase Text Size">A+</button>
         </div>
       </div>
 
@@ -501,7 +715,101 @@
       <!-- Loader Overlay for Async API fetching -->
       <div id="modal-loader" class="modal-loader-overlay hidden">
         <div class="spinner"></div>
-        <p class="loader-text font-serif">Loading verses...</p>
+        <p class="loader-text font-serif">جاري تحميل الآيات الكريمة...</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Persistent Audio Player Widget -->
+  <div id="persistent-player" class="persistent-player hidden">
+    <div class="player-content-wrapper">
+      <div class="player-info">
+        <div class="player-titles">
+          <h4 id="player-surah-title" class="player-surah-name gold-text-gradient"></h4>
+          <p id="player-ayah-meta" class="player-meta"></p>
+        </div>
+        <!-- Mini waveform visualizer -->
+        <div class="audio-wave player-mini-wave hidden" id="player-wave">
+          <div class="audio-wave-bar" style="animation-delay: 0.0s"></div>
+          <div class="audio-wave-bar" style="animation-delay: 0.1s"></div>
+          <div class="audio-wave-bar" style="animation-delay: 0.2s"></div>
+          <div class="audio-wave-bar" style="animation-delay: 0.3s"></div>
+          <div class="audio-wave-bar" style="animation-delay: 0.4s"></div>
+        </div>
+      </div>
+      
+      <div class="player-controls">
+        <button id="player-replay-btn" class="player-control-btn toggle-btn" title="إعادة السورة">
+          <svg class="control-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
+          </svg>
+        </button>
+        <button id="player-prev-btn" class="player-control-btn" title="الآية السابقة">
+          <svg class="control-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+          </svg>
+        </button>
+        <button id="player-play-btn" class="player-control-btn play-pause-btn" title="تشغيل/إيقاف">
+          <!-- Play / Pause Icon -->
+          <svg class="control-icon play-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M8 5v14l11-7z" />
+          </svg>
+          <svg class="control-icon pause-icon hidden" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+          </svg>
+        </button>
+        <button id="player-next-btn" class="player-control-btn" title="الآية التالية">
+          <svg class="control-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+          </svg>
+        </button>
+        <button id="player-autoplay-btn" class="player-control-btn toggle-btn" title="تشغيل السورة التالية تلقائياً">
+          <svg class="control-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.91 11.672a.375.375 0 010 .656l-5.603 3.113a.375.375 0 01-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112z" />
+          </svg>
+        </button>
+      </div>
+
+      <div class="player-progress-container">
+        <span id="player-current-time" class="time-label">0:00</span>
+        <div id="player-progress-bg" class="progress-bar-bg">
+          <div id="player-progress-fill" class="progress-bar-fill" style="width: 0%;"></div>
+        </div>
+        <span id="player-duration" class="time-label">0:00</span>
+      </div>
+
+      <div class="player-volume-wrapper">
+        <button id="player-mute-btn" class="player-control-btn volume-btn" title="كتم/تشغيل الصوت">
+          <!-- Speaker Icon -->
+          <svg class="control-icon volume-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.114 5.636a9 9 0 0 1 0 12.728M16.463 8.288a5.25 5.25 0 0 1 0 7.424M6.75 8.25l4.72-4.72a.75.75 0 0 1 1.28.53v15.88a.75.75 0 0 1-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.009 9.009 0 0 1 2.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75Z" />
+          </svg>
+          <svg class="control-icon volume-muted hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 9.75L19.5 12m0 0l2.25 2.25M19.5 12l2.25-2.25M19.5 12l-2.25 2.25m-10.5-6L11.47 3.53a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75z" />
+          </svg>
+        </button>
+        <input type="range" id="player-volume-slider" min="0" max="1" step="0.05" value="0.7" class="volume-slider">
+      </div>
+
+      <button id="player-close-btn" class="player-close-btn" title="إيقاف وإغلاق المشغل">✕</button>
+    </div>
+  </div>
+
+  <!-- SALAH ALERT MODAL -->
+  <div id="salah-alert-modal" class="salah-alert-overlay">
+    <div class="salah-alert-card">
+      <div class="salah-alert-header">
+        <span id="salah-alert-arabic-name" class="salah-alert-tag font-arabic">الظهر</span>
+        <h2 id="salah-alert-title" class="salah-alert-title">حان وقت صلاة الظهر</h2>
+      </div>
+      <div class="salah-alert-body">
+        <span class="salah-alert-subtitle">دعاء الاستفتاح</span>
+        <p class="salah-alert-dua-ar font-arabic" dir="rtl">سُبْحَانَكَ اللَّهُمَّ وَبِحَمْدِكَ، وَتَبَارَكَ اسْمُكَ، وَتَعَالَى جَدُّكَ، وَلَا إِلَهَ غَيْرُكَ</p>
+        <p class="salah-alert-dua-en" style="display: none;">"Exalted are You, O Allah, and all praise is Yours; blessed is Your name, exalted is Your majesty, and there is no deity worthy of worship besides You."</p>
+      </div>
+      <div class="salah-alert-footer">
+        <button id="btn-salah-alert-hide" class="counter-button gold-glow compact-redirect-btn" style="padding: 10px 28px !important;">إخفاء</button>
       </div>
     </div>
   </div>
