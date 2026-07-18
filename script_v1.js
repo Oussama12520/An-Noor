@@ -909,7 +909,7 @@ function syncLocationByIP() {
       userLatitude = data.latitude || 21.4225;
       userLongitude = data.longitude || 39.8262;
       hasUserLocation = true;
-      
+
       await getArabicLocationName(userLatitude, userLongitude);
       fetchPrayersForDate(selectedDate);
     })
@@ -3770,11 +3770,11 @@ function renderQuizQuestion() {
   // Hide next button and explanations
   const expBox = document.getElementById("quiz-explanation");
   if (expBox) expBox.classList.add("hidden");
-  
+
   if (document.getElementById("quiz-next-btn")) {
     document.getElementById("quiz-next-btn").classList.add("hidden");
   }
-  
+
   if (document.getElementById("quiz-score")) {
     document.getElementById("quiz-score").textContent = Math.round(quizScore);
   }
@@ -4127,6 +4127,8 @@ function initCelestialBackground() {
     { x: 1000, y: 245, vx: 0.06, size: 110, opacity: 0.09 }
   ];
 
+  const isMobile = window.innerWidth < 768;
+
   function resize() {
     canvas.width = window.innerWidth * window.devicePixelRatio;
     canvas.height = window.innerHeight * window.devicePixelRatio;
@@ -4134,7 +4136,8 @@ function initCelestialBackground() {
     canvas.style.height = window.innerHeight + "px";
     ctx.setTransform(window.devicePixelRatio, 0, 0, window.devicePixelRatio, 0, 0);
 
-    const count = Math.floor((window.innerWidth * window.innerHeight) / 3200);
+    const starDivisor = isMobile ? 8000 : 3200;
+    const count = Math.floor((window.innerWidth * window.innerHeight) / starDivisor);
     stars = Array.from({ length: count }, () => ({
       x: Math.random() * window.innerWidth,
       y: Math.random() * window.innerHeight,
@@ -4151,7 +4154,23 @@ function initCelestialBackground() {
 
   let frameCount = 0;
 
-  function loop() {
+  // Cache DOM elements outside the rendering loop to prevent layout thrashing on every frame
+  const nebulaLeft = document.getElementById("nebula-1");
+  const nebulaRight = document.getElementById("nebula-2");
+  const celestialBody = document.getElementById("celestial-body");
+
+  let lastTime = 0;
+  const fpsInterval = isMobile ? 1000 / 30 : 0; // Throttle to 30 FPS on mobile to cut redraw work by 50%
+
+  function loop(timestamp) {
+    rafId = requestAnimationFrame(loop);
+
+    if (fpsInterval > 0 && timestamp) {
+      const elapsed = timestamp - lastTime;
+      if (elapsed < fpsInterval) return;
+      lastTime = timestamp - (elapsed % fpsInterval);
+    }
+
     frameCount += 1;
     const w = window.innerWidth;
     const h = window.innerHeight;
@@ -4194,16 +4213,12 @@ function initCelestialBackground() {
       drawMaghribHorizonSunset(ctx, w, h, frameCount);
     }
 
-    const nebulaLeft = document.getElementById("nebula-1");
-    const nebulaRight = document.getElementById("nebula-2");
     if (nebulaLeft) {
       nebulaLeft.style.transform = `translate(${currentParallax.x * -20}px, ${currentParallax.y * -20}px)`;
     }
     if (nebulaRight) {
       nebulaRight.style.transform = `translate(${currentParallax.x * -35}px, ${currentParallax.y * -35}px)`;
     }
-
-    const celestialBody = document.getElementById("celestial-body");
     if (celestialBody) {
       celestialBody.style.transform = `translate(-50%, -50%) translate(${currentParallax.x * 24}px, ${currentParallax.y * 16}px)`;
     }

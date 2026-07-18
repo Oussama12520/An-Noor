@@ -5661,10 +5661,13 @@ body.phase-isha .session-card-main {
 }
 
 @keyframes location-levitate {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0) scale(1);
-    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
   }
+
   50% {
     transform: translateY(-2px) scale(1.05);
     filter: drop-shadow(0 4px 8px rgba(253, 230, 138, 0.3));
@@ -5673,16 +5676,6 @@ body.phase-isha .session-card-main {
 
 .location-badge-premium.hidden {
   display: none !important;
-}
-
-@media (max-width: 767px) {
-  .location-badge-premium {
-    position: relative !important;
-    top: 0 !important;
-    left: 0 !important;
-    margin: 0 auto 20px auto !important;
-    width: fit-content;
-  }
 }
 
 /* Learning Journey Header & Key Configuration Panel styling */
@@ -5801,5 +5794,33 @@ body.phase-isha .session-card-main {
   .key-actions {
     width: 100%;
     justify-content: flex-end;
+  }
+}
+
+@media (max-width: 767px) {
+  .location-badge-premium {
+    position: relative !important;
+    top: 0 !important;
+    left: 0 !important;
+    margin: 0 auto 20px auto !important;
+    width: fit-content;
+  }
+  
+  /* Disable heavy backdrop blurs on mobile devices to prevent graphics rendering lag */
+  .glass-card,
+  .persistent-player,
+  .salah-alert-card,
+  .celebration-card,
+  .modal-loader-overlay,
+  .sidebar,
+  .app-header,
+  .location-badge-premium,
+  .quran-modal-content,
+  .console-search-wrapper,
+  .play-bar {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: rgba(18, 11, 26, 0.95) !important; /* Slightly more opaque deep-purple backing for readability */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4) !important;
   }
 }
