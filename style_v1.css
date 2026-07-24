@@ -5797,17 +5797,35 @@ body.phase-isha .session-card-main {
   .glass-card,
   .persistent-player,
   .salah-alert-card,
-  .celebration-card,
-  .modal-loader-overlay,
-  .sidebar,
-  .app-header,
-  .location-badge-premium,
-  .quran-modal-content,
-  .console-search-wrapper,
-  .play-bar {
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-    background: rgba(18, 11, 26, 0.95) !important; /* Slightly more opaque deep-purple backing for readability */
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4) !important;
-  }
+/* ==========================================
+   ULTRA PERFORMANCE OVERRIDES (GLOBAL)
+   ========================================== */
+*, *::before, *::after {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.glass-card,
+.sidebar,
+.app-header,
+.modal-content,
+.salah-alert-card,
+.search-results-overlay,
+.surah-details-panel,
+.counter-card,
+.location-badge-premium,
+.quran-modal-content,
+.console-search-wrapper,
+.play-bar {
+  background: rgba(18, 11, 26, 0.94) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
+}
+
+.nebula {
+  animation: none !important;
+  opacity: 0.15 !important;
+}
+
+.animated-float {
+  animation: none !important;
 }

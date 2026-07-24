@@ -2246,3 +2246,19 @@ body {
   to { transform: scaleY(1.0); }
 }
 
+/* GLOBAL PERFORMANCE OVERRIDES */
+*, *::before, *::after {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.glass-card,
+.sidebar,
+.app-header,
+.modal-content,
+.salah-alert-card {
+  background: rgba(18, 11, 26, 0.94) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
+}
+
+

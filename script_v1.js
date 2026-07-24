@@ -4123,8 +4123,7 @@ function initCelestialBackground() {
   const nebulaRight = document.getElementById("nebula-2");
   const celestialBody = document.getElementById("celestial-body");
 
-  let lastTime = 0;
-  const fpsInterval = isMobile ? 1000 / 30 : 0; // Throttle to 30 FPS on mobile to cut redraw work by 50%
+  const fpsInterval = 1000 / 30; // Universal 30 FPS cap to eliminate high CPU usage
 
   function loop(timestamp) {
     rafId = requestAnimationFrame(loop);
