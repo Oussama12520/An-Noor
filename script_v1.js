@@ -1523,21 +1523,32 @@ function updateLiveSyncUI() {
 
 /* ---------------------------------- Spotlight Cursor Tracker ---------------------------------- */
 
+let mouseMovePending = false;
+let lastMouseEvent = null;
+
 function setupSpotlightTracker() {
   window.addEventListener("mousemove", (e) => {
-    document.documentElement.style.setProperty("--mouse-x", `${e.clientX}px`);
-    document.documentElement.style.setProperty("--mouse-y", `${e.clientY}px`);
-  });
+    lastMouseEvent = e;
+    if (!mouseMovePending) {
+      mouseMovePending = true;
+      requestAnimationFrame(() => {
+        if (lastMouseEvent) {
+          document.documentElement.style.setProperty("--mouse-x", `${lastMouseEvent.clientX}px`);
+          document.documentElement.style.setProperty("--mouse-y", `${lastMouseEvent.clientY}px`);
 
-  document.body.addEventListener("mousemove", (e) => {
-    const card = e.target.closest(".glass-card.spotlight");
-    if (!card) return;
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    card.style.setProperty("--mouse-x", `${x}px`);
-    card.style.setProperty("--mouse-y", `${y}px`);
-  });
+          const card = lastMouseEvent.target.closest(".glass-card.spotlight");
+          if (card) {
+            const rect = card.getBoundingClientRect();
+            const x = lastMouseEvent.clientX - rect.left;
+            const y = lastMouseEvent.clientY - rect.top;
+            card.style.setProperty("--mouse-x", `${x}px`);
+            card.style.setProperty("--mouse-y", `${y}px`);
+          }
+        }
+        mouseMovePending = false;
+      });
+    }
+  }, { passive: true });
 }
 
 /* ---------------------------------- View Switcher ---------------------------------- */
@@ -4383,8 +4394,6 @@ function initCelestialBackground() {
       ctx.fillStyle = `rgba(${p.color}, ${currentAlpha})`;
       ctx.fill();
     });
-
-    rafId = requestAnimationFrame(loop);
   }
 
   loop();
