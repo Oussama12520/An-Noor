@@ -1501,12 +1501,7 @@ function setupEventListeners() {
     });
   }
 
-  window.addEventListener("mousemove", (e) => {
-    const nx = (e.clientX / window.innerWidth - 0.5) * 2;
-    const ny = (e.clientY / window.innerHeight - 0.5) * 2;
-    mouse.x = nx;
-    mouse.y = ny;
-  });
+  // Mouse movement tracking removed for maximum performance
 
   setupPersistentPlayerListeners();
   initSoundscapes();
@@ -1523,32 +1518,8 @@ function updateLiveSyncUI() {
 
 /* ---------------------------------- Spotlight Cursor Tracker ---------------------------------- */
 
-let mouseMovePending = false;
-let lastMouseEvent = null;
-
 function setupSpotlightTracker() {
-  window.addEventListener("mousemove", (e) => {
-    lastMouseEvent = e;
-    if (!mouseMovePending) {
-      mouseMovePending = true;
-      requestAnimationFrame(() => {
-        if (lastMouseEvent) {
-          document.documentElement.style.setProperty("--mouse-x", `${lastMouseEvent.clientX}px`);
-          document.documentElement.style.setProperty("--mouse-y", `${lastMouseEvent.clientY}px`);
-
-          const card = lastMouseEvent.target.closest(".glass-card.spotlight");
-          if (card) {
-            const rect = card.getBoundingClientRect();
-            const x = lastMouseEvent.clientX - rect.left;
-            const y = lastMouseEvent.clientY - rect.top;
-            card.style.setProperty("--mouse-x", `${x}px`);
-            card.style.setProperty("--mouse-y", `${y}px`);
-          }
-        }
-        mouseMovePending = false;
-      });
-    }
-  }, { passive: true });
+  // Mouse spotlight tracking disabled to eliminate lag
 }
 
 /* ---------------------------------- View Switcher ---------------------------------- */
@@ -3212,25 +3183,7 @@ function renderSalahHub() {
 }
 
 function setupCompassAstrolabeTilt() {
-  const compassWrapper = document.getElementById("compass-wrapper");
-  const compassBody = document.getElementById("compass-body");
-  if (!compassWrapper || !compassBody) return;
-
-  const handleMove = (e) => {
-    const rect = compassWrapper.getBoundingClientRect();
-    const px = (e.clientX - rect.left) / rect.width - 0.5;
-    const py = (e.clientY - rect.top) / rect.height - 0.5;
-    const rx = py * -20;
-    const ry = px * 20;
-    compassBody.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg)`;
-  };
-
-  const handleLeave = () => {
-    compassBody.style.transform = `rotateX(0deg) rotateY(0deg)`;
-  };
-
-  compassWrapper.addEventListener("mousemove", handleMove);
-  compassWrapper.addEventListener("mouseleave", handleLeave);
+  // 3D Tilt on mousemove disabled for performance
 }
 
 function renderChecklist() {
@@ -4204,35 +4157,8 @@ function initCelestialBackground() {
     const cfg = PHASES[currentPhase];
     const starOpacity = cfg.starOpacity;
 
-    currentParallax.x += (mouse.x - currentParallax.x) * 0.08;
-    currentParallax.y += (mouse.y - currentParallax.y) * 0.08;
-
-    // Draw Fajr mist and twilight glow
-    if (currentPhase === "fajr") {
-      drawFajrMist(ctx, w, h, frameCount);
-    }
-    // Draw Dhuhr solar heat ripples
-    if (currentPhase === "dhuhr") {
-      drawSolarFlare(ctx, w, h, frameCount, currentParallax);
-    }
-    // Draw Asr volumetric sweeps
-    if (currentPhase === "asr") {
-      drawVolumetricRays(ctx, w, h, frameCount);
-    }
-    // Draw Maghrib fiery twilight glow
-    if (currentPhase === "maghrib") {
-      drawMaghribHorizonSunset(ctx, w, h, frameCount);
-    }
-
-    if (nebulaLeft) {
-      nebulaLeft.style.transform = `translate(${currentParallax.x * -20}px, ${currentParallax.y * -20}px)`;
-    }
-    if (nebulaRight) {
-      nebulaRight.style.transform = `translate(${currentParallax.x * -35}px, ${currentParallax.y * -35}px)`;
-    }
-    if (celestialBody) {
-      celestialBody.style.transform = `translate(-50%, -50%) translate(${currentParallax.x * 24}px, ${currentParallax.y * 16}px)`;
-    }
+    currentParallax.x = 0;
+    currentParallax.y = 0;
 
     // Fajr: Flapping flying birds silhouette
     if (currentPhase === "fajr") {

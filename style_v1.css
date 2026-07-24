@@ -67,12 +67,7 @@ body {
 
 /* Premium Ambient Spotlight Background Tracker */
 .ambient-spotlight {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: -9;
-  background: radial-gradient(800px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), rgba(253, 230, 138, 0.02), transparent 80%);
-  transition: background 0.1s ease;
+  display: none !important;
 }
 
 .celestial-container {
@@ -551,15 +546,7 @@ body {
 
 /* Outer Spotlight glow effect border */
 .glass-card.spotlight::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: radial-gradient(400px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), rgba(253, 230, 138, 0.06), transparent 80%);
-  z-index: 0;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.5s ease;
+  display: none !important;
 }
 
 .glass-card.spotlight:hover {
